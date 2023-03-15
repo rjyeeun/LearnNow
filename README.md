@@ -1,7 +1,7 @@
 # Description
 
 This is an online learning platform that connects students with educators from all around the world. 
-This app provides various learning opportunities for everyone where educators can share and earn money from their educational contents and students can easily access courses through a user-friendly dashboard and purchase interested courses through a secure payment system. 
+This app provides various learning opportunities for everyone where educators can share and earn money from their educational contents and students can easily access courses through a user-friendly dashboard and purchase courses through a secure payment system. 
 
 # Setup
 
