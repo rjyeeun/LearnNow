@@ -1,24 +1,13 @@
-# README
+# Description
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app provides various learning opportunities for everyone where instructors share and earn money from their educational content and students can easily access it through a user-friendly dashboard and a secure payment system. 
 
-Things you may want to cover:
+# Backend
 
-* Ruby version
+* Domain Model (ERD)
 
-* System dependencies
+  * User has many orders and has many courses through orders.
+  * Course has many orders and has many users through orders.
+  * 
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+![erb](https://user-images.githubusercontent.com/112120098/225196009-27256dcb-55e4-40b7-a63a-a084457a4d22.png)
