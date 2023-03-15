@@ -7,14 +7,14 @@ This app provides various learning opportunities for everyone where educators ca
 
 1. Clone the GitHub repository.
 2. Navigate to the root directory of the project in your terminal.
-3. Run bundle install to install the required Ruby gems.
-4. Run  <ins>rails db:migrate</ins> to set up the database.
-5. Run <ins>rails db:seed</ins> to populate the database with sample data.
-6. Run rails s to start the rails server.
-7. Open up a new terminal
-8. Navigate to the client folder
-9. Run npm install to install the required packages for the frontend.
-10. Run npm start to start the frontend server.
+3. Run `bundle install` to install the required Ruby gems.
+4. Run  `rails db:migrate` to set up the database.
+5. Run `rails db:seed`to populate the database with sample data.
+6. Run `rails s` to start the rails server.
+7. Open up a new terminal.
+8. Navigate to the client folder.
+9. Run `npm install` to install the required packages for the frontend.
+10. Run `npm start` to start the frontend server.
 
 
 # Backend
