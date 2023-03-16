@@ -3,6 +3,7 @@ Course.destroy_all
 Lesson.destroy_all
 Review.destroy_all
 EnrolledCourse.destroy_all
+UserLikedCourse.destroy_all
 
 puts "🌱 Planting seeds..."
 
@@ -33,7 +34,6 @@ course3 = (user_id = User.all.sample.id
     InstructorCourse.create(user_id: user_id, course_id: course.id)
 )
 
-
 course4 = (user_id = User.all.sample.id
     course = Course.create(title: "Italian Food", description: "This is a cooking class for people who love to discover and learn how to cook 10 Italian foods.", category: "Cooking", price: 12.99, instructor_id: user_id, difficulty: "intermediate")
     InstructorCourse.create(user_id: user_id, course_id: course.id)
@@ -58,6 +58,7 @@ lesson8 = Lesson.create(title: "Loops and Conditionals", duration: 45, descripti
 lesson9 = Lesson.create(title: "Greetings and Introductions", duration: 45, description: "“In this lesson, we'll learn basic Korean greetings and introductions. We'll cover common phrases as well as some essential cultural tips for using these phrases in Korean society. We'll also learn how to ask and answer simple questions about personal information, like titles and professions. By the end of this lesson, you'll be able to confidently greet and introduce yourself in Korean!”", course_id: 2)
 
 lesson10 = Lesson.create(title: "Sun Salutation A", duration: 20, description: "In this lesson, we'll learn the foundational yoga sequence known as Sun Salutation A. We'll break down each of the poses in the sequence, including Mountain Pose, Forward Fold, Plank, and Upward-Facing Dog. We'll also discuss proper alignment and breathing techniques to help you flow through the sequence with ease. Whether you're new to yoga or looking to refine your practice, Sun Salutation A is a great place to start!", course_id: 3)
+
 
 review1 = Review.create(user_id: 4, course_id: 4, content: "I absolutely loved this course! The recipes were easy to follow and the instructor's passion for Italian cooking really shone through. Can't wait to impress my friends and family with my newfound skills in the kitchen.")
 

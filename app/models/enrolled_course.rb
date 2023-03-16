@@ -1,2 +1,3 @@
 class EnrolledCourse < ApplicationRecord
+
 end
