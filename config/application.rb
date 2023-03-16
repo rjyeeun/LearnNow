@@ -36,11 +36,11 @@ module Capstone
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
-    # Adding back cookies and session middleware
-    config.middleware.use ActionDispatch::Cookies
-    config.middleware.use ActionDispatch::Session::CookieStore
+    # # Adding back cookies and session middleware
+    # config.middleware.use ActionDispatch::Cookies
+    # config.middleware.use ActionDispatch::Session::CookieStore
 
-    # Use SameSite=Strict for all cookies to help protect against CSRF
-    config.action_dispatch.cookies_same_site_protection = :strict
+    # # Use SameSite=Strict for all cookies to help protect against CSRF
+    # config.action_dispatch.cookies_same_site_protection = :strict
   end
 end
