@@ -1,0 +1,2 @@
+class UserLikedCourse < ApplicationRecord
+end

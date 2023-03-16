@@ -1,0 +1,2 @@
+class UserLikedCoursesController < ApplicationController
+end
