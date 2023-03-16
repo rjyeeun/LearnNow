@@ -1,14 +1,17 @@
 Rails.application.routes.draw do
-  resources :instructor_courses
-  resources :reviews
-  resources :enrolled_courses
-  resources :user_liked_courses
-  resources :lessons
-  resources :courses
-  resources :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
+  resources :courses, only: [:index, :show, :create, :destroy]
+  resources :users, except: [:new, :edit]
+  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  get '/courses/:course_id/lessons', to: 'lessons#show_all'
+  get '/courses/:course_id/lessons/:id', to: 'lessons#show'
+  post '/courses/:course_id/lessons', to: 'lessons#create'
+  patch '/courses/:course_id/lessons/:id', to: 'lessons#update'
+  delete '/courses/:course_id/lessons/:id', to: 'lessons#destroy'
+
+  # post '/login', to: 'sessions#create'
+  # delete '/logout', to: 'sessions#destroy'
+  # get '/authorized', to: 'users#show'
   # Defines the root path route ("/")
   # root "articles#index"
-  get '/hello', to: 'application#hello_world'
 end
