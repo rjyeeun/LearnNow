@@ -4,4 +4,5 @@ class UserSerializer < ActiveModel::Serializer
   has_many :enrolled_courses
   has_many :reviews
   has_many :instructor_courses
+  has_many :user_liked_courses
 end

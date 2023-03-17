@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   patch '/courses/:course_id/lessons/:id', to: 'lessons#update'
   delete '/courses/:course_id/lessons/:id', to: 'lessons#destroy'
 
+  get '/courses/:course_id/reviews', to: 'reviews#index'
+  post '/courses/:course_id/reviews', to: 'reviews#create'
+  delete '/courses/:course_id/reviews/:id', to: 'reviews#destroy'
   # post '/login', to: 'sessions#create'
   # delete '/logout', to: 'sessions#destroy'
   # get '/authorized', to: 'users#show'
