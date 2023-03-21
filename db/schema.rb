@@ -10,19 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_16_192158) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_17_192244) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "courses", force: :cascade do |t|
     t.string "title"
-    t.string "description"
+    t.text "description"
     t.string "category"
     t.float "price"
     t.integer "instructor_id"
     t.string "difficulty"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "featured"
   end
 
   create_table "enrolled_courses", force: :cascade do |t|
@@ -42,7 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_16_192158) do
 
   create_table "lessons", force: :cascade do |t|
     t.string "title"
-    t.string "description"
+    t.text "description"
     t.integer "duration"
     t.integer "course_id"
     t.datetime "created_at", null: false
@@ -52,9 +53,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_16_192158) do
   create_table "reviews", force: :cascade do |t|
     t.integer "user_id"
     t.integer "course_id"
-    t.string "content"
+    t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "rating"
   end
 
   create_table "user_liked_courses", force: :cascade do |t|

@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :courses, only: [:index, :show, :create, :destroy]
+  resources :courses, only: [:index, :show, :create, :destroy] do
+    collection do
+      get :mark_featured
+    end
+  end
+
   resources :users, except: [:new, :edit]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get '/courses/:course_id/lessons', to: 'lessons#show_all'
@@ -12,6 +17,7 @@ Rails.application.routes.draw do
   get '/courses/:course_id/reviews', to: 'reviews#index'
   post '/courses/:course_id/reviews', to: 'reviews#create'
   delete '/courses/:course_id/reviews/:id', to: 'reviews#destroy'
+
   # post '/login', to: 'sessions#create'
   # delete '/logout', to: 'sessions#destroy'
   # get '/authorized', to: 'users#show'
