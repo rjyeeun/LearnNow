@@ -1,6 +1,10 @@
 class CoursesController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
     # skip_before_action :authorized, only: [:index, :show]
+    def mark_featured
+        featured_courses = Course.mark_featured
+        render json: featured_courses, status: :ok
+    end
 
     def index
         courses = Course.all

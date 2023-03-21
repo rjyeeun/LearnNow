@@ -19,23 +19,24 @@ user10 = User.create(name: "Rachel Jung", username: "rachel", email: "rachel@ema
 
 
 course1 = (user_id = 2
-    course = Course.create(title: "Introduction to Programming", description: "This course provides an introduction to programming concepts, including data types, control structures, and algorithms.", category: "IT", price: 49.99, instructor_id: user_id, difficulty: "easy")
+    course = Course.create(title: "Introduction to Programming", description: "This course provides an introduction to programming concepts, including data types, control structures, and algorithms.", category: "IT", price: 49.99, instructor_id: user_id, difficulty: "easy", featured: true)
     InstructorCourse.create(user_id: user_id, course_id: course.id)
-    Review.create(user_id: 10, course_id: course.id, content: "I had always been interested in coding but didn't know where to start. This course was exactly what I needed. The projects were challenging but doable, and the instructor was always available to answer any questions I had.")
+    Review.create(user_id: 10, course_id: course.id, content: "I had always been interested in coding but didn't know where to start. This course was exactly what I needed. The projects were challenging but doable, and the instructor was always available to answer any questions I had.", rating: 4)
+    Review.create(user_id: 5, course_id: course.id, content: "This was the best course!", rating: 5)
     EnrolledCourse.create(user_id: 10, course_id: course.id, enrolled: true)
 )
 
 course2 = (user_id = 3
     course = Course.create(title: "Korean Basics", description: "This course is designed for students with 0 knowledge of Korean and covers basic speaking and writing lessons.", category: "Language", price: 21.99, instructor_id: user_id, difficulty: "easy")
     InstructorCourse.create(user_id: user_id, course_id: course.id)
-    Review.create(user_id: 5, course_id: course.id, content:"I've always been fascinated by Korean culture and this course helped me take the first step towards learning the language. The instructor was engaging and made the lessons fun and interactive." )
+    Review.create(user_id: 5, course_id: course.id, content:"I've always been fascinated by Korean culture and this course helped me take the first step towards learning the language. The instructor was engaging and made the lessons fun and interactive.", rating: 4)
     EnrolledCourse.create(user_id: 5, course_id: course.id, enrolled: true)
 )
 
 course3 = (user_id = 7
     course = Course.create(title: "Yoga Basics", description: "This course provides an introduction to yoga, including basic poses, breathing techniques, and relaxation exercises.", category: "Health and Wellness", price: 0, instructor_id: user_id, difficulty: "easy")
     InstructorCourse.create(user_id: user_id, course_id: course.id)
-    Review.create(user_id: 10, course_id: course.id , content:"This course was exactly what I needed to jumpstart my yoga practice. The instructor was patient and encouraging, and the lessons were designed to build upon each other.")
+    Review.create(user_id: 10, course_id: course.id , content:"This course was exactly what I needed to jumpstart my yoga practice. The instructor was patient and encouraging, and the lessons were designed to build upon each other.", rating: 4)
     EnrolledCourse.create(user_id: 10, course_id: course.id, enrolled: true)
 )
 
@@ -43,7 +44,7 @@ course3 = (user_id = 7
 course4 = (user_id = 9
     course = Course.create(title: "Italian Food", description: "This is a cooking class for people who love to discover and learn how to cook 10 Italian foods.", category: "Cooking", price: 12.99, instructor_id: user_id, difficulty: "intermediate")
     InstructorCourse.create(user_id: user_id, course_id: course.id)
-    Review.create(user_id: 4, course_id: course.id, content: "I absolutely loved this course! The recipes were easy to follow and the instructor's passion for Italian cooking really shone through. Can't wait to impress my friends and family with my newfound skills in the kitchen.")
+    Review.create(user_id: 4, course_id: course.id, content: "I absolutely loved this course! The recipes were easy to follow and the instructor's passion for Italian cooking really shone through. Can't wait to impress my friends and family with my newfound skills in the kitchen.", rating: 4)
     EnrolledCourse.create(user_id: 4, course_id: course.id, enrolled: true)
 )
 
