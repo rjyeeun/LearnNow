@@ -19,7 +19,7 @@ user10 = User.create(name: "Rachel Jung", username: "rachel", email: "rachel@ema
 
 
 course1 = (user_id = 2
-    course = Course.create(title: "Introduction to Programming", description: "This course provides an introduction to programming concepts, including data types, control structures, and algorithms.", category: "IT", price: 49.99, instructor_id: user_id, difficulty: "easy", featured: true)
+    course = Course.create(title: "Introduction to Programming", description: "This course provides an introduction to programming concepts, including data types, control structures, and algorithms.", category: "IT", price: 49.99, instructor_id: user_id, difficulty: "easy", featured: true, thumnail_img: "https://www.onlc.com/blog/wp-content/uploads/2017/07/ONLC-2017-4.png")
     InstructorCourse.create(user_id: user_id, course_id: course.id)
     Review.create(user_id: 10, course_id: course.id, content: "I had always been interested in coding but didn't know where to start. This course was exactly what I needed. The projects were challenging but doable, and the instructor was always available to answer any questions I had.", rating: 4)
     Review.create(user_id: 5, course_id: course.id, content: "This was the best course!", rating: 5)
@@ -27,14 +27,14 @@ course1 = (user_id = 2
 )
 
 course2 = (user_id = 3
-    course = Course.create(title: "Korean Basics", description: "This course is designed for students with 0 knowledge of Korean and covers basic speaking and writing lessons.", category: "Language", price: 21.99, instructor_id: user_id, difficulty: "easy")
+    course = Course.create(title: "Korean Basics", description: "This course is designed for students with 0 knowledge of Korean and covers basic speaking and writing lessons.", category: "Language", price: 21.99, instructor_id: user_id, difficulty: "easy", thumnail_img: "https://i.pinimg.com/originals/f6/9d/70/f69d70ca4988a67d2e676f6a933aedd2.jpg")
     InstructorCourse.create(user_id: user_id, course_id: course.id)
     Review.create(user_id: 5, course_id: course.id, content:"I've always been fascinated by Korean culture and this course helped me take the first step towards learning the language. The instructor was engaging and made the lessons fun and interactive.", rating: 4)
     EnrolledCourse.create(user_id: 5, course_id: course.id, enrolled: true)
 )
 
 course3 = (user_id = 7
-    course = Course.create(title: "Yoga Basics", description: "This course provides an introduction to yoga, including basic poses, breathing techniques, and relaxation exercises.", category: "Health and Wellness", price: 0, instructor_id: user_id, difficulty: "easy")
+    course = Course.create(title: "Yoga Basics", description: "This course provides an introduction to yoga, including basic poses, breathing techniques, and relaxation exercises.", category: "Health and Wellness", price: 0, instructor_id: user_id, difficulty: "easy", thumnail_img: "https://i.ytimg.com/vi/70atcwWeWp0/maxresdefault.jpg")
     InstructorCourse.create(user_id: user_id, course_id: course.id)
     Review.create(user_id: 10, course_id: course.id , content:"This course was exactly what I needed to jumpstart my yoga practice. The instructor was patient and encouraging, and the lessons were designed to build upon each other.", rating: 4)
     EnrolledCourse.create(user_id: 10, course_id: course.id, enrolled: true)
@@ -42,19 +42,19 @@ course3 = (user_id = 7
 
 
 course4 = (user_id = 9
-    course = Course.create(title: "Italian Food", description: "This is a cooking class for people who love to discover and learn how to cook 10 Italian foods.", category: "Cooking", price: 12.99, instructor_id: user_id, difficulty: "intermediate")
+    course = Course.create(title: "Italian Food", description: "This is a cooking class for people who love to discover and learn how to cook 10 Italian foods.", category: "Cooking", price: 12.99, instructor_id: user_id, difficulty: "intermediate", thumnail_img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpPEwg1ShqTvEnZ6mCA9uE2JU2_QHQybpDu5Pgw5LQQiuP5ETkowVoFkRzlRB5NIvOoZY&usqp=CAU")
     InstructorCourse.create(user_id: user_id, course_id: course.id)
     Review.create(user_id: 4, course_id: course.id, content: "I absolutely loved this course! The recipes were easy to follow and the instructor's passion for Italian cooking really shone through. Can't wait to impress my friends and family with my newfound skills in the kitchen.", rating: 4)
     EnrolledCourse.create(user_id: 4, course_id: course.id, enrolled: true)
 )
 
-lesson1 = Lesson.create(title: "Introduction to Variables", duration: 20, description: "This lesson covers the basics of variables in computer programming.", course_id: 1)
+lesson1 = Lesson.create(title: "Introduction to Variables", duration: 20, description: "This lesson covers the basics of variables in computer programming.", course_id: 1, content: "https://www.youtube.com/watch?v=6n4AV5k-7wE")
 
-lesson2 = Lesson.create(title: "Hangul Alphabet", duration: 30, description: "In this lesson, we'll learn the basics of the Korean alphabet, Hangul. We'll cover the 14 consonants and 10 vowels that make up the alphabet, and learn how to read and write simple words and phrases. Whether you're a complete beginner or just starting to learn Korean, this lesson is the perfect place to start!", course_id: 2)
+lesson2 = Lesson.create(title: "Hangul Alphabet", duration: 30, description: "In this lesson, we'll learn the basics of the Korean alphabet, Hangul. We'll cover the 14 consonants and 10 vowels that make up the alphabet, and learn how to read and write simple words and phrases. Whether you're a complete beginner or just starting to learn Korean, this lesson is the perfect place to start!", course_id: 2, content: "youtube.com/watch?v=pT4k7LC91Cw")
 
-lesson3 = Lesson.create(title: "Child's pose", duration: 15, description: "This lesson demonstrates the Child's Pose yoga posture.", course_id: 3)
+lesson3 = Lesson.create(title: "Child's pose", duration: 15, description: "This lesson demonstrates the Child's Pose yoga posture.", course_id: 3, content: "https://www.youtube.com/watch?v=2MJGg-dUKh0")
 
-lesson4 = Lesson.create(title: "How to make Carbonara", duration: 20, description: "This lesson covers a step-by-step tutorial on how to cook carbonara.", course_id: 4)
+lesson4 = Lesson.create(title: "How to make Carbonara", duration: 20, description: "This lesson covers a step-by-step tutorial on how to cook carbonara.", course_id: 4, content: "https://www.youtube.com/watch?v=qoHnwOHLiMk")
 
 lesson5 = Lesson.create(title: "Classic Tiramisu", duration: 20, description: "Tiramisu is a classic Italian dessert that's perfect for any occasion. In this lesson, we'll learn how to make the perfect tiramisu, from scratch! We'll start with a light and fluffy mascarpone cream, then layer it with espresso-soaked ladyfingers and finish with a dusting of cocoa powder. You'll love the rich, creamy texture and bold espresso flavor of this classic dessert.", course_id: 4)
 

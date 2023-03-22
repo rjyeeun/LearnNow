@@ -1,10 +1,18 @@
 class UsersController < ApplicationController
-    # skip_before_action :authorized_user, only: [:create]
-
+    skip_before_action :authorized, only: [:create, :show]
+    def index
+        users = User.all
+        render json: users, status: :ok
+    end
     def show   
         user = find_user
-        render json: user, status: :ok
+        render json: user, serializer: ProfileSerializer, status: :ok
         #render json: current_user, status: :ok
+    end
+
+    def find_current_user
+        current_user = User.find(session[:user_id])
+        render json: current_user, status: :ok
     end
 
     def create
@@ -38,4 +46,5 @@ class UsersController < ApplicationController
     def user_params
         params.permit(:name, :username, :email, :password, :password_confirmation)
     end
+
 end
