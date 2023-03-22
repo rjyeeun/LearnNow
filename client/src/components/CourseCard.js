@@ -4,8 +4,8 @@ import {MdOutlineRateReview} from 'react-icons/md'
 import Card from 'react-bootstrap/Card';
 
 
-export default function CourseCard({course, currentCourse, setCurrentCourse}) {
-    const {title, description, difficulty, price, reviews, user_liked_courses} = course
+export default function CourseCard({course, currentCourse, setCurrentCourse, onDeleteCourse}) {
+    const {title, description, difficulty, price, thumnail_img, reviews, user_liked_courses} = course
     
     let like_count = course.user_liked_courses.map ((like) => like)
     const like_count_total = like_count.length
@@ -19,7 +19,7 @@ export default function CourseCard({course, currentCourse, setCurrentCourse}) {
 
 return (
     <Card onClick={handleClick} style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="imagePlaceholder.png"/>
+        <Card.Img variant="top" src={thumnail_img}/>
         <Card.Body>
         <Card.Title>{title}</Card.Title>
         <Card.Text>{description}</Card.Text>

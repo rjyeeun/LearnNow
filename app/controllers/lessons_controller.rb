@@ -1,5 +1,6 @@
 class LessonsController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+    skip_before_action :authorized, only: [:show]
 
     def show
         lesson = find_lesson
@@ -35,7 +36,7 @@ class LessonsController < ApplicationController
     end
 
     def lesson_params
-        params.permit(:title, :description, :duration, :course_id)
+        params.permit(:title, :description, :duration, :content, :course_id)
     end
 
     def render_unprocessable_entity_response(error)

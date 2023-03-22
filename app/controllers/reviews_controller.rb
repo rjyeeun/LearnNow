@@ -18,6 +18,6 @@ class ReviewsController < ApplicationController
    private
 
    def review_params
-        params.permit(:content, :rating, :user_id, :course_id)
+        params.permit(:content, :rating, :user_id, :course_id).with_defaults(user_id: session[:user_id])
    end
 end

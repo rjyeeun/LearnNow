@@ -1,6 +1,8 @@
 class CoursesController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
-    # skip_before_action :authorized, only: [:index, :show]
+    
+    skip_before_action :authorized, only: [:index, :show]
+    
     def mark_featured
         featured_courses = Course.mark_featured
         render json: featured_courses, status: :ok
@@ -35,7 +37,7 @@ class CoursesController < ApplicationController
     end
 
     def course_params
-        params.permit(:title, :description, :category, :price, :instructor_id, :difficulty).with_defaults(instructor_id: session[:user_id])
+        params.permit(:title, :description, :category, :price, :instructor_id, :difficulty, :thumnail_img).with_defaults(instructor_id: session[:user_id])
     end
 
     def instructor_course_params(course)
