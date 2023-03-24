@@ -15,10 +15,17 @@ class Course < ApplicationRecord
         courses = Course.all
         courses_with_ratings = courses.select { |course| course.reviews.average(:rating).present? }
         courses_with_ratings.sort_by! { |course| -course.reviews.average(:rating).to_f }
-        featured_courses = courses_with_ratings.take(2)
+        featured_courses = courses_with_ratings.take(3)
+    
+        # Set the featured attribute to false for all courses that are not in the featured_courses array
+        (courses - featured_courses).each do |course|
+          course.update(featured: false)
+        end 
+        # Set the featured attribute to true for all courses in the featured_courses array
         featured_courses.each do |course|
-            course.update(featured: true)
+          course.update(featured: true)
         end
+        
         featured_courses
-    end
+      end      
 end

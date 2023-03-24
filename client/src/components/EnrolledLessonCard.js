@@ -3,7 +3,7 @@ import ReactPlayer from 'react-player'
 import ListGroup from 'react-bootstrap/ListGroup';
 import {BiTime} from 'react-icons/bi'
 
-export default function LessonCard({lesson}) {
+export default function EnrolledLessonCard({lesson}) {
   const {title, content, description, duration} = lesson
   return (
     <div>

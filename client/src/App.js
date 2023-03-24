@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './App.css'
-import { Routes, Route } from 'react-router-dom';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import Header from './components/Header';
 import Signup from './components/Signup';
 import Login from './components/Login';
@@ -11,24 +13,22 @@ import NewCourseForm from './components/NewCourseForm';
 import CourseDetails from './components/CourseDetails';
 
 function App() {
+  const navigate = useNavigate()
   const [users, setUsers] = useState([]);
   const [currentUser, setCurrentUser] = useState('');
-  const [courses, setCourses] = useState([]);
-  const [searchCourse, setSearchCourse] = useState("");
-  const [currentCourse, setCurrentCourse] = useState('');
-  const [courseReviews, setCourseReviews] = useState([]);
-  const [currentEnrolledCourse, setCurrentEnrolledCourse] = useState('')
+  const [courses, setCourses] = useState([]);//all the  courses
+  const [searchCourse, setSearchCourse] = useState(""); //searched courses on home page
+
 
   //get all courses from the db
   useEffect(() => {
     fetch("/courses")
     .then((r) => r.json())
     .then((data) => setCourses(data))
-  }, [courseReviews]);
-
-  console.log("appcourses",courses)
+  }, []); //???
 
 
+  //get current users
   useEffect(() => {
     fetch("/auth")
     .then(res => {
@@ -38,6 +38,7 @@ function App() {
     })
   },[])
 
+  //get all users
   useEffect(()=> {
     fetch("/users")
     .then(r => r.json())
@@ -46,7 +47,15 @@ function App() {
     })
   }, [])
 
+  //get current user's enrolled courses
+//   useEffect( () => {
+//     fetch(`/users/${currentUser.id}/enrolled_courses`)
+//     .then(r => r.json())
+//     .then(data => {setCurrentUser(data)})
+// },[]) //not sure if it should be [] or [currentUser]
 
+
+ 
   function handleUserLogin(user) {
     setCurrentUser(user)
   }
@@ -75,16 +84,18 @@ function App() {
     )
   )
 
-  //Delete a current course that the CurrentUser created
-  const onDeleteCurrentEnrolledCourse = (currentEnrolledCourseId) => {
-    const updatedCurrentEnrolledCourse = courses.filter((course) => course.id !== currentEnrolledCourseId)
-    setCurrentEnrolledCourse(updatedCurrentEnrolledCourse)
-  }
+  //remove from user's current enrolled courses
+  // const onDeleteCurrentEnrolledCourse = (currentEnrolledCourseId) => {
+  //   const updatedCurrentEnrolledCourse = myEnrolledCourse.filter((course) => course.id !== currentEnrolledCourseId)
+  //   setMyEnrolledCourse(updatedCurrentEnrolledCourse)
+  // }
 
-  const onDeleteCourse = (currentUserId) => {
-    const updatedCourse = courses.filter((course) => course.id !== currentUserId)
+  //deletes course current user created
+  const onDeleteCourse = (currentCourseId) => {
+    const updatedCourse = courses.filter((course) => course.id !== currentCourseId)
     setCourses(updatedCourse)
   }
+
 
   return (
     <>
@@ -96,22 +107,17 @@ function App() {
         <Route exact path="/" 
          element = { <Home
          courses={filteredCourses}
-         currentCourse={currentCourse}
-         setCurrentCourse={setCurrentCourse}
          onDeleteCourse={onDeleteCourse}/> } />
         <Route exact path="/signup"
           element= {<Signup />} />
         <Route exact path="/login"
           element= {<Login
           handleUserLogin={handleUserLogin}/>} />
-        <Route exact path="/courses/:id"
-          element = {<CourseDetails 
+        <Route path="/courses/:id" 
+          element = {<CourseDetails  //one course page
+          onDeleteCourse={onDeleteCourse}
           currentUser={currentUser}
           courses={courses}
-          currentCourse={currentCourse}
-          courseReviews={courseReviews}
-          setCourseReviews={setCourseReviews}
-          onDeleteCourse={onDeleteCourse}
            />} />
         <Route exact path="/newcourse"
          element= {<NewCourseForm
@@ -120,19 +126,12 @@ function App() {
          />} />
         <Route exact path="/enrolledcourse/:id"
           element = {<EnrolledCourseDetail
-            currentEnrolledCourse={currentEnrolledCourse}
             currentUser={currentUser}
           />}/>
         <Route exact path="/dashboard"
           element = {
           <UserDashboard
-            courses={courses}
-            currentUser= {currentUser}
-            onDeleteUser={onDeleteUser}
-            onEditUserProfile={onEditUserProfile}
-            currentEnrolledCourse={currentEnrolledCourse}
-            setCurrentEnrolledCourse={setCurrentEnrolledCourse}
-            onDeleteCurrentEnrolledCourse={onDeleteCurrentEnrolledCourse}
+              currentUser={currentUser}
             />} />
       </Routes>
     </>
