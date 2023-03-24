@@ -19,7 +19,7 @@ user10 = User.create(name: "Rachel Jung", username: "rachel", email: "rachel@ema
 
 
 course1 = (user_id = 2
-    course = Course.create(title: "Introduction to Programming", description: "This course provides an introduction to programming concepts, including data types, control structures, and algorithms.", category: "IT", price: 49.99, instructor_id: user_id, difficulty: "easy", featured: true, thumnail_img: "https://www.onlc.com/blog/wp-content/uploads/2017/07/ONLC-2017-4.png")
+    course = Course.create(title: "Introduction to Programming", description: "This course provides an introduction to programming concepts, including data types, control structures, and algorithms.", category: "IT", price: 49.99, instructor_id: user_id, difficulty: "Beginner", thumbnail_img: "https://www.onlc.com/blog/wp-content/uploads/2017/07/ONLC-2017-4.png")
     InstructorCourse.create(user_id: user_id, course_id: course.id)
     Review.create(user_id: 10, course_id: course.id, content: "I had always been interested in coding but didn't know where to start. This course was exactly what I needed. The projects were challenging but doable, and the instructor was always available to answer any questions I had.", rating: 4)
     Review.create(user_id: 5, course_id: course.id, content: "This was the best course!", rating: 5)
@@ -27,14 +27,14 @@ course1 = (user_id = 2
 )
 
 course2 = (user_id = 3
-    course = Course.create(title: "Korean Basics", description: "This course is designed for students with 0 knowledge of Korean and covers basic speaking and writing lessons.", category: "Language", price: 21.99, instructor_id: user_id, difficulty: "easy", thumnail_img: "https://i.pinimg.com/originals/f6/9d/70/f69d70ca4988a67d2e676f6a933aedd2.jpg")
+    course = Course.create(title: "Korean Basics", description: "This course is designed for students with 0 knowledge of Korean and covers basic speaking and writing lessons.", category: "Language", price: 21.99, instructor_id: user_id, difficulty: "Beginner", thumbnail_img: "https://i.pinimg.com/originals/f6/9d/70/f69d70ca4988a67d2e676f6a933aedd2.jpg")
     InstructorCourse.create(user_id: user_id, course_id: course.id)
     Review.create(user_id: 5, course_id: course.id, content:"I've always been fascinated by Korean culture and this course helped me take the first step towards learning the language. The instructor was engaging and made the lessons fun and interactive.", rating: 4)
     EnrolledCourse.create(user_id: 5, course_id: course.id, enrolled: true)
 )
 
 course3 = (user_id = 7
-    course = Course.create(title: "Yoga Basics", description: "This course provides an introduction to yoga, including basic poses, breathing techniques, and relaxation exercises.", category: "Health and Wellness", price: 0, instructor_id: user_id, difficulty: "easy", thumnail_img: "https://i.ytimg.com/vi/70atcwWeWp0/maxresdefault.jpg")
+    course = Course.create(title: "Yoga Basics", description: "This course provides an introduction to yoga, including basic poses, breathing techniques, and relaxation exercises.", category: "Health and Wellness", price: 0, instructor_id: user_id, difficulty: "Beginner", thumbnail_img: "https://i.ytimg.com/vi/70atcwWeWp0/maxresdefault.jpg")
     InstructorCourse.create(user_id: user_id, course_id: course.id)
     Review.create(user_id: 10, course_id: course.id , content:"This course was exactly what I needed to jumpstart my yoga practice. The instructor was patient and encouraging, and the lessons were designed to build upon each other.", rating: 4)
     EnrolledCourse.create(user_id: 10, course_id: course.id, enrolled: true)
@@ -42,12 +42,54 @@ course3 = (user_id = 7
 
 
 course4 = (user_id = 9
-    course = Course.create(title: "Italian Food", description: "This is a cooking class for people who love to discover and learn how to cook 10 Italian foods.", category: "Cooking", price: 12.99, instructor_id: user_id, difficulty: "intermediate", thumnail_img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpPEwg1ShqTvEnZ6mCA9uE2JU2_QHQybpDu5Pgw5LQQiuP5ETkowVoFkRzlRB5NIvOoZY&usqp=CAU")
+    course = Course.create(title: "Italian Food", description: "This is a cooking class for people who love to discover and learn how to cook 10 Italian foods.", category: "Cooking", price: 12.99, instructor_id: user_id, difficulty: "Intermediate", thumbnail_img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpPEwg1ShqTvEnZ6mCA9uE2JU2_QHQybpDu5Pgw5LQQiuP5ETkowVoFkRzlRB5NIvOoZY&usqp=CAU")
     InstructorCourse.create(user_id: user_id, course_id: course.id)
-    Review.create(user_id: 4, course_id: course.id, content: "I absolutely loved this course! The recipes were easy to follow and the instructor's passion for Italian cooking really shone through. Can't wait to impress my friends and family with my newfound skills in the kitchen.", rating: 4)
+    Review.create(user_id: 4, course_id: course.id, content: "I absolutely loved this course! The recipes were Beginner to follow and the instructor's passion for Italian cooking really shone through. Can't wait to impress my friends and family with my newfound skills in the kitchen.", rating: 4)
     EnrolledCourse.create(user_id: 4, course_id: course.id, enrolled: true)
 )
 
+course5 = (user_id = 9
+    course = Course.create(title: "Intro to Photoshop", description: "Learn the basics of Photoshop, including photo editing, graphic design, and more!", category: "Design", price: 29.99, instructor_id: user_id, difficulty: "Beginner", thumbnail_img: "https://picsum.photos/id/50/200/300")
+    InstructorCourse.create(user_id: user_id, course_id: course.id)
+    Review.create(user_id: 5, course_id: course.id, content: "Great introduction to Photoshop. The instructor explains everything in a clear and concise manner.", rating: 4)
+    EnrolledCourse.create(user_id: 5, course_id: course.id, enrolled: true)
+)
+
+course6 = (user_id = 7
+    course = Course.create(title: "Creative Writing for Beginners", description: "Discover the art of creative writing, including storytelling, character development, and more.", category: "Writing", price: 24.99, instructor_id: user_id, difficulty: "Beginner", thumbnail_img: "https://picsum.photos/id/200/200/300")
+    InstructorCourse.create(user_id: user_id, course_id: course.id)
+    Review.create(user_id: 8, course_id: course.id, content: "This was a great course to kickstart my writing career. The instructor was very engaging and provided helpful feedback.", rating: 5)
+    EnrolledCourse.create(user_id: 8, course_id: course.id, enrolled: true)
+)
+
+course7 = (user_id = 2
+    course = Course.create(title: "Introduction to Meditation", description: "Learn the basics of meditation, including mindfulness, relaxation, and stress reduction techniques.", category: "Mental Health", price: 14.99, instructor_id: user_id, difficulty: "Beginner", thumbnail_img: "https://picsum.photos/id/350/200/300")
+    InstructorCourse.create(user_id: user_id, course_id: course.id)
+    Review.create(user_id: 11, course_id: course.id, content: "A very calming and informative course. The instructor's voice is very soothing and helped me relax during the meditation exercises.", rating: 4)
+    EnrolledCourse.create(user_id: 11, course_id: course.id, enrolled: true))
+
+course8 = (user_id = 4
+    course = Course.create(title: "Spanish for Beginners", description: "Learn the basics of Spanish, including grammar, vocabulary, and conversation skills.", category: "Language", price: 19.99, instructor_id: user_id, difficulty: "Beginner", thumbnail_img: "https://picsum.photos/id/450/200/300")
+    InstructorCourse.create(user_id: user_id, course_id: course.id)
+    Review.create(user_id: 13, course_id: course.id, content: "This was a great course to learn Spanish. The instructor provided helpful explanations and practice exercises.", rating: 4)
+    EnrolledCourse.create(user_id: 13, course_id: course.id, enrolled: true)
+)
+
+course9 = (user_id = 9
+    course = Course.create(title: "Introduction to Graphic Design", description: "Learn the fundamentals of graphic design, including color theory, typography, and layout.", category: "Design", price: 29.99, instructor_id: user_id, difficulty: "Beginner", thumbnail_img: "https://picsum.photos/id/500/200/300")
+    InstructorCourse.create(user_id: user_id, course_id: course.id)
+    Review.create(user_id: 14, course_id: course.id, content: "A very informative course that covers all the basics of graphic design. The instructor provided helpful feedback and suggestions.", rating: 5)
+    EnrolledCourse.create(user_id: 14, course_id: course.id, enrolled: true)
+    )
+
+course10 = (user_id = 1
+    course = Course.create(title: "Introduction to Public Speaking", description: "Learn how to improve your public speaking skills, including delivery, organization, and audience engagement.", category: "Communication", price: 24.99, instructor_id: user_id, difficulty: "Beginner", thumbnail_img: "https://picsum.photos/id/600/200/300")
+    InstructorCourse.create(user_id: user_id, course_id: course.id)
+    Review.create(user_id: 16, course_id: course.id, content: "This was a very helpful course to improve my public speaking skills. The instructor provided helpful tips and feedback.", rating: 5)
+    EnrolledCourse.create(user_id: 16, course_id: course.id, enrolled: true)
+    )
+
+    
 lesson1 = Lesson.create(title: "Introduction to Variables", duration: 20, description: "This lesson covers the basics of variables in computer programming.", course_id: 1, content: "https://www.youtube.com/watch?v=6n4AV5k-7wE")
 
 lesson2 = Lesson.create(title: "Hangul Alphabet", duration: 30, description: "In this lesson, we'll learn the basics of the Korean alphabet, Hangul. We'll cover the 14 consonants and 10 vowels that make up the alphabet, and learn how to read and write simple words and phrases. Whether you're a complete beginner or just starting to learn Korean, this lesson is the perfect place to start!", course_id: 2, content: "youtube.com/watch?v=pT4k7LC91Cw")
@@ -68,9 +110,24 @@ lesson9 = Lesson.create(title: "Greetings and Introductions", duration: 45, desc
 
 lesson10 = Lesson.create(title: "Sun Salutation A", duration: 20, description: "In this lesson, we'll learn the foundational yoga sequence known as Sun Salutation A. We'll break down each of the poses in the sequence, including Mountain Pose, Forward Fold, Plank, and Upward-Facing Dog. We'll also discuss proper alignment and breathing techniques to help you flow through the sequence with ease. Whether you're new to yoga or looking to refine your practice, Sun Salutation A is a great place to start!", course_id: 3)
 
-# review1 = Review.create(user_id: 4, course_id: 4, content: "I absolutely loved this course! The recipes were easy to follow and the instructor's passion for Italian cooking really shone through. Can't wait to impress my friends and family with my newfound skills in the kitchen.")
+lesson11 = Lesson.create(title: "Introduction to Color Theory", duration: 30, description: "Learn the basics of color theory, including the color wheel, color schemes, and color psychology.", course_id: 9, content: "https://www.youtube.com/watch?v=Eq3JrRe29qk")
 
-# review2 = Review.create(user_id: 5, course_id: 2, content:"I absolutely loved this course! The recipes were easy to follow and the instructor's passion for Italian cooking really shone through. Can't wait to impress my friends and family with my newfound skills in the kitchen." )
+lesson12 = Lesson.create(title: "Organizing Your Speech", duration: 45, description: "Learn how to organize your speech effectively, including the introduction, body, and conclusion.", course_id: 10, content: "https://www.youtube.com/watch?v=6iHXsPfH0Rw")
+
+lesson13 = Lesson.create(title: "Introduction to Spanish Grammar", duration: 60, description: "Learn the basics of Spanish grammar, including verb conjugation, noun gender, and sentence structure.", course_id: 8, content: "https://www.youtube.com/watch?v=XKt11z3MqJk")
+
+lesson14 = Lesson.create(title: "Introduction to Mindfulness Meditation", duration: 30, description: "Learn the basics of mindfulness meditation, including breathing techniques and body awareness.", course_id: 7, content: "https://www.youtube.com/watch?v=mMMerxh_12U")
+
+lesson15 = Lesson.create(title: "Meditation for Stress Reduction", duration: 45, description: "Learn how to use meditation as a tool for reducing stress and promoting relaxation.", course_id: 7, content: "https://www.youtube.com/watch?v=5n9QvjnE-5o")
+
+lesson16 = Lesson.create(title: "Developing Your Writing Style", duration: 60, description: "Learn how to develop your writing style and find your unique voice as a writer.", course_id: 6, content: "https://www.youtube.com/watch?v=XEmAEl6UqM8")
+
+lesson17 = Lesson.create(title: "Crafting Compelling Characters", duration: 45, description: "Learn how to create believable and engaging characters in your writing.", course_id: 6, content: "https://www.youtube.com/watch?v=L67y6Wibnes")
+
+
+# review1 = Review.create(user_id: 4, course_id: 4, content: "I absolutely loved this course! The recipes were Beginner to follow and the instructor's passion for Italian cooking really shone through. Can't wait to impress my friends and family with my newfound skills in the kitchen.")
+
+# review2 = Review.create(user_id: 5, course_id: 2, content:"I absolutely loved this course! The recipes were Beginner to follow and the instructor's passion for Italian cooking really shone through. Can't wait to impress my friends and family with my newfound skills in the kitchen." )
 
 # review3 = Review.create(user_id:8 , course_id:3 , content:"This course was exactly what I needed to jumpstart my yoga practice. The instructor was patient and encouraging, and the lessons were designed to build upon each other.")
 

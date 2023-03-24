@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :courses, only: [:index, :show, :create, :destroy] do
-    collection do
-      get :mark_featured
-    end
-  end
+  resources :courses, only: [:index, :show, :create, :destroy]
+  
+  get '/featured_courses', to: 'courses#featured'
 
   resources :users, except: [:new, :edit]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

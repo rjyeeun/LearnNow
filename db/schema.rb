@@ -23,8 +23,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_21_223755) do
     t.string "difficulty"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "featured"
-    t.string "thumnail_img"
+    t.boolean "featured", default: false
+    t.string "thumbnail_img"
   end
 
   create_table "enrolled_courses", force: :cascade do |t|

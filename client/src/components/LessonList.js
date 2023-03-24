@@ -2,7 +2,7 @@ import React from 'react'
 import {Button , Card, Form} from 'react-bootstrap';
 import ListGroup from 'react-bootstrap/ListGroup';
 import {BiTime} from 'react-icons/bi'
-import EnrolledCourseLists from './EnrolledCourseLists';
+import EnrolledCourseLists from './EnrolledCourseCard';
 
 export default function LessonList({lesson}) {
   const {title, description, duration} = lesson

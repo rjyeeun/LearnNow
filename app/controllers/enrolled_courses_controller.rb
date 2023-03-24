@@ -1,9 +1,10 @@
 class EnrolledCoursesController < ApplicationController
     def show_all
-        user = User.find_by!(id: params[:user_id])
-        render json: user.enrolled_courses, status: :ok
+        user = User.includes(enrolled_courses: { course: :user_liked_courses }).find_by!(id: params[:user_id])
+        enrolled_courses = user.enrolled_courses
+    
+        render json: enrolled_courses, status: :ok
     end
-
     def create
         enrolled_course = EnrolledCourse.create!(enrolled_course_params)
         render json: enrolled_course, status: :created

@@ -1,11 +1,10 @@
 class CoursesController < ApplicationController
-    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
     
     skip_before_action :authorized, only: [:index, :show]
     
-    def mark_featured
-        featured_courses = Course.mark_featured
-        render json: featured_courses, status: :ok
+    def featured
+        featured_courses = Course.where(featured: true)
+        render json: featured_courses, include: [:instructor, :lessons, :user_liked_courses, :reviews]
     end
 
     def index
@@ -37,15 +36,12 @@ class CoursesController < ApplicationController
     end
 
     def course_params
-        params.permit(:title, :description, :category, :price, :instructor_id, :difficulty, :thumnail_img).with_defaults(instructor_id: session[:user_id])
+        params.permit(:title, :description, :category, :price, :instructor_id, :difficulty, :thumbnail_img).with_defaults(instructor_id: session[:user_id])
     end
 
     def instructor_course_params(course)
         params.permit(:user_id, :course_id).with_defaults(user_id: session[:user_id], course_id: course.id)
     end
 
-    def render_unprocessable_entity_response(error)
-        render json: { errors: "Please fill out all required fields" }, status: :unprocessable_entity
-    end
 end
 

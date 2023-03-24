@@ -1,11 +1,29 @@
 import React, {useState, useEffect} from 'react'
-import LessonCard from './LessonCard'
+import EnrolledLessonCard from './EnrolledLessonCard'
+import {useNavigate, useParams} from "react-router-dom";
 import {Button , Card, Form} from 'react-bootstrap';
 import ReviewCard from './ReviewCard'
 import NewReviewForm from './NewReviewForm';
 
-export default function EnrolledCourseDetail({currentEnrolledCourse, currentUser}) {
-  const {id, thumnail_img, title, description, price, lessons, reviews, instructor_id} = currentEnrolledCourse
+export default function EnrolledCourseDetail({currentUser}) {
+  const [course, setCourse] = useState({title: '', description: '', lessons: [], reviews: [], instructor_id: ''});
+  const [errors, setErrors] = useState(false)
+  const {id} = useParams()
+  useEffect(() => {
+    fetch(`/courses/${id}`)
+    .then(res => {
+        if (res.ok) {
+            res.json().then(data => {
+            setCourse(data);
+            });
+        } else {
+            console.log("error");
+            res.json().then(data => setErrors(data.error));
+        }
+    });
+}, [id]);
+
+const {lessons, title, description, reviews, instructor_id} = course
 
   const [viewReviews, setViewReviews] = useState(false)
   const handleClick = () => {
@@ -13,7 +31,7 @@ export default function EnrolledCourseDetail({currentEnrolledCourse, currentUser
     };
 
   const lessonArray = lessons.map(lesson => (
-    <LessonCard
+    <EnrolledLessonCard
         key = {lesson.id}
         lesson={lesson}
     />
