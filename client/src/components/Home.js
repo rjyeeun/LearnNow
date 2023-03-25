@@ -21,19 +21,18 @@ useEffect(() => {
       {featuredCourses.length > 0 && (
         <div className="my-5">
         <Card className="text-center">
-          <Card.Header style={{ backgroundColor: "#ffce4c"}}>Featured Courses</Card.Header>
           <Carousel indicators >
             {featuredCourses.map(course => (
               <Carousel.Item key={course.id}>
-                <Card style={{ backgroundColor: "#fafafa"}}>
+                <Card style={{ backgroundColor: "#e8e9e3"}}>
+                  <br />
                   <Card.Img className='mx-auto' style={{ maxWidth: "400px", maxHeight: "200px"}} variant="top" src={course.thumbnail_img} />
                   <Card.Body>
                     <Card.Title>{course.title}</Card.Title>
-                    <Card.Text>{course.description}</Card.Text>
-                  </Card.Body>
-                  <Card.Footer style={{ backgroundColor: "#e8e9e3"}}>
                     <small className="text-muted">{course.difficulty}</small>
-                  </Card.Footer>
+                    <Card.Text>{course.description}</Card.Text>
+                    <br />
+                  </Card.Body>
                 </Card>
               </Carousel.Item>
             ))}

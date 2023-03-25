@@ -1,8 +1,11 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import { FaStar } from 'react-icons/fa';
+import {BiTime} from 'react-icons/bi'
 import {useNavigate} from "react-router-dom";
 import {AiOutlineLike} from 'react-icons/ai'
 import {MdOutlineRateReview} from 'react-icons/md'
 import {Button , Card, Form} from 'react-bootstrap';
+import CardGroup from 'react-bootstrap/CardGroup';
 import {Link} from 'react-router-dom'
 
 export default function EnrolledCourseCard({course, currentUser, onDeleteEnrolledCourse}) {
@@ -20,25 +23,49 @@ export default function EnrolledCourseCard({course, currentUser, onDeleteEnrolle
       fetch(`/users/${currentUser.id}/enrolled_courses/${course.id}`,
       { method: 'DELETE'})
       .then(() => onDeleteEnrolledCourse(id))
-
-      .then(alert("successfully deleted"))
+      .then(alert("Successfully Unenrolled the Course"))
   }
 
+  const [totalDuration, setTotalDuration] = useState(0);
+
+  function sumLessonDuration(lessons) {
+      let totalDuration = 0;
+      lessons.forEach((lesson) => {
+        totalDuration += lesson.duration;
+      });
+      return totalDuration;
+    } 
+  useEffect(() => {
+    if (course && course.lessons) {
+      const duration = sumLessonDuration(course.lessons);
+      setTotalDuration(duration);
+    }
+  }, [course]);
+
+  //get average review rating associated with a course
+  const sum = course.reviews.reduce((total, review) => total + review.rating, 0);
+  const average = sum / course.reviews.length;
+  const stars = [];
+      for (let i = 0; i < 5; i++) {
+          stars.push(
+              <FaStar key={i} color={i < average ? '#ffc107' : '#e4e5e9'} />
+          );
+      }
   
   return (
-    <div>
-    <Card style={{ width: '18rem' }}>
-        <Link to={`/enrolledcourse/${id}`}>
-        <Card.Img variant="top" src={thumbnail_img}/></Link>
-        <Card.Body>
-        <Card.Title>{title}</Card.Title>
-        <Card.Text>{description}</Card.Text>
-        <Card.Text>{difficulty}</Card.Text>
-        <Card.Text>${price}</Card.Text>
-        <p><AiOutlineLike/>{like_count_total} <MdOutlineRateReview/>{review_count_total}</p>
+<Link style={{textDecoration: 'none', color: 'black'}} to={`/enrolledcourse/${id}`}>
+<CardGroup className='courseCard'>
+    <Card align='center' style={{ width: '18rem'}}>
+        <Card.Img variant="top" src={thumbnail_img} style={{ height: "200px", objectFit: "cover" }}/>
+        <Card.Body style={{ backgroundColor: "#9ccbd8"}}>
+            <Card.Title>{title}</Card.Title>
+            <Card.Text>{difficulty} Level </Card.Text>
+            <p>{stars} ({review_count_total}) | <BiTime/>{totalDuration} </p>
+            <Card.Title size= 'large' align='right'>Lifetime Access</Card.Title>
         </Card.Body>
         <Button onClick={handleDelete}>Leave the course</Button>
     </Card>
-    </div>
+</CardGroup>
+</Link>
   )
 }

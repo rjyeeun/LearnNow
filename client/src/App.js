@@ -18,6 +18,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState('');
   const [courses, setCourses] = useState([]);//all the  courses
   const [searchCourse, setSearchCourse] = useState(""); //searched courses on home page
+  
 
 
   //get all courses from the db
@@ -47,12 +48,6 @@ function App() {
     })
   }, [])
 
-  //get current user's enrolled courses
-//   useEffect( () => {
-//     fetch(`/users/${currentUser.id}/enrolled_courses`)
-//     .then(r => r.json())
-//     .then(data => {setCurrentUser(data)})
-// },[]) //not sure if it should be [] or [currentUser]
 
 
  
@@ -84,30 +79,24 @@ function App() {
     )
   )
 
-  //remove from user's current enrolled courses
-  // const onDeleteCurrentEnrolledCourse = (currentEnrolledCourseId) => {
-  //   const updatedCurrentEnrolledCourse = myEnrolledCourse.filter((course) => course.id !== currentEnrolledCourseId)
-  //   setMyEnrolledCourse(updatedCurrentEnrolledCourse)
-  // }
-
   //deletes course current user created
-  const onDeleteCourse = (currentCourseId) => {
-    const updatedCourse = courses.filter((course) => course.id !== currentCourseId)
-    setCourses(updatedCourse)
-  }
+  // const onDeleteCourse = (id) => {
+  //   const updatedCourse = courses.filter((course) => course.id !== id)
+  //   setCourses(updatedCourse)
+  // }
 
 
   return (
     <>
-      <Header courses={filteredCourses}
+      <Header 
+      courses={filteredCourses}
       changeSearch={changeSearch}
       searchCourse={searchCourse} 
       currentUser={currentUser}/>
       <Routes>
         <Route exact path="/" 
          element = { <Home
-         courses={filteredCourses}
-         onDeleteCourse={onDeleteCourse}/> } />
+         courses={filteredCourses}/> } />
         <Route exact path="/signup"
           element= {<Signup />} />
         <Route exact path="/login"
@@ -115,9 +104,9 @@ function App() {
           handleUserLogin={handleUserLogin}/>} />
         <Route path="/courses/:id" 
           element = {<CourseDetails  //one course page
-          onDeleteCourse={onDeleteCourse}
           currentUser={currentUser}
           courses={courses}
+          setCourses={setCourses}
            />} />
         <Route exact path="/newcourse"
          element= {<NewCourseForm

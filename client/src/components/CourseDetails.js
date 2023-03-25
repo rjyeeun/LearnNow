@@ -9,11 +9,10 @@ import imagePlaceholder from './imagePlaceholder.png'
 import LessonList from './LessonList'
 import EnrolledCourseLists from './EnrolledCourseCard'
 
-export default function CourseDetails({courses, onDeleteCourse, currentUser}) {
+export default function CourseDetails({onDeleteCourse, courses, setCourses, currentUser}) {
     const [course, setCourse] = useState({title: '', description: '', lessons: [], reviews: [], instructor_id: ''});
     const {enrolled_courses} = currentUser
     const [enrolledCourses, setEnrolledCourses] = useState({enrolled_courses})
-    const [courseCreator, setCourseCreator] = useState('');
     const [viewReviews, setViewReviews] = useState(false)
     const [errors, setErrors] = useState(false)
     const {id} = useParams()
@@ -36,30 +35,28 @@ export default function CourseDetails({courses, onDeleteCourse, currentUser}) {
 
     const {lessons, title, description, reviews, instructor_id} = course
 
-    
-    //getting instructor name for the course
-    useEffect(() => {
-        fetch(`/users/${course.instructor_id}`)
-        .then(r => r.json())
-        .then(data => setCourseCreator(data.name))
-    }, [])
 
     //when click view review, it opens the review
     const handleClick = () => {
         setViewReviews(prev => !prev)
         };
 
-    const handleDelete = () => {
-        if (course.instructor_id === currentUser.id) {
-            fetch(`/courses/${id}`,
-            { method: 'DELETE'})
-            .then(() => onDeleteCourse(id))
-        }
-        else {
-            alert("You cannot delete a post that you didn't post!")
-            }
-        navigate('/')
-        }
+    
+        const handleDelete = (id) => {
+            fetch(`/courses/${id}`, { method: 'DELETE' })
+              .then(() => {
+                const updatedCourses = courses.filter(course => course.id !== id);
+                setCourses(updatedCourses);
+                navigate('/')
+              })
+              .catch(err => console.log(err));
+          };
+        // const handleDelete = () => {
+        //     fetch(`/courses/${id}`,
+        //     { method: 'DELETE'})
+        //     .then(() => onDeleteCourse(id))
+        //     navigate('/')
+        // }
 
         console.log(course.instructor_id) 
         console.log(currentUser.id)
@@ -70,7 +67,7 @@ export default function CourseDetails({courses, onDeleteCourse, currentUser}) {
             lesson={lesson}
         />
     ))
-    const deleteButton = <Button style={{'backgroundColor': 'red'}} onClick={handleDelete}>Delete My Course </Button>
+    const deleteButton = <Button style={{'backgroundColor': 'red'}} onClick={() => handleDelete(course.id)}>Delete My Course </Button>
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -112,7 +109,6 @@ export default function CourseDetails({courses, onDeleteCourse, currentUser}) {
             <Card border="dark">
                 <Card.Body>
                     <Card.Title align="middle">{title}</Card.Title>
-                    <Card.Text>Instructor: {courseCreator}</Card.Text>
                     <Card.Text>{description}</Card.Text>
                     <Card.Title align="middle" style={{ 'backgroundColor': '#ffce4c'}}>Lesson Lists</Card.Title> <br/>
                     <Card.Text style={{ 'backgroundColor': '#ffce4c', position:'center' }}>{lessonArray}</Card.Text>

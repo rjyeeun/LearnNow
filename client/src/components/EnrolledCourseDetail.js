@@ -9,6 +9,8 @@ export default function EnrolledCourseDetail({currentUser}) {
   const [course, setCourse] = useState({title: '', description: '', lessons: [], reviews: [], instructor_id: ''});
   const [errors, setErrors] = useState(false)
   const {id} = useParams()
+
+  //getting one course data from db
   useEffect(() => {
     fetch(`/courses/${id}`)
     .then(res => {
@@ -24,16 +26,12 @@ export default function EnrolledCourseDetail({currentUser}) {
 }, [id]);
 
 const {lessons, title, description, reviews, instructor_id} = course
-
-  const [viewReviews, setViewReviews] = useState(false)
-  const handleClick = () => {
-    setViewReviews(prev => !prev)
-    };
-
-  const lessonArray = lessons.map(lesson => (
+  //sending each lesson to EnrolledLessonCard component
+  const lessonArray = lessons.map((lesson,index) => (
     <EnrolledLessonCard
         key = {lesson.id}
         lesson={lesson}
+        index={index + 1}
     />
   ))
   return (
@@ -41,23 +39,18 @@ const {lessons, title, description, reviews, instructor_id} = course
             <Card border="dark">
                 <Card.Body>
                     <Card.Title align="middle">{title}</Card.Title>
-                    <Card.Text></Card.Text>
-                    <Card.Text>{description}</Card.Text>
-                    <Card.Title align="middle" style={{ 'backgroundColor': '#ffce4c'}}>Lesson</Card.Title> <br/>
-                    <Card.Text style={{ 'backgroundColor': '#ffce4c', position:'center' }}>{lessonArray}</Card.Text>
-                    <Card.Body> {viewReviews ? <Button onClick = {handleClick} variant="secondary"> hide </Button> :
-                    <Button style={{ 'backgroundColor': '#ffce4c', position:'center' }} onClick = {handleClick}> view reviews </Button> }
+                     {lessonArray.length === 0 ? <Card.Text align='middle'>There is no registered lesson for this course.</Card.Text> : <Card.Text>{lessonArray}</Card.Text>}
+                    <Card.Title align="middle">Review</Card.Title>
+                    {reviews.length === 0 ? (
+                    <Card.Body align="middle">Be the first to share your thoughts! This course doesn't have any reviews yet, but we'd love to hear what you think. Leave a review and help others discover the best courses!</Card.Body>
+                    ) : (
+                    reviews.map((review) => (
+                    <ReviewCard key={review.id} review={review}course={course}/>
+                    ))
+)}
                 </Card.Body>
-                    {viewReviews ? reviews.map(review => (
-                        <ReviewCard
-                        key={review.id}
-                        review={review}
-                        />
-                    )) : ''} 
-
-                      <NewReviewForm reviews={reviews}/>
-            </Card.Body>
-        </Card>
+              <NewReviewForm reviews={reviews} currentUser={currentUser} course={course}/>
+            </Card>
     </div>
   )
 }

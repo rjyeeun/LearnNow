@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import CourseCard from './CourseCard'
 import EnrolledCourseCard from './EnrolledCourseCard'
+import {Button , Card, Form} from 'react-bootstrap';
 
 export default function UserDashboard({currentUser}) {
 const [userEnrolledCourses, setUserEnrolledCourses] = useState([])
@@ -20,6 +21,12 @@ const [userEnrolledCourses, setUserEnrolledCourses] = useState([])
     setUserEnrolledCourses(updatedEnrolledCourseLists)
   }
   return (
-    <div class="row row-cols-5 g-0">{userEnrolledCourses.map(course => <EnrolledCourseCard key={course.id} course={course} userEnrolledCourses={userEnrolledCourses} onDeleteEnrolledCourse={onDeleteEnrolledCourse} currentUser={currentUser}/>)}</div>
+    <>
+    <br />
+    <Card.Title size='lg' align='middle'>{currentUser.name}'s dashboard</Card.Title>
+    <br />
+    {userEnrolledCourses.length === 0? <Card.Body align="middle">You have no enrolled course.</Card.Body> : <div class="row row-cols-5 g-0">{userEnrolledCourses.map(course => <EnrolledCourseCard key={course.id} course={course} userEnrolledCourses={userEnrolledCourses} onDeleteEnrolledCourse={onDeleteEnrolledCourse} currentUser={currentUser}/>)}</div>}
+    
+    </>
   )
 }
