@@ -47,6 +47,7 @@ export default function CourseDetails({onDeleteCourse, courses, setCourses, curr
               .then(() => {
                 const updatedCourses = courses.filter(course => course.id !== id);
                 setCourses(updatedCourses);
+                alert('Course successfully deleted!')
                 navigate('/')
               })
               .catch(err => console.log(err));
@@ -58,8 +59,6 @@ export default function CourseDetails({onDeleteCourse, courses, setCourses, curr
         //     navigate('/')
         // }
 
-        console.log(course.instructor_id) 
-        console.log(currentUser.id)
 
     const lessonArray = lessons.map(lesson => (
         <LessonList

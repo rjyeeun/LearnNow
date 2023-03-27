@@ -16,8 +16,12 @@ const [userEnrolledCourses, setUserEnrolledCourses] = useState([])
     })
   },[])
 
+  console.log(userEnrolledCourses)
+
+  console.log(userEnrolledCourses.map(course => course.course))
+
   const onDeleteEnrolledCourse = (currentEnrolledCourseId) => {
-    const updatedEnrolledCourseLists = userEnrolledCourses.filter((course) => course.id !== currentEnrolledCourseId)
+    const updatedEnrolledCourseLists = userEnrolledCourses.filter((course) => course.course.id !== currentEnrolledCourseId)
     setUserEnrolledCourses(updatedEnrolledCourseLists)
   }
   return (

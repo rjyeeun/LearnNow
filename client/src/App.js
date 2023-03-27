@@ -85,6 +85,9 @@ function App() {
   //   setCourses(updatedCourse)
   // }
 
+  const fetchCoursesByCategory = (category) => {
+    const filteredCourses = courses.filter(course => course.category === category);
+    setCourses(filteredCourses);}
 
   return (
     <>
@@ -92,7 +95,8 @@ function App() {
       courses={filteredCourses}
       changeSearch={changeSearch}
       searchCourse={searchCourse} 
-      currentUser={currentUser}/>
+      currentUser={currentUser}
+      fetchCoursesByCategory={fetchCoursesByCategory}/>
       <Routes>
         <Route exact path="/" 
          element = { <Home

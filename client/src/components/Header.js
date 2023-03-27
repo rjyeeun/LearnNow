@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {Link, useHistory} from 'react-router-dom'
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
@@ -7,8 +7,16 @@ import CourseSearch from './CourseSearch'
 import {LinkContainer} from 'react-router-bootstrap'
 import Image from 'react-bootstrap/Image'
 import { IoSearchOutline } from 'react-icons/io'
+import { NavDropdown } from 'react-bootstrap';
 
-export default function Header({currentUser, changeSearch, searchCourse}) {
+export default function Header({currentUser, changeSearch, searchCourse, courses, fetchCoursesByCategory}) {
+    const [showMenu, setShowMenu] = useState(false)
+    const [categories, setCategories] = useState([])
+
+    const toggleMenu = () => {
+        setShowMenu(!showMenu);
+      }
+
 
     async function handleLogout() {
         await fetch("/logout", {
@@ -22,6 +30,12 @@ export default function Header({currentUser, changeSearch, searchCourse}) {
         window.location.reload()
         return false
     }
+
+    useEffect(() => {
+        // Group the courses by category and store the unique categories in the categories state
+        const uniqueCategories = [...new Set(courses.map(course => course.category))];
+        setCategories(uniqueCategories);
+      }, [courses]);
 
     const login_option = <LinkContainer style={{'color': '#cecece'}} to="/login"><Nav.Link>LOGIN</Nav.Link></LinkContainer>
     const signup_option =  <LinkContainer style={{'color': '#cecece'}} to="/signup"><Nav.Link>SIGNUP</Nav.Link></LinkContainer>
@@ -38,7 +52,11 @@ export default function Header({currentUser, changeSearch, searchCourse}) {
                 searchCourse={searchCourse} />
              </Container>
              <Container align='right'>
-                <LinkContainer style={{'color': '#cecece'}} to="/courses/:id"><Nav.Link>CATEGORY</Nav.Link></LinkContainer>
+             <NavDropdown title="CATEGORIES" onMouseEnter={toggleMenu} onMouseLeave={toggleMenu} show={showMenu} style={{'color': '#cecece'}} id="basic-nav-dropdown">
+             {categories.map(category => (
+            <NavDropdown.Item key={category} onClick={() => fetchCoursesByCategory(category)}>{category}</NavDropdown.Item>
+          ))}
+        </NavDropdown>
                         {currentUser ? createcourse_option : null}
                         {currentUser ?  dashboard_option : login_option}
                         {currentUser ? null : signup_option}

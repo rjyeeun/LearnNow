@@ -20,10 +20,13 @@ export default function EnrolledCourseCard({course, currentUser, onDeleteEnrolle
   let review_count = course.reviews.map((review) => review)
   const review_count_total = review_count.length
   const handleDelete = () => {
-      fetch(`/users/${currentUser.id}/enrolled_courses/${course.id}`,
-      { method: 'DELETE'})
-      .then(() => onDeleteEnrolledCourse(id))
-      .then(alert("Successfully Unenrolled the Course"))
+    fetch(`/users/${currentUser.id}/enrolled_courses/${course.id}`,
+      { method: 'DELETE' })
+      .then(() => {
+        onDeleteEnrolledCourse(id);
+        navigate('/dashboard');
+        alert("You have successfully left the course.");
+      })
   }
 
   const [totalDuration, setTotalDuration] = useState(0);
@@ -53,9 +56,9 @@ export default function EnrolledCourseCard({course, currentUser, onDeleteEnrolle
       }
   
   return (
-<Link style={{textDecoration: 'none', color: 'black'}} to={`/enrolledcourse/${id}`}>
 <CardGroup className='courseCard'>
     <Card align='center' style={{ width: '18rem'}}>
+    <Link style={{textDecoration: 'none', color: 'black'}} to={`/enrolledcourse/${id}`}>
         <Card.Img variant="top" src={thumbnail_img} style={{ height: "200px", objectFit: "cover" }}/>
         <Card.Body style={{ backgroundColor: "#9ccbd8"}}>
             <Card.Title>{title}</Card.Title>
@@ -63,9 +66,9 @@ export default function EnrolledCourseCard({course, currentUser, onDeleteEnrolle
             <p>{stars} ({review_count_total}) | <BiTime/>{totalDuration} </p>
             <Card.Title size= 'large' align='right'>Lifetime Access</Card.Title>
         </Card.Body>
+        </Link>
         <Button onClick={handleDelete}>Leave the course</Button>
     </Card>
 </CardGroup>
-</Link>
   )
 }

@@ -14,7 +14,7 @@ import { useForm } from 'react-hook-form'
 
 
 export default function NewCourseForm({setCourses, currentUser}) {
-  const [thumbnailImg, setThumbnailImg] = useState("")
+  const [thumbnail_img, setThumbnailImg] = useState("")
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
   const [price, setPrice] = useState("")
@@ -36,7 +36,7 @@ function handleSubmit(e) {
   e.preventDefault();
 
   const newCourse = {
-      thumbnailImg: thumbnailImg,
+      thumbnail_img: thumbnail_img,
       title: title,
       description: description,
       price: price,
@@ -73,18 +73,19 @@ function handleSubmit(e) {
 
 
 if(errors) {return <Form onSubmit={handleSubmit}>
-<Form.Group controlId="formFile" className="mb-3">
+<Form.Group>
     <InputGroup.Text>Thumbnail Image</InputGroup.Text>
-    <Form.Control type="text" value={thumbnailImg} onChange={(e) => setThumbnailImg(e.target.value)}  />
+    <Form.Control type="text" value={thumbnail_img} placeholder='image url' onChange={(e) => setThumbnailImg(e.target.value)}  />
+    {thumbnail_img && <img src={thumbnail_img} alt="Thumbnail" />}
 </Form.Group>
 <Form.Group>
     <InputGroup.Text>Title</InputGroup.Text>
-    <Form.Control type="text" value={title} onChange={(e) => setTitle(e.target.value)}/>
+    <Form.Control type="text" placeholder='Course Name (must be more than 5 characters)' value={title} onChange={(e) => setTitle(e.target.value)}/>
 </Form.Group>
 <small className="text-muted">{errors[0]}</small>
 <Form.Group>
     <InputGroup.Text>Description</InputGroup.Text>
-    <Form.Control as="textarea" controlId="htmlFor" value={description} onChange={(e) => setDescription(e.target.value)} />
+    <Form.Control as="textarea" controlId="htmlFor" placeholder='Please provide an overview of what the course covers' value={description} onChange={(e) => setDescription(e.target.value)} />
 </Form.Group>
 <small className="text-muted">{errors[1]}</small>
 <Form.Group>
@@ -96,10 +97,16 @@ if(errors) {return <Form onSubmit={handleSubmit}>
 <InputGroup.Text>Category</InputGroup.Text>
 <Form.Control as="select" value={category} onChange={handleChange}>
 <option value="">Please select a category</option>
-<option value="language" >Language</option>
-<option value="IT">IT</option>
-<option value="Cooking">Cooking</option>
+<option value="Language" >Language</option>
+<option value="Technology and IT">Technology and IT</option>
+<option value="Personal development and growth">Personal development and growth</option>
 <option value="Health and Wellness">Health and Wellness</option>
+<option value="Education and Teaching">Education and Teaching</option>
+<option value="Science and Math">Science and Math</option>
+<option value="Social Sciences and Humanities">Social Sciences and Humanities</option>
+<option value="Environmental sustainability">Environmental sustainability</option>
+<option value="Art and Design">Art and Design</option>
+<option value="Business and Entrepreneurship">Business and Entrepreneurship</option>
 </Form.Control>
 <small className="text-muted">{errors[3]}</small>
 </Form.Group>  
@@ -141,17 +148,18 @@ onChange={(e)=> handleSelect(e)}
 else {
     return (
         <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="formFile" className="mb-3">
+            <Form.Group>
                 <InputGroup.Text>Thumbnail Image</InputGroup.Text>
-                <Form.Control type="text" value={thumbnailImg} onChange={(e) => setThumbnailImg(e.target.value)}  />
+                <Form.Control type="text" placeholder='image url' value={thumbnail_img} onChange={(e) => setThumbnailImg(e.target.value)}  />
+                {thumbnail_img && <img src={thumbnail_img} alt="Thumbnail" />}
             </Form.Group>
             <Form.Group>
                 <InputGroup.Text>Title</InputGroup.Text>
-                <Form.Control type="text" value={title} onChange={(e) => setTitle(e.target.value)}/>
+                <Form.Control type="text" value={title} placeholder='Course Name (must be more than 5 characters)'onChange={(e) => setTitle(e.target.value)}/>
             </Form.Group>
             <Form.Group>
                 <InputGroup.Text>Description</InputGroup.Text>
-                <Form.Control as="textarea" controlId="htmlFor" value={description} onChange={(e) => setDescription(e.target.value)} />
+                <Form.Control as="textarea" controlId="htmlFor" placeholder='Please provide an overview of what the course covers' value={description} onChange={(e) => setDescription(e.target.value)} />
             </Form.Group>
             <Form.Group>
                 <InputGroup.Text>Price($0 - $100)</InputGroup.Text>
@@ -161,10 +169,16 @@ else {
         <InputGroup.Text>Category</InputGroup.Text>
         <Form.Control as="select" value={category} onChange={handleChange}>
           <option value="">Please select a category</option>
-          <option value="language" >Language</option>
-          <option value="IT">IT</option>
-          <option value="Cooking">Cooking</option>
+          <option value="Language" >Language</option>
+          <option value="Technology and IT">Technology and IT</option>
+          <option value="Personal development and growth">Personal development and growth</option>
           <option value="Health and Wellness">Health and Wellness</option>
+          <option value="Education and Teaching">Education and Teaching</option>
+          <option value="Science and Math">Science and Math</option>
+          <option value="Social Sciences and Humanities">Social Sciences and Humanities</option>
+          <option value="Environmental sustainability">Environmental sustainability</option>
+          <option value="Art and Design">Art and Design</option>
+          <option value="Business and Entrepreneurship">Business and Entrepreneurship</option>
         </Form.Control>
       </Form.Group>  
     {['radio'].map((type) => (
