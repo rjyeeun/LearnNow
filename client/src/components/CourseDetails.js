@@ -1,20 +1,22 @@
 import React, {useState, useEffect} from 'react'
 import ReviewCard from './ReviewCard'
 import {useNavigate, useParams} from "react-router-dom";
-import NewReviewForm from './NewReviewForm'
-import {AiOutlineLike} from 'react-icons/ai'
-import {MdOutlineRateReview} from 'react-icons/md'
 import {Button , Card, Form} from 'react-bootstrap';
-import imagePlaceholder from './imagePlaceholder.png'
 import LessonList from './LessonList'
-import EnrolledCourseLists from './EnrolledCourseCard'
+import {AiOutlineFileAdd} from 'react-icons/ai'
+import {MdOutlineRateReview} from 'react-icons/md'
+import NewLessonForm from './NewLessonForm'
+import EditLessonForm from './EditLessonForm'
 
 export default function CourseDetails({onDeleteCourse, courses, setCourses, currentUser}) {
     const [course, setCourse] = useState({title: '', description: '', lessons: [], reviews: [], instructor_id: ''});
-    const {enrolled_courses} = currentUser
+    const {enrolled_courses} = currentUser || []
     const [enrolledCourses, setEnrolledCourses] = useState({enrolled_courses})
     const [viewReviews, setViewReviews] = useState(false)
+    const [viewLessonForm, setViewLessonForm] = useState(false)
+    const [editLessonForm, setEditLessonForm] = useState(false)
     const [errors, setErrors] = useState(false)
+    const [reviewLists, setReviewLists] = useState([])
     const {id} = useParams()
     const navigate = useNavigate()
     let enrolled_course_id = enrolled_courses.map((course) => course.course_id)
@@ -35,12 +37,23 @@ export default function CourseDetails({onDeleteCourse, courses, setCourses, curr
 
     const {lessons, title, description, reviews, instructor_id} = course
 
+    const onDeleteReview = (currentReviewId) => {
+        const updatedReviewList = reviews.filter((review) => review.id !== currentReviewId)
+        setReviewLists(updatedReviewList)
+    }
 
     //when click view review, it opens the review
     const handleClick = () => {
         setViewReviews(prev => !prev)
         };
+    
+    const handleLessonButton = () => {
+        setViewLessonForm(prev => !prev)
+    }
 
+    const handleEditLesson = () => {
+        setEditLessonForm(prev => !prev)
+    }
     
         const handleDelete = (id) => {
             fetch(`/courses/${id}`, { method: 'DELETE' })
@@ -60,10 +73,11 @@ export default function CourseDetails({onDeleteCourse, courses, setCourses, curr
         // }
 
 
-    const lessonArray = lessons.map(lesson => (
+    const lessonArray = lessons.map((lesson,index) => (
         <LessonList
-            key = {lesson.id}
-            lesson={lesson}
+        key = {lesson.id}
+        lesson={lesson}
+        index={index + 1}
         />
     ))
     const deleteButton = <Button style={{'backgroundColor': 'red'}} onClick={() => handleDelete(course.id)}>Delete My Course </Button>
@@ -100,30 +114,38 @@ export default function CourseDetails({onDeleteCourse, courses, setCourses, curr
                 alert("You are already enrolled!");
             }
             };
-
-
-
+            const viewReviewCount = course.reviews.length
+            const enrollButton = <Button size='md' type="submit" style={{ 'backgroundColor': '#9ccbd5', fontFamily: 'poppinsBold'}} onClick={handleSubmit}>Enroll Course</Button>
+            const addLessonButton = <Button style={{ position:'center'  }} onClick = {handleLessonButton} variant="secondary"> <AiOutlineFileAdd></AiOutlineFileAdd> Add a Lesson </Button>
+            const editLessonButton = <Button onClick = {handleEditLesson} variant="secondary"> Edit Lesson </Button>
     return (
-        <div>
+    <>
+        <div className="d-flex justify-content-center" style={{marginTop: '5%', color: '#0c3954'}}>
             <Card border="dark">
                 <Card.Body>
-                    <Card.Title align="middle">{title}</Card.Title>
-                    <Card.Text>{description}</Card.Text>
-                    <Card.Title align="middle" style={{ 'backgroundColor': '#ffce4c'}}>Lesson Lists</Card.Title> <br/>
-                    <Card.Text style={{ 'backgroundColor': '#ffce4c', position:'center' }}>{lessonArray}</Card.Text>
-                    <Card.Body> {viewReviews ? <Button onClick = {handleClick} variant="secondary"> hide </Button> :
-                    <Button style={{ 'backgroundColor': '#ffce4c', position:'center' }} onClick = {handleClick}> view reviews </Button> }
+                    <Card.Title align="middle" style={{fontFamily: 'poppinsBold'}}>{title}</Card.Title>
+                    <Card.Text align="middle" style={{fontFamily: 'poppinsRegular'}}>{description}</Card.Text>
+                    <Card.Text style={{ fontFamily: 'DBSansRegular' }}>{lessonArray}</Card.Text>
+                    <Card.Body align='left'> {viewReviews ? <Button style={{'backgroundColor': '#000000'}}onClick = {handleClick}> Hide Review </Button> :
+                    <Button style={{ position:'center', 'backgroundColor': '#000000', fontFamily: 'poppins'}} onClick = {handleClick}> <MdOutlineRateReview/>{viewReviewCount} </Button> }
                 </Card.Body>
                     {viewReviews ? reviews.map(review => (
                         <ReviewCard
                         key={review.id}
                         review={review}
+                        currentUser={currentUser}
+                        course={course}
+                        onDeleteReview={onDeleteReview}
                         />
                     )) : ''} 
+                <Card.Body align='middle'>{currentUser.id === instructor_id ? deleteButton : null} {currentUser.id === instructor_id ? null : enrollButton} </Card.Body>
+                <Card.Title align='left'>{currentUser.id === instructor_id ? addLessonButton : null}</Card.Title>
+                <Card.Title align='right'>{currentUser.id === instructor_id ? editLessonButton : null}</Card.Title>
             </Card.Body>
-            {currentUser.id === instructor_id ? deleteButton : null}
-            <Button type="submit" style={{ 'backgroundColor': '#9ccbd5'}} onClick={handleSubmit}>Enroll</Button>
         </Card>
+    {viewLessonForm ? <NewLessonForm/> : ''}
+    {editLessonForm ? <EditLessonForm/> : ''}
     </div>
+    </>
     )
 }

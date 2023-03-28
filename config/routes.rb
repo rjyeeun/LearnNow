@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   resources :courses, only: [:index, :show, :create, :destroy]
   
+
   get '/featured_courses', to: 'courses#featured'
 
   resources :users, except: [:new, :edit]
@@ -11,6 +12,8 @@ Rails.application.routes.draw do
   post '/courses/:course_id/lessons', to: 'lessons#create'
   patch '/courses/:course_id/lessons/:id', to: 'lessons#update'
   delete '/courses/:course_id/lessons/:id', to: 'lessons#destroy'
+
+  get '/users/:user_id/instructor_courses', to: 'instructor_courses#show_all'
 
   get '/users/:user_id/enrolled_courses', to: 'enrolled_courses#show_all'
   post '/users/:user_id/enrolled_courses', to: 'enrolled_courses#create'

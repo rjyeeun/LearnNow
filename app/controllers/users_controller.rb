@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     end
     def show   
         user = find_user
-        render json: user, serializer: ProfileSerializer, status: :ok
+        render json: user, status: :ok
         #render json: current_user, status: :ok
     end
 

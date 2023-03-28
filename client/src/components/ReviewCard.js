@@ -1,11 +1,19 @@
 import React from 'react';
 import { useEffect, useState } from "react";
-import { Card } from 'react-bootstrap';
+import {Button , Card, Form} from 'react-bootstrap';
 import { FaStar } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
-export default function ReviewCard({review, course}) {
+export default function ReviewCard({review, course, currentUser, onDeleteReview}) {
     const {user_id, content, rating} = review;
+    //const [reviewLists, setReviewLists] = useState({user_id: '', course_id: '', content: '', rating: ''})
     const [username, setUsername] = useState('');
+    const navigate = useNavigate()
+
+    // const onDeleteReview = (currentReviewId) => {
+    //     const updatedReviewList = reviewLists.filter((review) => review.id !== currentReviewId)
+    //     setReviewLists(updatedReviewList)
+    // }
 
     useEffect(()=> {
         fetch(`/users/${user_id}`)
@@ -14,6 +22,16 @@ export default function ReviewCard({review, course}) {
             setUsername(data.username.charAt(0).toUpperCase() + data.username.slice(1));
         });
     }, [])
+
+
+
+    const deleteReview = () => {
+        if (currentUser.id === user_id) {
+        fetch(`/courses/${course.id}/reviews/${review.id}`,
+        { method: 'DELETE'})
+        .then(() => onDeleteReview())
+        alert("Review deleted successfully")}
+        } 
 
    
     const stars = [];
@@ -29,6 +47,7 @@ export default function ReviewCard({review, course}) {
             <Card.Title>{username} {stars}</Card.Title>
             <Card.Text>{content}</Card.Text>
         </Card.Body>
+        {currentUser.id === review.user_id ? <Button onClick={deleteReview}>Delete</Button> : null}
         </Card>
     );
 }

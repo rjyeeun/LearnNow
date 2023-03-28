@@ -4,15 +4,19 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import {BiTime} from 'react-icons/bi'
 import EnrolledCourseLists from './EnrolledCourseCard';
 
-export default function LessonList({lesson}) {
+export default function LessonList({lesson, index}) {
   const {title, description, duration} = lesson
+  
 
  
   return (
-    <ListGroup className="list-group-flush">
-      <ListGroup.Item>{title}</ListGroup.Item>
-      <ListGroup.Item>{description}</ListGroup.Item>
-      <ListGroup.Item><BiTime/>{duration}mins</ListGroup.Item>
-    </ListGroup>
+    <>
+    <Card style={{backgroundColor: '#f6f6f6'}}>
+      <Card.Title>Lesson {index}. {title}</Card.Title>
+      <Card.Text>{description}</Card.Text>
+      <Card.Text><BiTime/>{duration}mins</Card.Text>
+    </Card>
+    <br/>
+    </>
   )
 }

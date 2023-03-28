@@ -61,7 +61,7 @@ function handleSubmit(e) {
       fetch("/courses")
       .then((r) => r.json())
       .then((data) => setCourses(data))
-      
+      alert("Course Successfully Created!")
       navigate('/')
   } else {
     res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
@@ -72,7 +72,7 @@ function handleSubmit(e) {
 
 
 
-if(errors) {return <Form onSubmit={handleSubmit}>
+if(errors) {return  <> <div className="d-flex justify-content-center align-items-center vh-100"> <Form onSubmit={handleSubmit}>
 <Form.Group>
     <InputGroup.Text>Thumbnail Image</InputGroup.Text>
     <Form.Control type="text" value={thumbnail_img} placeholder='image url' onChange={(e) => setThumbnailImg(e.target.value)}  />
@@ -144,30 +144,39 @@ onChange={(e)=> handleSelect(e)}
 ))}
 <Button type='submit'>Create Course</Button>
 </Form>
+</div>
+</>
 }
 else {
     return (
-        <Form onSubmit={handleSubmit}>
+      <div className="d-flex justify-content-center" style={{backgroundColor:'#0c3954'}}>
+        <Form className="p-5 rounded shadow-lg" onSubmit={handleSubmit} style={{width: '80%', border: "2px solid #ccc", borderRadius: '10px',
+  padding: '20px'}} >
+        <h1 className="mb-3 text-center" style={{fontFamily: 'PoppinsMedium', color: '#fafafa'}}>Register New Course</h1>
             <Form.Group>
-                <InputGroup.Text>Thumbnail Image</InputGroup.Text>
-                <Form.Control type="text" placeholder='image url' value={thumbnail_img} onChange={(e) => setThumbnailImg(e.target.value)}  />
+                <Form.Text style={{fontSize: '1.2em', fontFamily: 'DMSans', color: '#fafafa'}}>Thumbnail Image</Form.Text>
+                <Form.Control style={{backgroundColor: 'transparent', fontFamily:'DMSans', color: '#fafafa'}} type="text" placeholder='Image url' value={thumbnail_img} onChange={(e) => setThumbnailImg(e.target.value)}  />
                 {thumbnail_img && <img src={thumbnail_img} alt="Thumbnail" />}
             </Form.Group>
+            <br />
             <Form.Group>
-                <InputGroup.Text>Title</InputGroup.Text>
-                <Form.Control type="text" value={title} placeholder='Course Name (must be more than 5 characters)'onChange={(e) => setTitle(e.target.value)}/>
+                <Form.Text style={{fontSize: '1.2em', fontFamily: 'DMSans', color: '#fafafa'}}>Course Title</Form.Text>
+                <Form.Control type="text" style={{backgroundColor: 'transparent', fontFamily:'DMSans', color: '#fafafa'}} value={title} placeholder='Course Name (must be more than 5 characters)'onChange={(e) => setTitle(e.target.value)}/>
             </Form.Group>
+            <br />
             <Form.Group>
-                <InputGroup.Text>Description</InputGroup.Text>
-                <Form.Control as="textarea" controlId="htmlFor" placeholder='Please provide an overview of what the course covers' value={description} onChange={(e) => setDescription(e.target.value)} />
+                <Form.Text style={{fontSize: '1.2em', fontFamily: 'DMSans', color: '#fafafa'}}>Description</Form.Text>
+                <Form.Control style={{backgroundColor: 'transparent', fontFamily:'DMSans', color: '#fafafa'}} as="textarea" controlId="htmlFor" placeholder='Please provide an overview of what the course covers' value={description} onChange={(e) => setDescription(e.target.value)} />
             </Form.Group>
+            <br />
             <Form.Group>
-                <InputGroup.Text>Price($0 - $100)</InputGroup.Text>
-                <Form.Control aria-label="Amount (to the nearest dollar)" value={price} onChange={(e) => setPrice(e.target.value)} />
+                <Form.Text style={{fontSize: '1.2em', fontFamily: 'DMSans', color: '#fafafa'}}>Price($0 - $100)</Form.Text>
+                <Form.Control style={{backgroundColor: 'transparent', color: '#fafafa', fontFamily:'DMSans'}} aria-label="Amount (to the nearest dollar)" value={price} onChange={(e) => setPrice(e.target.value)} />
             </Form.Group>
+            <br />
         <Form.Group>
-        <InputGroup.Text>Category</InputGroup.Text>
-        <Form.Control as="select" value={category} onChange={handleChange}>
+        <Form.Text style={{fontSize: '1.2em', fontFamily: 'DMSans', color: '#fafafa'}}>Category</Form.Text>
+        <Form.Control style={{backgroundColor: 'transparent', fontFamily:'DMSans', color: '#fafafa'}} as="select" value={category} onChange={handleChange}>
           <option value="">Please select a category</option>
           <option value="Language" >Language</option>
           <option value="Technology and IT">Technology and IT</option>
@@ -180,10 +189,12 @@ else {
           <option value="Art and Design">Art and Design</option>
           <option value="Business and Entrepreneurship">Business and Entrepreneurship</option>
         </Form.Control>
+        <br />
       </Form.Group>  
     {['radio'].map((type) => (
-        <div key={`inline-${type}`} className="mb-3">
-        <InputGroup.Text>Difficulty</InputGroup.Text>
+          <div key={`inline-${type}`} className="mb-3"  style={{color: '#fafafa', fontFamily:'DMSans', fontSize: '1.0em'}}>
+        <Form.Text style={{fontSize: '1.2em', fontFamily: 'DMSans', color: '#fafafa'}}>Difficulty</Form.Text>
+          <br />
           <Form.Check
             inline
             label="Basic"
@@ -214,5 +225,6 @@ else {
       ))}
         <Button type='submit'>Create Course</Button>
         </Form>
+      </div>
     )}
 }

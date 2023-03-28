@@ -45,7 +45,7 @@ export default function Header({currentUser, changeSearch, searchCourse, courses
 
   return (
     <div>
-        <Navbar style={{ 'backgroundColor': '#0c3954' }} expand="sm">
+        <Navbar style={{ 'backgroundColor': '#0c3954', fontFamily: 'DBSans' }} expand="sm">
              <Container align = 'left'>
              <Navbar.Brand href="/"><Image src="/learnow.png" width="200px"/></Navbar.Brand>
              <CourseSearch changeSearch={changeSearch}
@@ -57,10 +57,10 @@ export default function Header({currentUser, changeSearch, searchCourse, courses
             <NavDropdown.Item key={category} onClick={() => fetchCoursesByCategory(category)}>{category}</NavDropdown.Item>
           ))}
         </NavDropdown>
-                        {currentUser ? createcourse_option : null}
-                        {currentUser ?  dashboard_option : login_option}
-                        {currentUser ? null : signup_option}
-                        {currentUser ? logout_option : null}
+                        {currentUser.username ? createcourse_option : null}
+                        {currentUser.username ?  dashboard_option : login_option}
+                        {currentUser.username ? null : signup_option}
+                        {currentUser.username ? logout_option : null}
             </Container>
         </Navbar>
     </div>

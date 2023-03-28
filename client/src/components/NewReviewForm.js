@@ -47,6 +47,7 @@ useEffect(()=> {
       user_id: currentUser.id,
     };
 
+    try {
     fetch(`/courses/${course.id}/reviews`, {
       method: 'POST',
       headers: {
@@ -56,14 +57,18 @@ useEffect(()=> {
     })
     .then(res => {
       if(res.status === 201) {
-      fetch("/courses")
+      fetch(`/courses/${course.id}/reviews`)
       .then((r) => r.json())
       .then((data) => setAllReviews(data))
       .then(() =>setComment(initialComment))
+      window.location.reload();
   } else {
     res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
   }
-  });
+  })}
+  catch (error){
+    console.log(error.message);
+}
   // navigate("/posts")
 }
 

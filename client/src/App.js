@@ -11,11 +11,12 @@ import EnrolledCourseDetail from './components/EnrolledCourseDetail';
 import UserDashboard from './components/UserDashboard';
 import NewCourseForm from './components/NewCourseForm';
 import CourseDetails from './components/CourseDetails';
+import MyCourseDetail from './components/MyCourseDetail';
 
 function App() {
   const navigate = useNavigate()
   const [users, setUsers] = useState([]);
-  const [currentUser, setCurrentUser] = useState('');
+  const [currentUser, setCurrentUser] = useState({enrolled_courses: [], instructor_courses: []});
   const [courses, setCourses] = useState([]);//all the  courses
   const [searchCourse, setSearchCourse] = useState(""); //searched courses on home page
   
@@ -126,6 +127,8 @@ function App() {
           <UserDashboard
               currentUser={currentUser}
             />} />
+        <Route exact path="/mycourse/:id"
+        element = {<MyCourseDetail/>} />
       </Routes>
     </>
   );

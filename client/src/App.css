@@ -1,3 +1,27 @@
+@font-face {
+  font-family: poppinsBold;
+  src: url(./fonts/poppinsBold.ttf);
+}
+
+@font-face {
+  font-family: poppinsRegular;
+  src: url(./fonts/poppinsRegular.ttf);
+}
+
+@font-face {
+  font-family: poppinsMedium;
+  src: url(./fonts/poppinsMedium.ttf);
+}
+
+@font-face {
+  font-family: DMSansRegular;
+  src: url(./fonts/DMSansRegular.ttf);
+}
+
+@font-face {
+  font-family: DMSansBold;
+  src: url(./fonts/DMSansBold.ttf);
+}
 .profile {
   font-family: Arial, Helvetica, sans-serif;
   padding: 3em 0 2em 5em;

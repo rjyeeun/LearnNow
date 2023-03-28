@@ -4,16 +4,16 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import ReactPlayer from 'react-player';
 
-export default function NewLessonForm({courses, setCourses}) {
+export default function EditLessonForm() {
   const [course, setCourse] = useState({title: '', description: '', lessons: [], reviews: [], instructor_id: ''});
-  const [lessons, setLessons] = useState({title: '', description: '', duration: '', content: '', course_id: ''})
+  const [lessons, setLessons] = useState([])
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
   const [duration, setDuration] = useState("")
   const [content, setContent] = useState("")
   const navigate = useNavigate()
-  const {id} = useParams()
   const [errors, setErrors] = useState(false)
+  const {id} = useParams()
 
   useEffect(() => {
     fetch(`/courses/${id}`)
@@ -29,50 +29,52 @@ export default function NewLessonForm({courses, setCourses}) {
     });
 }, [id]);
 
-console.log(course.id)
 
-  function handleSubmit(e) {
-    e.preventDefault();
-  
-    const newLesson = {
-        title: title,
-        description: description,
-        duration: duration,
-        content: content,
-        course_id: course.id
-    }
-  
-    console.log(newLesson)
-  
-  try {
-    fetch(`/courses/${course.id}/lessons`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newLesson),
-    })
-    // .then(resp => resp.json())
-    .then(res => {
-        if(res.status === 201) {
-        fetch(`/courses/${course.id}/lessons`)
-        .then((r) => r.json())
-        .then((data) => setLessons(data))
-        alert("Lesson Successfully Created!")
-        window.location.reload()
+useEffect(() => {
+  fetch(`/courses/${id}/lessons`)
+  .then( res => {
+    if (res.ok) {
+      res.json().then(data => {
+        setLessons(data)
+      });
     } else {
-      res.json().then((errorData)=> alert(errorData.errors))
+      console.log("error");
+      res.json.then(data => setErrors(data.error))
     }
-    })}
-    catch (error){
-      console.log(error.message);
-  }
-    // navigate("/posts")
-  }
+  })
+}, [])
+
+console.log(lessons)
+
+// async function handleEditFormSubmit(e) {
+//   e.preventDefault()
+
+//   const requestObj = {
+//       method: "PATCH",
+//       headers: {
+//           "Content-Type": "application/json"
+//       },
+//       body: JSON.stringify(formData)
+//   }
+
+// await fetch(`/courses/${course.id}/lessons/${id}`, requestObj)
+//       .then(response => response.json())
+//       .then(() => {
+//           onEditUserProfile(formData)
+//           //setFormData(initialFormValues)
+//           // setEditFormIsOpen(false) 
+//           history.push("/profile")
+//           window.location.reload();
+//       })
+
+
+// }
+
+
 
   return (
-      <div  class= 'd-flex justify-content-center' style={{backgroundColor:' #9ccbd5', padding: '3em'}}>
-        <Form  onSubmit={handleSubmit} >
+    <div  class= 'd-flex justify-content-center' style={{backgroundColor:' #9ccbd5', padding: '3em'}}>
+        <Form>
         <h1 className="mb-3 text-center" style={{fontFamily: 'PoppinsMedium', color: '#fafafa'}}>New Lesson Form</h1>
             <Form.Group>
                 <Form.Text style={{fontSize: '1.2em', fontFamily: 'DMSans', color: '#fafafa'}}>Lesson Title</Form.Text>

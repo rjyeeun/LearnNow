@@ -50,10 +50,10 @@ export default function CourseCard({course}) {
 
 return (
 <Link style={{textDecoration: 'none', color: 'black'}} to={`/courses/${id}`}>
-<CardGroup className='courseCard'>
+<CardGroup className="d-flex justify-content-center">
     <Card align='center' style={{ width: '18rem'}}>
         <Card.Img variant="top" src={thumbnail_img} style={{ height: "200px", objectFit: "cover" }}/>
-        <Card.Body style={{ backgroundColor: "#9ccbd8"}}>
+        <Card.Body style={{ backgroundColor: "#efefef"}}>
             <Card.Title>{title}</Card.Title>
             <Card.Text>Instructor: {courseCreator}</Card.Text>
             <Card.Text>{difficulty} Level </Card.Text>

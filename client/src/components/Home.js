@@ -15,16 +15,17 @@ useEffect(() => {
 
   const courseArray = courses.map(course => <CourseCard key={course.id} course={course}/>)
 
-  console.log(featuredCourses)
   return (
     <div>
       {featuredCourses.length > 0 && (
         <div className="my-5">
         <Card className="text-center">
-          <Carousel indicators >
+          <Carousel indicators slide={true} itemsToShow={2} itemsToScroll={2}>
             {featuredCourses.map(course => (
               <Carousel.Item key={course.id}>
-                <Card style={{ backgroundColor: "#e8e9e3"}}>
+                <Card style={{ backgroundColor: "#ffce4c"}}>
+                  <br />
+                  <Card.Title style={{fontFamily: 'poppinsBold'}}>Featured Courses</Card.Title>
                   <br />
                   <Card.Img className='mx-auto' style={{ maxWidth: "400px", maxHeight: "200px"}} variant="top" src={course.thumbnail_img} />
                   <Card.Body>
@@ -40,7 +41,7 @@ useEffect(() => {
           </Card>
         </div>
       )}
-      <Row className="row-cols-4 g-1">
+      <Row className="row-cols-4 g-5">
         {courseArray}
       </Row>
     </div>

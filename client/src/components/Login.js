@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
@@ -30,7 +30,11 @@ export default function Login({handleUserLogin}) {
     setPassword('');
   }
   return (
-    <Form>
+    <div className="d-flex justify-content-center align-items-center vh-100">
+     <Form className="p-5 rounded shadow-lg" style={{backgroundColor:'#9ccbd5'}}>
+       <h1 className="mb-3 text-center" style={{fontFamily: 'PoppinsMedium'}}>LOGIN</h1>
+       <h6 className="mb-3 text-center" style={{fontFamily: 'PoppinsRegular'}}><Link style={{textDecoration: 'none', color: 'black'}} to={`/signup`}>Don't have an accout? Sign up and join today! </Link></h6>
+       <Form.Group style={{fontFamily: 'DMSans'}} className="mb-3"></Form.Group>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control type="email" value={email} placeholder="Enter email" onChange={ (e) => setEmail(e.target.value) } />
@@ -46,5 +50,6 @@ export default function Login({handleUserLogin}) {
         Login
       </Button>
     </Form>
+    </div>
   )
 }

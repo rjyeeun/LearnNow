@@ -8,6 +8,7 @@ import NewReviewForm from './NewReviewForm';
 export default function EnrolledCourseDetail({currentUser}) {
   const [course, setCourse] = useState({title: '', description: '', lessons: [], reviews: [], instructor_id: ''});
   const [errors, setErrors] = useState(false)
+  const [reviewLists, setReviewLists] = useState([])
   const {id} = useParams()
 
   //getting one course data from db
@@ -27,6 +28,12 @@ export default function EnrolledCourseDetail({currentUser}) {
 
 const {lessons, title, description, reviews, instructor_id} = course
   //sending each lesson to EnrolledLessonCard component
+
+  const onDeleteReview = (currentReviewId) => {
+    const updatedReviewList = reviews.filter((review) => review.id !== currentReviewId)
+    setReviewLists(updatedReviewList)
+}
+
   const lessonArray = lessons.map((lesson,index) => (
     <EnrolledLessonCard
         key = {lesson.id}
@@ -45,7 +52,7 @@ const {lessons, title, description, reviews, instructor_id} = course
                     <Card.Body align="middle">Be the first to share your thoughts! This course doesn't have any reviews yet, but we'd love to hear what you think. Leave a review and help others discover the best courses!</Card.Body>
                     ) : (
                     reviews.map((review) => (
-                    <ReviewCard key={review.id} review={review}course={course}/>
+                    <ReviewCard key={review.id} review={review} course={course} currentUser={currentUser} onDeleteReview={onDeleteReview}/>
                     ))
 )}
                 </Card.Body>
