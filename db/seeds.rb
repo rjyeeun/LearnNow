@@ -6,16 +6,16 @@ EnrolledCourse.destroy_all
 
 puts "🌱 Planting seeds..."
 
-user1 = User.create(name: "Alice Johnson", username: "alice", email: "alice@email.com", password: "Alice123!")
-user2 = User.create(name: "Bob Smith", username: "bob", email: "bob@email.com", password: "Bob123!")
-user3 = User.create(name: "Sarah Lee", username: "sarah", email: "sarah@email.com", password: "Sarah123!")
-user4 = User.create(name: "John Doe", username: "john", email: "john@email.com", password: "John123!")
-user5 = User.create(name: "Emily Chen", username: "emily", email: "emily@email.com", password: "Emily123!")
-user6 = User.create(name: "Alex Rodriguez", username: "alex", email: "arod@email.com", password: "Alex123!")
-user7 = User.create(name: "Amanda VanDyke", username: "amanda", email: "amand@email.com", password: "Amand123!")
-user8 = User.create(name: "Sharon Park", username: "sharon", email: "sharon@email.com", password: "Sharon123!")
-user9 = User.create(name: "Giovanni Rossi", username: "gio", email: "gio@email.com", password: "Gio123!")
-user10 = User.create(name: "Rachel Jung", username: "rachel", email: "rachel@email.com", password: "Rachel123!")
+user1 = User.create!(name: "Alice Johnson", username: "alice", email: "alice@email.com", password: "Alice123!")
+user2 = User.create!(name: "Bob Smith", username: "bob", email: "bob@email.com", password: "Bob123!")
+user3 = User.create!(name: "Sarah Lee", username: "sarah", email: "sarah@email.com", password: "Sarah123!")
+user4 = User.create!(name: "John Doe", username: "john", email: "john@email.com", password: "John123!")
+user5 = User.create!(name: "Emily Chen", username: "emily", email: "emily@email.com", password: "Emily123!")
+user6 = User.create!(name: "Alex Rodriguez", username: "alex", email: "arod@email.com", password: "Alex123!")
+user7 = User.create!(name: "Amanda VanDyke", username: "amanda", email: "amand@email.com", password: "Amand123!")
+user8 = User.create!(name: "Sharon Park", username: "sharon", email: "sharon@email.com", password: "Sharon123!")
+user9 = User.create!(name: "Giovanni Rossi", username: "gio", email: "gio@email.com", password: "Gio123!")
+user10 = User.create!(name: "Rachel Jung", username: "rachel", email: "rachel@email.com", password: "Rachel123!")
 
 
 course1 = (user_id = 2
@@ -49,90 +49,90 @@ course4 = (user_id = 9
 )
 
 course5 = (user_id = 9
-    course = Course.create(title: "Intro to Photoshop", description: "Learn the basics of Photoshop, including photo editing, graphic design, and more!", category: "Arts and design", price: 29.99, instructor_id: user_id, difficulty: "Beginner", thumbnail_img: "https://picsum.photos/id/50/200/300")
+    course = Course.create(title: "Intro to Photoshop", description: "Learn the basics of Photoshop, including photo editing, graphic design, and more!", category: "Arts and design", price: 29.99, instructor_id: user_id, difficulty: "Beginner", thumbnail_img: "https://cdn.educba.com/academy/wp-content/uploads/2019/03/Introduction-to-Photoshop.jpg")
     InstructorCourse.create(user_id: user_id, course_id: course.id)
     Review.create(user_id: 5, course_id: course.id, content: "Great introduction to Photoshop. The instructor explains everything in a clear and concise manner.", rating: 4)
     EnrolledCourse.create(user_id: 5, course_id: course.id, enrolled: true)
 )
 
 course6 = (user_id = 7
-    course = Course.create(title: "Creative Writing for Beginners", description: "Discover the art of creative writing, including storytelling, character development, and more.", category: "Language", price: 24.99, instructor_id: user_id, difficulty: "Beginner", thumbnail_img: "https://picsum.photos/id/200/200/300")
+    course = Course.create(title: "Creative Writing for Beginners", description: "Discover the art of creative writing, including storytelling, character development, and more.", category: "Language", price: 24.99, instructor_id: user_id, difficulty: "Beginner", thumbnail_img: "https://static.theplaybook.fun/d/tsp9")
     InstructorCourse.create(user_id: user_id, course_id: course.id)
     Review.create(user_id: 8, course_id: course.id, content: "This was a great course to kickstart my writing career. The instructor was very engaging and provided helpful feedback.", rating: 5)
     EnrolledCourse.create(user_id: 8, course_id: course.id, enrolled: true)
 )
 
 course7 = (user_id = 2
-    course = Course.create(title: "Introduction to Meditation", description: "Learn the basics of meditation, including mindfulness, relaxation, and stress reduction techniques.", category: "Health and Wellness", price: 14.99, instructor_id: user_id, difficulty: "Beginner", thumbnail_img: "https://picsum.photos/id/350/200/300")
+    course = Course.create(title: "Introduction to Meditation", description: "Learn the basics of meditation, including mindfulness, relaxation, and stress reduction techniques.", category: "Health and Wellness", price: 14.99, instructor_id: user_id, difficulty: "Beginner", thumbnail_img: "https://d31ezp3r8jwmks.cloudfront.net/0s3do1q1aauubm3ec8pvy5d3es4n")
     InstructorCourse.create(user_id: user_id, course_id: course.id)
     Review.create(user_id: 11, course_id: course.id, content: "A very calming and informative course. The instructor's voice is very soothing and helped me relax during the meditation exercises.", rating: 4)
     EnrolledCourse.create(user_id: 11, course_id: course.id, enrolled: true))
 
 course8 = (user_id = 4
-    course = Course.create(title: "Spanish for Beginners", description: "Learn the basics of Spanish, including grammar, vocabulary, and conversation skills.", category: "Language", price: 19.99, instructor_id: user_id, difficulty: "Beginner", thumbnail_img: "https://picsum.photos/id/450/200/300")
+    course = Course.create(title: "Spanish for Beginners", description: "Learn the basics of Spanish, including grammar, vocabulary, and conversation skills.", category: "Language", price: 19.99, instructor_id: user_id, difficulty: "Beginner", thumbnail_img: "https://www.lawlessspanish.com/wp-content/uploads/spanish-for-beginners.png")
     InstructorCourse.create(user_id: user_id, course_id: course.id)
     Review.create(user_id: 13, course_id: course.id, content: "This was a great course to learn Spanish. The instructor provided helpful explanations and practice exercises.", rating: 4)
     EnrolledCourse.create(user_id: 13, course_id: course.id, enrolled: true)
 )
 
 course9 = (user_id = 9
-    course = Course.create(title: "Introduction to Graphic Design", description: "Learn the fundamentals of graphic design, including color theory, typography, and layout.", category: "Arts and design", price: 29.99, instructor_id: user_id, difficulty: "Beginner", thumbnail_img: "https://picsum.photos/id/500/200/300")
+    course = Course.create(title: "Introduction to Graphic Design", description: "Learn the fundamentals of graphic design, including color theory, typography, and layout.", category: "Arts and design", price: 29.99, instructor_id: user_id, difficulty: "Beginner", thumbnail_img: "https://i.ytimg.com/vi/UHmsKEQLLDk/maxresdefault.jpg")
     InstructorCourse.create(user_id: user_id, course_id: course.id)
     Review.create(user_id: 14, course_id: course.id, content: "A very informative course that covers all the basics of graphic design. The instructor provided helpful feedback and suggestions.", rating: 5)
     EnrolledCourse.create(user_id: 14, course_id: course.id, enrolled: true)
     )
 
 course10 = (user_id = 1
-    course = Course.create(title: "Introduction to Public Speaking", description: "Learn how to improve your public speaking skills, including delivery, organization, and audience engagement.", category: "Language", price: 24.99, instructor_id: user_id, difficulty: "Beginner", thumbnail_img: "https://picsum.photos/id/600/200/300")
+    course = Course.create(title: "Introduction to Public Speaking", description: "Learn how to improve your public speaking skills, including delivery, organization, and audience engagement.", category: "Language", price: 24.99, instructor_id: user_id, difficulty: "Beginner", thumbnail_img: "https://www.indiansinkuwait.com/ShowImage.aspx?img=/Newsfile/1852021123222450may1821Athulya.jpg&w=650")
     InstructorCourse.create(user_id: user_id, course_id: course.id)
     Review.create(user_id: 16, course_id: course.id, content: "This was a very helpful course to improve my public speaking skills. The instructor provided helpful tips and feedback.", rating: 5)
     EnrolledCourse.create(user_id: 16, course_id: course.id, enrolled: true)
     )
 
 course11 = (user_id = 1
-    course = Course.create(title: "Introduction to Entrepreneurship", description: "Learn the basics of entrepreneurship, including idea generation, business planning, and funding.", category: "Business and entrepreneurship", price: 19.99, instructor_id: user_id, difficulty: "Beginner", thumbnail_img: "https://picsum.photos/id/601/200/300")
+    course = Course.create(title: "Introduction to Entrepreneurship", description: "Learn the basics of entrepreneurship, including idea generation, business planning, and funding.", category: "Business and entrepreneurship", price: 19.99, instructor_id: user_id, difficulty: "Beginner", thumbnail_img: "https://i1.rgstatic.net/publication/360625961_INTRODUCTION_TO_ENTREPRENEURSHIP/links/6282519890841d5155d7dcc5/largepreview.png")
     InstructorCourse.create(user_id: user_id, course_id: course.id)
     Review.create(user_id: 2, course_id: course.id, content: "This course was extremely helpful in getting me started on my entrepreneurial journey. The instructor was knowledgeable and engaging.", rating: 4.5)
     EnrolledCourse.create(user_id: 2, course_id: course.id, enrolled: true)
     )
 
 course12 = (user_id = 1
-    course = Course.create(title: "Marketing Strategies for Small Businesses", description: "Learn how to create effective marketing campaigns for your small business, including social media marketing, email marketing, and SEO.", category: "Business and entrepreneurship", price: 29.99, instructor_id: user_id, difficulty: "Intermediate", thumbnail_img: "https://picsum.photos/id/602/200/300")
+    course = Course.create(title: "Marketing Strategies for Small Businesses", description: "Learn how to create effective marketing campaigns for your small business, including social media marketing, email marketing, and SEO.", category: "Business and entrepreneurship", price: 29.99, instructor_id: user_id, difficulty: "Intermediate", thumbnail_img: "https://www.freshbooks.com/wp-content/uploads/2022/04/advertise-my-small-business-5.jpg")
     InstructorCourse.create(user_id: user_id, course_id: course.id)
     Review.create(user_id: 3, course_id: course.id, content: "This course provided a lot of valuable insights into marketing for small businesses. The instructor was knowledgeable and provided practical advice.", rating: 4.2)
     EnrolledCourse.create(user_id: 3, course_id: course.id, enrolled: true)
     )    
 
 course13 = (user_id = 5
-    course = Course.create(title: "Teaching English as a Second Language", description: "Learn how to teach English to non-native speakers, including lesson planning, grammar instruction, and classroom management.", category: "Education and teaching", price: 24.99, instructor_id: user_id, difficulty: "Intermediate", thumbnail_img: "https://picsum.photos/id/603/200/300")
+    course = Course.create(title: "Teaching English as a Second Language", description: "Learn how to teach English to non-native speakers, including lesson planning, grammar instruction, and classroom management.", category: "Education and teaching", price: 24.99, instructor_id: user_id, difficulty: "Intermediate", thumbnail_img: "https://d5pa980nnvb18.cloudfront.net/images/_660xAUTO_crop_center-center_none/esl.jpg")
     InstructorCourse.create(user_id: user_id, course_id: course.id)
     Review.create(user_id: 4, course_id: course.id, content: "This course was very informative and helpful for teaching English as a second language. The instructor was engaging and provided a lot of practical tips.", rating: 4.7)
     EnrolledCourse.create(user_id: 4, course_id: course.id, enrolled: true)
     )
         
 course14 = (user_id = 7
-    course = Course.create(title: "Introduction to Online Teaching", description: "Learn the basics of teaching online, including how to create engaging content, use online teaching tools, and manage student interactions.", category: "Education and teaching", price: 29.99, instructor_id: user_id, difficulty: "Intermediate", thumbnail_img: "https://picsum.photos/id/604/200/300")
+    course = Course.create(title: "Introduction to Online Teaching", description: "Learn the basics of teaching online, including how to create engaging content, use online teaching tools, and manage student interactions.", category: "Education and teaching", price: 29.99, instructor_id: user_id, difficulty: "Intermediate", thumbnail_img: "https://www.lbcc.edu/sites/main/files/imagecache/lightbox/main-images/intro-online.png")
     InstructorCourse.create(user_id: user_id, course_id: course.id)
     Review.create(user_id: 5, course_id: course.id, content: "This course provided a lot of helpful tips and best practices for online teaching. The instructor was knowledgeable and provided practical examples.", rating: 4.3)
     EnrolledCourse.create(user_id: 5, course_id: course.id, enrolled: true)
     )
 
 course15 = (user_id = 2
-course = Course.create(title: "Introduction to Chemistry", description: "Learn the basics of chemistry, including atoms, molecules, and chemical reactions.", category: "Science and Math", price: 19.99, instructor_id: user_id, difficulty: "Beginner", thumbnail_img: "https://picsum.photos/id/601/200/300")
+course = Course.create(title: "Introduction to Chemistry", description: "Learn the basics of chemistry, including atoms, molecules, and chemical reactions.", category: "Science and Math", price: 19.99, instructor_id: user_id, difficulty: "Beginner", thumbnail_img: "https://i.ytimg.com/vi/-KfG8kH-r3Y/maxresdefault.jpg")
 InstructorCourse.create(user_id: user_id, course_id: course.id)
 Review.create(user_id: 6, course_id: course.id, content: "I had no prior knowledge in chemistry but this course made it very easy for me to understand the concepts. Highly recommend!", rating: 4.5)
 EnrolledCourse.create(user_id: 6, course_id: course.id, enrolled: true)
 )
 
 course16 = (user_id = 8
-course = Course.create(title: "Calculus for Beginners", description: "Learn the fundamentals of calculus, including limits, derivatives, and integrals.", category: "Science and Math", price: 29.99, instructor_id: user_id, difficulty: "Intermediate", thumbnail_img: "https://picsum.photos/id/602/200/300")
+course = Course.create(title: "Calculus for Beginners", description: "Learn the fundamentals of calculus, including limits, derivatives, and integrals.", category: "Science and Math", price: 29.99, instructor_id: user_id, difficulty: "Intermediate", thumbnail_img: "https://i.ytimg.com/vi/UukVP7Mg3TU/maxresdefault.jpg")
 InstructorCourse.create(user_id: user_id, course_id: course.id)
 Review.create(user_id: 10, course_id: course.id, content: "Great course for someone who needs a refresher on calculus or is learning it for the first time. The instructor explains the concepts very clearly.", rating: 4)
 EnrolledCourse.create(user_id: 10, course_id: course.id, enrolled: true)
 )
 
 course17 = (user_id = 4
-course = Course.create(title: "Introduction to Psychology", description: "Learn about the science of human behavior, including cognitive processes, emotions, and social behavior.", category: "Social sciences and humanities", price: 49.99, instructor_id: user_id, difficulty: "Intermediate", thumbnail_img: "https://picsum.photos/id/613/200/300")
+course = Course.create(title: "Introduction to Psychology", description: "Learn about the science of human behavior, including cognitive processes, emotions, and social behavior.", category: "Social sciences and humanities", price: 49.99, instructor_id: user_id, difficulty: "Intermediate", thumbnail_img: "https://debrabell.com/wp-content/uploads/2017/02/IntroToPsychology-1200x628-1.png")
 InstructorCourse.create(user_id: user_id, course_id: course.id)
 Review.create(user_id: 10, course_id: course.id, content: "This was a great introduction to psychology. The instructor explained concepts in an easy-to-understand way and provided engaging examples.", rating: 4.5)
 Review.create(user_id: 9, course_id: course.id, content: "I really enjoyed this course and learned a lot about the science of human behavior. The instructor was very knowledgeable and engaging.", rating: 4.5)
@@ -141,7 +141,7 @@ EnrolledCourse.create(user_id: 9, course_id: course.id, enrolled: true)
 )
 
 course18 = (user_id = 4
-course = Course.create(title: "Introduction to Philosophy", description: "Explore fundamental questions about existence, knowledge, and ethics in this introductory philosophy course.", category: "Social sciences and humanities", price: 39.99, instructor_id: user_id, difficulty: "Intermediate", thumbnail_img: "https://picsum.photos/id/620/200/300")
+course = Course.create(title: "Introduction to Philosophy", description: "Explore fundamental questions about existence, knowledge, and ethics in this introductory philosophy course.", category: "Social sciences and humanities", price: 39.99, instructor_id: user_id, difficulty: "Intermediate", thumbnail_img: "https://www.uwinnipeg.ca/philosophy/images/phil-homepage-sm.jpg")
 InstructorCourse.create(user_id: user_id, course_id: course.id)
 Review.create(user_id: 8, course_id: course.id, content: "This was an excellent introduction to philosophy. The instructor provided clear explanations and thought-provoking examples.", rating: 4.5)
 Review.create(user_id: 9, course_id: course.id, content: "I really enjoyed this course and learned a lot about the fundamental questions of existence, knowledge, and ethics. The instructor was very engaging.", rating: 4)
@@ -150,14 +150,14 @@ EnrolledCourse.create(user_id: 9, course_id: course.id, enrolled: true)
 )
 
 course19 = (user_id = 2
-course = Course.create(title: "Sustainable Living: Tips for Going Green", description: "Learn practical tips for sustainable living, including reducing waste, conserving energy, and choosing eco-friendly products.", category: "Environmental Sustainability", price: 14.99, instructor_id: user_id, difficulty: "Beginner", thumbnail_img: "https://picsum.photos/id/601/200/300")
+course = Course.create(title: "Sustainable Living: Tips for Going Green", description: "Learn practical tips for sustainable living, including reducing waste, conserving energy, and choosing eco-friendly products.", category: "Environmental Sustainability", price: 14.99, instructor_id: user_id, difficulty: "Beginner", thumbnail_img: "https://assets.solar.com/wp-content/uploads/2019/06/pkms-blog-sustainable-living.jpg")
 InstructorCourse.create(user_id: user_id, course_id: course.id)
 Review.create(user_id: 8, course_id: course.id, content: "This course provided helpful tips for living a more sustainable lifestyle. I highly recommend it!", rating: 4)
 EnrolledCourse.create(user_id: 8, course_id: course.id, enrolled: true)
 )
 
 course20 = (user_id = 2
-course = Course.create(title: "Introduction to Renewable Energy", description: "Explore the world of renewable energy, including solar, wind, and geothermal power, and learn how it can be used to combat climate change.", category: "Environmental Sustainability", price: 29.99, instructor_id: user_id, difficulty: "Intermediate", thumbnail_img: "https://picsum.photos/id/602/200/300")
+course = Course.create(title: "Introduction to Renewable Energy", description: "Explore the world of renewable energy, including solar, wind, and geothermal power, and learn how it can be used to combat climate change.", category: "Environmental Sustainability", price: 29.99, instructor_id: user_id, difficulty: "Intermediate", thumbnail_img: "https://erepublic.brightspotcdn.com/dims4/default/3f61f38/2147483647/strip/false/crop/5386x3591+0+0/resize/1486x991!/quality/90/?url=http%3A%2F%2Ferepublic-brightspot.s3.amazonaws.com%2F42%2Fd6%2F12c99be14ddb8aeb528e4db34ae5%2Fshutterstock-369887342.jpg")
 InstructorCourse.create(user_id: user_id, course_id: course.id)
 Review.create(user_id: 9, course_id: course.id, content: "This course provided a comprehensive overview of renewable energy sources and their potential to combat climate change. I learned a lot!", rating: 4)
 EnrolledCourse.create(user_id: 9, course_id: course.id, enrolled: true)

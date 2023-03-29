@@ -155,3 +155,7 @@
 .mx-auto:hover {
   box-shadow: 0 0 6px gray;
 }
+
+.enrolledLesson {
+  font-family: 'DMSans-Regular', sans-serif
+}
