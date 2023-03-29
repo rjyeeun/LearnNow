@@ -29,8 +29,10 @@ export default function ReviewCard({review, course, currentUser, onDeleteReview}
         if (currentUser.id === user_id) {
         fetch(`/courses/${course.id}/reviews/${review.id}`,
         { method: 'DELETE'})
-        .then(() => onDeleteReview())
-        alert("Review deleted successfully")}
+        .then(() => onDeleteReview(course.id))
+        .then(alert("Review deleted successfully"))}
+        navigate(`/enrolledcourse/${course.id}`)
+        window.location.reload();
         } 
 
    
@@ -43,11 +45,13 @@ export default function ReviewCard({review, course, currentUser, onDeleteReview}
 
     return (
         <Card className="mb-3">
-        <Card.Body>
+        <Card.Body style={{backgroundColor: '#9ccbd5'}}>
             <Card.Title>{username} {stars}</Card.Title>
             <Card.Text>{content}</Card.Text>
         </Card.Body>
-        {currentUser.id === review.user_id ? <Button onClick={deleteReview}>Delete</Button> : null}
+        <Card.Body className="border-0">
+        {currentUser.id === review.user_id ? <Button style={{backgroundColor: '#ef2945'}} onClick={deleteReview}>Delete</Button> : null}
+        </Card.Body>
         </Card>
     );
 }

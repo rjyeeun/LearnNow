@@ -76,14 +76,14 @@ useEffect(()=> {
     <Container>
       <Row>
         <Col>
-          <Form.Group>Leave a review</Form.Group>
+          <Form.Group style={{fontFamily: 'poppinsMedium', fontSize: '1.5em'}}>Leave a review</Form.Group>
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3">
               <Form.Control as="textarea" placeholder="Enter your comment" value={comment} onChange={(e) => setComment(e.target.value)} />
             </Form.Group>
-            <Form.Label>Rating</Form.Label>
+            <Form.Label style={{fontFamily: 'DMSansRegular'}}>Rating</Form.Label>
           <br />
-            <Form.Group>
+            <Form.Group className='border-0'>
               {[...Array(5)].map((star, i) => {
                 const ratingValue = i + 1;
                 return (
@@ -91,7 +91,7 @@ useEffect(()=> {
                     style={{backgroundColor: '#fafafa'}}
                     key={i}
                     onClick={() => setRating(ratingValue)}
-                    className='outline-0'
+                    className='border-0'
                   >
                     <i
                       className={

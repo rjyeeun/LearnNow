@@ -1,13 +1,12 @@
 import React, {useEffect, useState} from 'react'
-import {Link, useHistory} from 'react-router-dom'
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
 import CourseSearch from './CourseSearch'
 import {LinkContainer} from 'react-router-bootstrap'
 import Image from 'react-bootstrap/Image'
-import { IoSearchOutline } from 'react-icons/io'
-import { NavDropdown } from 'react-bootstrap';
+import { NavbarBrand, NavDropdown } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export default function Header({currentUser, changeSearch, searchCourse, courses, fetchCoursesByCategory}) {
     const [showMenu, setShowMenu] = useState(false)
@@ -45,13 +44,11 @@ export default function Header({currentUser, changeSearch, searchCourse, courses
 
   return (
     <div>
-        <Navbar style={{ 'backgroundColor': '#0c3954', fontFamily: 'DBSans' }} expand="sm">
-             <Container align = 'left'>
-             <Navbar.Brand href="/"><Image src="/learnow.png" width="200px"/></Navbar.Brand>
+        <Navbar style={{ 'backgroundColor': '#0c3954', fontFamily: 'DMSans', height: '130px'}} expand="sm">
+             <NavbarBrand href='/'><Image src="/learnow.png" width="110%" style={{ marginBottom: '18px'}}/></NavbarBrand>
              <CourseSearch changeSearch={changeSearch}
                 searchCourse={searchCourse} />
-             </Container>
-             <Container align='right'>
+             <Container align='right' style={{marginRight: '40px'}}>
              <NavDropdown title="CATEGORIES" onMouseEnter={toggleMenu} onMouseLeave={toggleMenu} show={showMenu} style={{'color': '#cecece'}} id="basic-nav-dropdown">
              {categories.map(category => (
             <NavDropdown.Item key={category} onClick={() => fetchCoursesByCategory(category)}>{category}</NavDropdown.Item>

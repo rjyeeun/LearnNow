@@ -6,12 +6,14 @@ import { Card, Button } from 'react-bootstrap';
 import {Link} from 'react-router-dom'
 import CardGroup from 'react-bootstrap/CardGroup';
 import {BiTime} from 'react-icons/bi'
-
+import imagePlaceholder from './imagePlaceholder.png'
 
 export default function CourseCard({course}) {
     const {id, title, category, description, lessons, difficulty, price, thumbnail_img } = course
 
     const [totalDuration, setTotalDuration] = useState(0);
+
+    const default_thumbnail_img = {imagePlaceholder}
 
     function sumLessonDuration(lessons) {
         let totalDuration = 0;
@@ -49,11 +51,12 @@ export default function CourseCard({course}) {
         }
 
 return (
+<>
 <Link style={{textDecoration: 'none', color: 'black'}} to={`/courses/${id}`}>
 <CardGroup className="d-flex justify-content-center">
-    <Card align='center' style={{ width: '18rem'}}>
-        <Card.Img variant="top" src={thumbnail_img} style={{ height: "200px", objectFit: "cover" }}/>
-        <Card.Body style={{ backgroundColor: "#efefef"}}>
+    <Card className="courseCard" align='center' style={{maxWidth: '23em', maxHeight: '30em', border: ' 2px solid #0c3954', }}>
+        <Card.Img variant="top" src={thumbnail_img || default_thumbnail_img} style={{ height: "150px" }}/>
+        <Card.Body style={{ backgroundColor: "#ffffff"}}>
             <Card.Title>{title}</Card.Title>
             <Card.Text>Instructor: {courseCreator}</Card.Text>
             <Card.Text>{difficulty} Level </Card.Text>
@@ -62,6 +65,8 @@ return (
         </Card.Body>
     </Card>
 </CardGroup>
+<br/> 
 </Link>
+</>
   )
 }

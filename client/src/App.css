@@ -147,3 +147,11 @@
   background-size: 100% 100%;
   height: auto
 }
+
+.courseCard:hover {
+  box-shadow: 0 0 6px gray;
+}
+
+.mx-auto:hover {
+  box-shadow: 0 0 6px gray;
+}

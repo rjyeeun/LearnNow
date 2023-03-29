@@ -4,100 +4,75 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import ReactPlayer from 'react-player';
 
-export default function EditLessonForm() {
+export default function EditLessonForm({lesson, onEditLesson}) {
   const [course, setCourse] = useState({title: '', description: '', lessons: [], reviews: [], instructor_id: ''});
   const [lessons, setLessons] = useState([])
-  const [title, setTitle] = useState("")
-  const [description, setDescription] = useState("")
-  const [duration, setDuration] = useState("")
-  const [content, setContent] = useState("")
   const navigate = useNavigate()
   const [errors, setErrors] = useState(false)
-  const {id} = useParams()
+  const {id, course_id} = lesson
+  const initialFormValues = {
+    title: lesson.title,
+    description: lesson.description,
+    content: lesson.content,
+    duration:lesson.duration,
+    course_id: lesson.course_id
+}
 
-  useEffect(() => {
-    fetch(`/courses/${id}`)
-    .then(res => {
-        if (res.ok) {
-            res.json().then(data => {
-            setCourse(data);
-            });
-        } else {
-            console.log("error");
-            res.json().then(data => setErrors(data.error));
-        }
-    });
-}, [id]);
+const [ formData, setFormData] = useState(initialFormValues)
 
 
-useEffect(() => {
-  fetch(`/courses/${id}/lessons`)
-  .then( res => {
-    if (res.ok) {
-      res.json().then(data => {
-        setLessons(data)
-      });
-    } else {
-      console.log("error");
-      res.json.then(data => setErrors(data.error))
-    }
-  })
-}, [])
+const { title, description, content, duration} = formData
 
-console.log(lessons)
+const handleFormData = (e) => {
+  setFormData({ ...formData, [e.target.name]: e.target.value })
+}
 
-// async function handleEditFormSubmit(e) {
-//   e.preventDefault()
+function handleEditFormSubmit(e) {
+  e.preventDefault()
 
-//   const requestObj = {
-//       method: "PATCH",
-//       headers: {
-//           "Content-Type": "application/json"
-//       },
-//       body: JSON.stringify(formData)
-//   }
-
-// await fetch(`/courses/${course.id}/lessons/${id}`, requestObj)
-//       .then(response => response.json())
-//       .then(() => {
-//           onEditUserProfile(formData)
-//           //setFormData(initialFormValues)
-//           // setEditFormIsOpen(false) 
-//           history.push("/profile")
-//           window.location.reload();
-//       })
-
-
-// }
+  const requestObj = {
+      method: "PATCH",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify(formData)
+  }
+fetch(`/courses/${course_id}/lessons/${id}`, requestObj)
+      .then(response => response.json())
+      .then(() => { onEditLesson(formData) 
+        setFormData(initialFormValues)})
+      .then(alert('edit successfully'))
+      window.location.reload()
+}
 
 
 
   return (
-    <div  class= 'd-flex justify-content-center' style={{backgroundColor:' #9ccbd5', padding: '3em'}}>
-        <Form>
-        <h1 className="mb-3 text-center" style={{fontFamily: 'PoppinsMedium', color: '#fafafa'}}>New Lesson Form</h1>
+    <div style={{backgroundColor:' #9ccbd5', padding: '3em'}}>
+        <Form onSubmit={handleEditFormSubmit}>
+        <h1 className="mb-3 text-center" style={{fontFamily: 'PoppinsMedium', color: '#fafafa'}}>Edit Lesson</h1>
             <Form.Group>
                 <Form.Text style={{fontSize: '1.2em', fontFamily: 'DMSans', color: '#fafafa'}}>Lesson Title</Form.Text>
-                <Form.Control style={{backgroundColor: 'transparent', fontFamily:'DMSans', color: '#fafafa'}} type="text" value={title} onChange={(e) => setTitle(e.target.value)}  />
+                <Form.Control style={{backgroundColor: 'transparent', fontFamily:'DMSans', color: '#fafafa'}} type="text" name='title' value={title} onChange={handleFormData}  />
             </Form.Group>
             <br />
             <Form.Group>
                 <Form.Text style={{fontSize: '1.2em', fontFamily: 'DMSans', color: '#fafafa'}}>Description</Form.Text>
-                <Form.Control type="text" style={{backgroundColor: 'transparent', fontFamily:'DMSans', color: '#fafafa'}} value={description} as='textarea' onChange={(e) => setDescription(e.target.value)}/>
+                <Form.Control type="text" style={{backgroundColor: 'transparent', fontFamily:'DMSans', color: '#fafafa'}} name='description' value={description} as='textarea' onChange={handleFormData}/>
             </Form.Group>
             <br />
             <Form.Group>
                 <Form.Text style={{fontSize: '1.2em', fontFamily: 'DMSans', color: '#fafafa'}}>Duration(minutes)</Form.Text>
-                <Form.Control type="integer" style={{backgroundColor: 'transparent', fontFamily:'DMSans', color: '#fafafa'}} value={duration} onChange={(e) => setDuration(e.target.value)} />
+                <Form.Control type="integer" style={{backgroundColor: 'transparent', fontFamily:'DMSans', color: '#fafafa'}} name='duration' value={duration} onChange={handleFormData} />
             </Form.Group>
             <br />
             <Form.Group>
                 <Form.Text style={{fontSize: '1.2em', fontFamily: 'DMSans', color: '#fafafa'}}>Content</Form.Text>
-                <Form.Control style={{backgroundColor: 'transparent', color: '#fafafa', fontFamily:'DMSans'}}  value={content} onChange={(e) => setContent(e.target.value)} />
+                <Form.Control style={{backgroundColor: 'transparent', color: '#fafafa', fontFamily:'DMSans'}}  value={content} name='content' onChange={handleFormData} />
                 {content && (<ReactPlayer url={content} controls={true} width="100%"/>)}
             </Form.Group>
             <br />
-        <Form.Group align='middle'><Button type='submit'>Add Lesson</Button></Form.Group>
+        <Form.Group align='middle'><Button type='submit'>Update Lesson</Button></Form.Group>
         </Form>
       </div>
   )
