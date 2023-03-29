@@ -75,7 +75,7 @@ This app provides various learning opportunities for everyone where educators ca
 ## Client Routes 
 <img width="725" alt="Screenshot 2023-03-28 at 10 05 03 PM" src="https://user-images.githubusercontent.com/112120098/228407708-c0fd9904-63af-406c-bcb5-069116d8edee.png">
 
-## Component Tree 🌳![Uploading Screenshot 2023-03-28 at 10.05.03 PM.png…]()
+## Component Tree 🌳
 
 ![Component Tree (3)](https://user-images.githubusercontent.com/112120098/228403859-bcf77524-aab0-41ee-83a4-9ded879556c2.png)
 
