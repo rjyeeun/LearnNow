@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   get '/featured_courses', to: 'courses#featured'
 
+  get '/my_courses', to: 'courses#my_courses'
+
   resources :users, except: [:new, :edit]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get '/courses/:course_id/lessons', to: 'lessons#show_all'

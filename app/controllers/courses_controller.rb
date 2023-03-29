@@ -7,6 +7,11 @@ class CoursesController < ApplicationController
         render json: featured_courses, include: [:instructor, :lessons, :user_liked_courses, :reviews]
     end
 
+    def my_courses
+        courses = current_user.courses.all
+        render json: courses, status: :ok
+    end
+
     def index
         courses = Course.all
         render json: courses, status: :ok
@@ -30,7 +35,11 @@ class CoursesController < ApplicationController
     end
 
     private
-    
+
+    def current_user
+        @current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]
+    end
+      
     def find_course
         Course.find(params[:id])
     end

@@ -1,15 +1,9 @@
 import React, {useState} from 'react'
 import { useNavigate } from "react-router-dom";
-import Header from './Header'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import FloatingLabel from 'react-bootstrap/FloatingLabel';
-import * as Yup from 'yup'
-import { yupResolver } from '@hookform/resolvers/yup'
-import { useForm } from 'react-hook-form'
+import {BiMessageSquareError} from 'react-icons/bi'
+
 
 
 
@@ -23,7 +17,7 @@ export default function NewCourseForm({setCourses, currentUser}) {
   const navigate = useNavigate()
   const [errors, setErrors] = useState(false)
 
- 
+
   function handleChange(e) {
   setCategory(e.target.value);
 }
@@ -72,80 +66,87 @@ function handleSubmit(e) {
 
 
 
-if(errors) {return  <> <div className="d-flex justify-content-center align-items-center vh-100"> <Form onSubmit={handleSubmit}>
+if(errors) {return  <> <div className="d-flex justify-content-center" style={{backgroundColor:'#0c3954'}}>
+<Form className="p-5 rounded shadow-lg" onSubmit={handleSubmit} style={{width: '80%', border: "2px solid #ccc", borderRadius: '10px',
+padding: '20px'}} > <x-large style={{color: '#f5f5f5', fontFamily: 'poppinsBold'}}><BiMessageSquareError/> {errors.map((error, index) => (
+  <div key={index} style={{ margin: '10px 0' }}>
+    {error}
+  </div>
+))} </x-large>
+<h1 className="mb-3 text-center" style={{fontFamily: 'PoppinsMedium', color: '#fafafa'}}>Register New Course</h1>
+    <Form.Group>
+        <Form.Text style={{fontSize: '1.2em', fontFamily: 'DMSans', color: '#fafafa'}}>Thumbnail Image</Form.Text>
+        <Form.Control style={{backgroundColor: 'transparent', fontFamily:'DMSans', color: '#fafafa'}} type="text" placeholder='Image url' value={thumbnail_img} onChange={(e) => setThumbnailImg(e.target.value)}  />
+        {thumbnail_img && <img src={thumbnail_img} alt="Thumbnail" />}
+    </Form.Group>
+    <br />
+    <Form.Group>
+        <Form.Text style={{fontSize: '1.2em', fontFamily: 'DMSans', color: '#fafafa'}}>Course Title</Form.Text>
+        <Form.Control type="text" style={{backgroundColor: 'transparent', fontFamily:'DMSans', color: '#fafafa'}} value={title} placeholder='Course Name (must be more than 5 characters)'onChange={(e) => setTitle(e.target.value)}/>
+    </Form.Group>
+    <br />
+    <Form.Group>
+        <Form.Text style={{fontSize: '1.2em', fontFamily: 'DMSans', color: '#fafafa'}}>Description</Form.Text>
+        <Form.Control style={{backgroundColor: 'transparent', fontFamily:'DMSans', color: '#fafafa'}} as="textarea" controlId="htmlFor" placeholder='Please provide an overview of what the course covers' value={description} onChange={(e) => setDescription(e.target.value)} />
+    </Form.Group>
+    <br />
+    <Form.Group>
+        <Form.Text style={{fontSize: '1.2em', fontFamily: 'DMSans', color: '#fafafa'}}>Price($0 - $100)</Form.Text>
+        <Form.Control style={{backgroundColor: 'transparent', color: '#fafafa', fontFamily:'DMSans'}} aria-label="Amount (to the nearest dollar)" value={price} onChange={(e) => setPrice(e.target.value)} />
+    </Form.Group>
+    <br />
 <Form.Group>
-    <InputGroup.Text>Thumbnail Image</InputGroup.Text>
-    <Form.Control type="text" value={thumbnail_img} placeholder='image url' onChange={(e) => setThumbnailImg(e.target.value)}  />
-    {thumbnail_img && <img src={thumbnail_img} alt="Thumbnail" />}
-</Form.Group>
-<Form.Group>
-    <InputGroup.Text>Title</InputGroup.Text>
-    <Form.Control type="text" placeholder='Course Name (must be more than 5 characters)' value={title} onChange={(e) => setTitle(e.target.value)}/>
-</Form.Group>
-<small className="text-muted">{errors[0]}</small>
-<Form.Group>
-    <InputGroup.Text>Description</InputGroup.Text>
-    <Form.Control as="textarea" controlId="htmlFor" placeholder='Please provide an overview of what the course covers' value={description} onChange={(e) => setDescription(e.target.value)} />
-</Form.Group>
-<small className="text-muted">{errors[1]}</small>
-<Form.Group>
-    <InputGroup.Text>Price($0 - $100)</InputGroup.Text>
-    <Form.Control aria-label="Amount (to the nearest dollar)" value={price} onChange={(e) => setPrice(e.target.value)} />
-</Form.Group>
-<small className="text-muted">{errors[2]}</small>
-<Form.Group>
-<InputGroup.Text>Category</InputGroup.Text>
-<Form.Control as="select" value={category} onChange={handleChange}>
-<option value="">Please select a category</option>
-<option value="Language" >Language</option>
-<option value="Technology and IT">Technology and IT</option>
-<option value="Personal development and growth">Personal development and growth</option>
-<option value="Health and Wellness">Health and Wellness</option>
-<option value="Education and Teaching">Education and Teaching</option>
-<option value="Science and Math">Science and Math</option>
-<option value="Social Sciences and Humanities">Social Sciences and Humanities</option>
-<option value="Environmental sustainability">Environmental sustainability</option>
-<option value="Art and Design">Art and Design</option>
-<option value="Business and Entrepreneurship">Business and Entrepreneurship</option>
+<Form.Text style={{fontSize: '1.2em', fontFamily: 'DMSans', color: '#fafafa'}}>Category</Form.Text>
+<Form.Control style={{backgroundColor: 'transparent', fontFamily:'DMSans', color: '#fafafa'}} as="select" value={category} onChange={handleChange}>
+  <option value="">Please select a category</option>
+  <option value="Language" >Language</option>
+  <option value="Technology and IT">Technology and IT</option>
+  <option value="Personal development and growth">Personal development and growth</option>
+  <option value="Health and Wellness">Health and Wellness</option>
+  <option value="Education and Teaching">Education and Teaching</option>
+  <option value="Science and Math">Science and Math</option>
+  <option value="Social Sciences and Humanities">Social Sciences and Humanities</option>
+  <option value="Environmental sustainability">Environmental sustainability</option>
+  <option value="Art and Design">Art and Design</option>
+  <option value="Business and Entrepreneurship">Business and Entrepreneurship</option>
 </Form.Control>
-<small className="text-muted">{errors[3]}</small>
+<br />
 </Form.Group>  
 {['radio'].map((type) => (
-<div key={`inline-${type}`} className="mb-3">
-<InputGroup.Text>Difficulty</InputGroup.Text>
-<Form.Check
-inline
-label="Basic"
-name="group1"
-type={type}
-id={`inline-${type}-1`}
-value="Basic"
-onChange={(e)=> handleSelect(e)}
-/>
-<Form.Check
-inline
-label="Intermediate"
-name="group1"
-type={type}
-id={`inline-${type}-2`}
-value="Intermediate"
-onChange={(e)=> handleSelect(e)}
-/>
-<Form.Check
-inline
-label="Advanced"
-type={type}
-id={`inline-${type}-3`}
-value="Advanced"
-onChange={(e)=> handleSelect(e)}
-/>
-<small className="text-muted">{errors[4]}</small>
+  <div key={`inline-${type}`} className="mb-3"  style={{color: '#fafafa', fontFamily:'DMSans', fontSize: '1.0em'}}>
+<Form.Text style={{fontSize: '1.2em', fontFamily: 'DMSans', color: '#fafafa'}}>Difficulty</Form.Text>
+  <br />
+  <Form.Check
+    inline
+    label="Basic"
+    name="group1"
+    type={type}
+    id={`inline-${type}-1`}
+    value="Basic"
+    onChange={(e)=> handleSelect(e)}
+  />
+  <Form.Check
+    inline
+    label="Intermediate"
+    name="group1"
+    type={type}
+    id={`inline-${type}-2`}
+    value="Intermediate"
+    onChange={(e)=> handleSelect(e)}
+  />
+  <Form.Check
+    inline
+    label="Advanced"
+    type={type}
+    id={`inline-${type}-3`}
+    value="Advanced"
+    onChange={(e)=> handleSelect(e)}
+  />
 </div>
 ))}
 <Button type='submit'>Create Course</Button>
 </Form>
-</div>
-</>
+</div> </> 
 }
 else {
     return (

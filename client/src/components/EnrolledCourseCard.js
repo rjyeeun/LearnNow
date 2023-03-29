@@ -56,18 +56,18 @@ export default function EnrolledCourseCard({course, currentUser, onDeleteEnrolle
       }
   
   return (
-<CardGroup className='courseCard'>
-    <Card align='center' style={{ width: '18rem'}}>
+<CardGroup align='center' className='courseCard'>
+    <Card style={{ width: '18rem'}}>
     <Link style={{textDecoration: 'none', color: 'black'}} to={`/enrolledcourse/${id}`}>
         <Card.Img variant="top" src={thumbnail_img} style={{ height: "200px", objectFit: "cover" }}/>
-        <Card.Body style={{ backgroundColor: "#9ccbd8"}}>
+        <Card.Body style={{ backgroundColor: "#f2f2f2"}}>
             <Card.Title>{title}</Card.Title>
             <Card.Text>{difficulty} Level </Card.Text>
             <p>{stars} ({review_count_total}) | <BiTime/>{totalDuration} </p>
             <Card.Title size= 'large' align='right'>Lifetime Access</Card.Title>
         </Card.Body>
         </Link>
-        <Button onClick={handleDelete}>Leave the course</Button>
+        <Button onClick={handleDelete} style={{backgroundColor: '#c4391d'}}>Leave the course</Button>
     </Card>
 </CardGroup>
   )

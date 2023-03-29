@@ -19,6 +19,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({enrolled_courses: [], instructor_courses: []});
   const [courses, setCourses] = useState([]);//all the  courses
   const [searchCourse, setSearchCourse] = useState(""); //searched courses on home page
+  const [myCourses, setMyCourses] = useState([])
   
 
 
@@ -50,7 +51,17 @@ function App() {
   }, [])
 
 
+//get current user's created courses
+useEffect(() => {
+  fetch(`/users/${currentUser.id}/instructor_courses`)
+  .then(res => {
+    if(res.ok) {
+      res.json().then(data => setMyCourses(data));
+    }
+  })
+},[])
 
+console.log(myCourses)
  
   function handleUserLogin(user) {
     setCurrentUser(user)
@@ -101,7 +112,8 @@ function App() {
       <Routes>
         <Route exact path="/" 
          element = { <Home
-         courses={filteredCourses}/> } />
+         courses={filteredCourses}
+         searchCourse={searchCourse}/> } />
         <Route exact path="/signup"
           element= {<Signup />} />
         <Route exact path="/login"
@@ -112,6 +124,8 @@ function App() {
           currentUser={currentUser}
           courses={courses}
           setCourses={setCourses}
+          myCourses={myCourses}
+          setMyCourses={setMyCourses}
            />} />
         <Route exact path="/newcourse"
          element= {<NewCourseForm
@@ -126,6 +140,8 @@ function App() {
           element = {
           <UserDashboard
               currentUser={currentUser}
+              courses={courses}
+              setCourses={setCourses}
             />} />
         <Route exact path="/mycourse/:id"
         element = {<MyCourseDetail/>} />

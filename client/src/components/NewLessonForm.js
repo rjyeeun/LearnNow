@@ -71,31 +71,31 @@ console.log(course.id)
   }
 
   return (
-      <div  class= 'd-flex justify-content-center' style={{backgroundColor:' #9ccbd5', padding: '3em'}}>
-        <Form  onSubmit={handleSubmit} >
-        <h1 className="mb-3 text-center" style={{fontFamily: 'PoppinsMedium', color: '#fafafa'}}>New Lesson Form</h1>
+      <div  class= 'd-flex justify-content-center' style={{backgroundColor:' #9ccbd5', padding: '3em', borderRadius: '10px'}}>
+        <Form  onSubmit={handleSubmit} style={{borderRadius: '10px'}} >
+        <h1 className="mb-3 text-center" style={{fontFamily: 'PoppinsMedium', color: '#000000'}}>New Lesson Form</h1>
             <Form.Group>
-                <Form.Text style={{fontSize: '1.2em', fontFamily: 'DMSans', color: '#fafafa'}}>Lesson Title</Form.Text>
-                <Form.Control style={{backgroundColor: 'transparent', fontFamily:'DMSans', color: '#fafafa'}} type="text" value={title} onChange={(e) => setTitle(e.target.value)}  />
+                <Form.Text style={{fontSize: '1.2em', fontFamily: 'DMSans', color: '#000000'}}>Lesson Title</Form.Text>
+                <Form.Control style={{backgroundColor: 'transparent', fontFamily:'DMSans', color: '#000000'}} type="text" value={title} onChange={(e) => setTitle(e.target.value)}  />
             </Form.Group>
             <br />
             <Form.Group>
-                <Form.Text style={{fontSize: '1.2em', fontFamily: 'DMSans', color: '#fafafa'}}>Description</Form.Text>
-                <Form.Control type="text" style={{backgroundColor: 'transparent', fontFamily:'DMSans', color: '#fafafa'}} value={description} as='textarea' onChange={(e) => setDescription(e.target.value)}/>
+                <Form.Text style={{fontSize: '1.2em', fontFamily: 'DMSans', color: '#000000'}}>Description</Form.Text>
+                <Form.Control type="text" style={{backgroundColor: 'transparent', fontFamily:'DMSans', color: '#000000'}} value={description} as='textarea' onChange={(e) => setDescription(e.target.value)}/>
             </Form.Group>
             <br />
             <Form.Group>
-                <Form.Text style={{fontSize: '1.2em', fontFamily: 'DMSans', color: '#fafafa'}}>Duration(minutes)</Form.Text>
-                <Form.Control type="integer" style={{backgroundColor: 'transparent', fontFamily:'DMSans', color: '#fafafa'}} value={duration} onChange={(e) => setDuration(e.target.value)} />
+                <Form.Text style={{fontSize: '1.2em', fontFamily: 'DMSans', color: '#000000'}}>Duration(minutes)</Form.Text>
+                <Form.Control type="integer" style={{backgroundColor: 'transparent', fontFamily:'DMSans', color: '#000000'}} value={duration} onChange={(e) => setDuration(e.target.value)} />
             </Form.Group>
             <br />
             <Form.Group>
-                <Form.Text style={{fontSize: '1.2em', fontFamily: 'DMSans', color: '#fafafa'}}>Content</Form.Text>
-                <Form.Control style={{backgroundColor: 'transparent', color: '#fafafa', fontFamily:'DMSans'}}  value={content} onChange={(e) => setContent(e.target.value)} />
+                <Form.Text style={{fontSize: '1.2em', fontFamily: 'DMSans', color: '#000000'}}>Content</Form.Text>
+                <Form.Control style={{backgroundColor: 'transparent', color: '#000000', fontFamily:'DMSans'}}  value={content} onChange={(e) => setContent(e.target.value)} />
                 {content && (<ReactPlayer url={content} controls={true} width="100%"/>)}
             </Form.Group>
             <br />
-        <Form.Group align='middle'><Button type='submit'>Add Lesson</Button></Form.Group>
+        <Form.Group align='middle'><Button className='border-0' style={{backgroundColor: '#333333'}}type='submit'>Add</Button></Form.Group>
         </Form>
       </div>
   )

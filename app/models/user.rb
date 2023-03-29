@@ -5,6 +5,7 @@ class User < ApplicationRecord
     has_many :courses, through: :user_liked_courses
     has_many :enrolled_courses
     has_many :instructor_courses
+    has_many :courses, through: :instructor_courses
     has_secure_password
  
  
