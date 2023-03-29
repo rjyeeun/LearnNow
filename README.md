@@ -19,21 +19,29 @@ This app provides various learning opportunities for everyone where educators ca
 
 # Backend
 
+
 ## Domain Model (ERD)
 
-  * User has many orders and has many courses through orders.
+  * User has many enrolled courses and has many courses through enrolled courses.
   * User has many reviews and has many courses through reviews.
-  * Course has many orders and has many users through orders.
+  * Course has many enrolled courses and has many users through enrolled courses.
   * Course has many reviews and has many users through reviews.
-  * Order belongs to user and to course.
+  * User has many instructor courses and has many courses through instructor courses.
+  * Course has many instructor courses and has many users through instructor courses;
+  * Enrolled courses belongs to user and to course.
+  * Instructor courses belongs to user and to course.
   * Review belongs to user and to course.
   * Course has many lessons.
   * Lesson belongs to course.
 
-![erb](https://user-images.githubusercontent.com/112120098/225196009-27256dcb-55e4-40b7-a63a-a084457a4d22.png)
+![User](https://user-images.githubusercontent.com/112120098/228405031-e830d4ae-aa12-4c55-9158-44297091ab60.png)
+
 
 ## API endpoints 
-<img width="407" alt="Screenshot 2023-03-14 at 3 42 31 PM" src="https://user-images.githubusercontent.com/112120098/225196499-3a78840c-299c-4437-8187-fac7f1108e7e.png">
+<img width="476" alt="Screenshot 2023-03-28 at 9 58 00 PM" src="https://user-images.githubusercontent.com/112120098/228407581-9f747b71-aac9-4437-9baf-a9320fe82adc.png">
+<img width="479" alt="Screenshot 2023-03-28 at 9 58 08 PM" src="https://user-images.githubusercontent.com/112120098/228407613-62ec1a87-db1d-4af3-b2b4-5fd1df5dac54.png">
+
+
 
 ## Validations ☑️
 
@@ -65,40 +73,43 @@ This app provides various learning opportunities for everyone where educators ca
 <img width="1468" alt="Screenshot 2023-03-14 at 9 55 29 PM" src="https://user-images.githubusercontent.com/112120098/225199327-2d63c50f-3bfb-424f-9d9d-ed000f775b12.png">
 
 ## Client Routes 
-<img width="811" alt="Screenshot 2023-03-15 at 12 19 28 AM" src="https://user-images.githubusercontent.com/112120098/225205566-7229938b-a1b9-4389-9266-c482b657da20.png">
+<img width="725" alt="Screenshot 2023-03-28 at 10 05 03 PM" src="https://user-images.githubusercontent.com/112120098/228407708-c0fd9904-63af-406c-bcb5-069116d8edee.png">
 
-## Component Tree 🌳
+## Component Tree 🌳![Uploading Screenshot 2023-03-28 at 10.05.03 PM.png…]()
+
 ![Component Tree (3)](https://user-images.githubusercontent.com/112120098/228403859-bcf77524-aab0-41ee-83a4-9ded879556c2.png)
 
 
 # Stretch Goals ⬆️
-  * Authenticate/Authorize teachers to create a new course and contents 
-  * Devise Gem
+  * User can create, edit, delete a review
   * Payment system with Stripe
 
 # MVP (Minimum Variable Product)
-  * User(student) can create an account. POST
-  * User(student) can login. GET
-  * User(student) can view profile. GET
-  * User(student) can edit profile (password, profile picture). PATCH
-  * User(student) can deactivate account. DELETE
-  * User(student) can enroll into the course. POST
-  * User(student) can view all enrolled courses. GET
-  * User(student) can view one enrolled course. GET
-  * User(student) can view all lessons belongs to the course. GET
-  * User(student) can view one lesson and study the content. GET
-  * User(student) can leave from one course. DELETE
+  * User can create an account. POST
+  * User can login. GET
+  * User can view dashboard. GET
+  * User can edit lessons. PATCH
+  * User can delete lessons. DELETE
+  * User can add lessons. POST
+  * User can deactivate account. DELETE
+  * User can enroll into the course. POST
+  * User can view all enrolled courses. GET
+  * User can view one enrolled course. GET
+  * User can view all lessons belongs to the course. GET
+  * User can view one lesson and study the content. GET
+  * User can leave from one course. DELETE
 
 # Technologies 👩‍💻
-  * Ruby
-  * Ruby on Rails
-  * ActiveRecord
+  * Ruby on Rails (backend)
+  * ActiveRecord (backend)
+  * ReactPlayer (frontend)
+  * bcrypt (backend)
+  * Boostrap (css)
   * ActiveSerializer
-  * React
-  * Javascript
-  * Devise (stretch goal)
-  * money-rail/ stripe payment (stretch goal)
-  * Bootstrap (CSS undecided)
+  * React (frontend)
+  * Javascript (frontend)
+  * money-rail / stripe payment (stretch goal)
+ 
 
 
 
