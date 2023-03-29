@@ -4,6 +4,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import {Button , Card, Form} from 'react-bootstrap';
 import ReviewCard from './ReviewCard'
 import NewReviewForm from './NewReviewForm';
+import {MdOutlineRateReview} from 'react-icons/md'
 
 export default function EnrolledCourseDetail({currentUser}) {
   const [course, setCourse] = useState({title: '', description: '', lessons: [], reviews: [], instructor_id: ''});
@@ -45,11 +46,11 @@ const {lessons, title, description, reviews, instructor_id} = course
     <div>
             <Card border="dark">
                 <Card.Body>
-                    <Card.Title align="middle">{title}</Card.Title>
+                    <Card.Title align="middle" style={{fontFamily: 'DMSansBold', fontSize: '1.5em'}}>{title}</Card.Title>
                      {lessonArray.length === 0 ? <Card.Text align='middle'>There is no registered lesson for this course.</Card.Text> : <Card.Text>{lessonArray}</Card.Text>}
-                    <Card.Title align="middle">Review</Card.Title>
+                    <Card.Title align="middle" style={{fontFamily: 'DMSansBold', fontSize: '1.5em', backgroundColor: '#ffc107'}}>Review <MdOutlineRateReview/> </Card.Title>
                     {reviews.length === 0 ? (
-                    <Card.Body align="middle">Be the first to share your thoughts! This course doesn't have any reviews yet, but we'd love to hear what you think. Leave a review and help others discover the best courses!</Card.Body>
+                    <Card.Body align="middle" style={{fontFamily: 'DMSansRegular'}}>Be the first to share your thoughts! <br/> This course doesn't have any reviews yet, but we'd love to hear what you think. <br /> Leave a review and help others discover the best courses!</Card.Body>
                     ) : (
                     reviews.map((review) => (
                     <ReviewCard key={review.id} review={review} course={course} currentUser={currentUser} onDeleteReview={onDeleteReview}/>

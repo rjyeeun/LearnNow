@@ -7,6 +7,8 @@ import {BiTime} from 'react-icons/bi'
 import EditLessonForm from './EditLessonForm';
 import NewLessonForm from './NewLessonForm';
 import { useNavigate } from 'react-router-dom';
+import {TbEdit} from 'react-icons/tb'
+import {RiDeleteBin5Line} from 'react-icons/ri';
 
 function MyCreatedLesson({lesson, index, onEditLesson, onDeleteLesson}) {
     const [editLessonForm, setEditLessonForm] = useState(false)
@@ -29,9 +31,9 @@ function MyCreatedLesson({lesson, index, onEditLesson, onDeleteLesson}) {
 
     }
 
-    const editLessonButton = <Button onClick = {handleEditLesson} variant="secondary"> Edit Lesson </Button>
-    const addLessonButton = <Button style={{ position:'center'  }} onClick = {handleLessonButton} variant="secondary"> <AiOutlineFileAdd></AiOutlineFileAdd> Add a Lesson </Button>
-    const deleteLessonButton = <Button onClick={handleDelete}>Delete</Button>
+    const editLessonButton = <Button onClick = {handleEditLesson} variant="secondary" style={{border: 'none', fontFamily: 'poppinsMedium'}}> <TbEdit/> Edit Lesson </Button>
+    const addLessonButton = <Button style={{ position:'center', backgroundColor: '#195946', border: 'none', fontFamily: 'poppinsMedium'  }} onClick = {handleLessonButton} variant="secondary"> <AiOutlineFileAdd></AiOutlineFileAdd> Add a Lesson </Button>
+    const deleteLessonButton = <Button style={{backgroundColor: '#f44336', border: 'none', fontFamily: 'poppinsMedium'}}onClick={handleDelete}> <RiDeleteBin5Line/> Delete</Button>
 
 
   return (
@@ -48,8 +50,9 @@ function MyCreatedLesson({lesson, index, onEditLesson, onDeleteLesson}) {
                 </Accordion.Body>
                 </Accordion.Item>
             </Accordion>
-                {editLessonButton}  {addLessonButton} {deleteLessonButton} 
-                <br/> <br/> 
+                <div>
+                {editLessonButton}  {addLessonButton} {deleteLessonButton}
+                </div>
                 {editLessonForm ? <EditLessonForm lesson={lesson} onEditLesson={onEditLesson}/> : ''}
                 <br />
                 {viewLessonForm ? <NewLessonForm/> : ''}

@@ -80,7 +80,9 @@ function MyCourseDetail() {
       ))
   return (
     <Card border='dark'>
-        <Card.Body>
+        <br  />
+        <Card.Title align="middle" style={{fontFamily: 'poppinsBold'}}>{title}</Card.Title>
+        <Card.Body className='enrolledLesson'>
             {lessonArray}
         </Card.Body>
     </Card>
