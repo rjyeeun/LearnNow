@@ -68,7 +68,8 @@ This app provides various learning opportunities for everyone where educators ca
 <img width="811" alt="Screenshot 2023-03-15 at 12 19 28 AM" src="https://user-images.githubusercontent.com/112120098/225205566-7229938b-a1b9-4389-9266-c482b657da20.png">
 
 ## Component Tree 🌳
-![Component Tree (2)](https://user-images.githubusercontent.com/112120098/225199649-b5dcd988-e04c-40ab-b9a7-138642d6bafe.png)
+![Component Tree (3)](https://user-images.githubusercontent.com/112120098/228403859-bcf77524-aab0-41ee-83a4-9ded879556c2.png)
+
 
 # Stretch Goals ⬆️
   * Authenticate/Authorize teachers to create a new course and contents 
