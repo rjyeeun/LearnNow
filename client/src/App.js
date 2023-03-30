@@ -20,7 +20,7 @@ function App() {
   const [courses, setCourses] = useState([]);//all the  courses
   const [searchCourse, setSearchCourse] = useState(""); //searched courses on home page
   const [myCourses, setMyCourses] = useState([])
-  
+  const [category, setCategory] = useState("All")
 
 
   //get all courses from the db
@@ -91,6 +91,11 @@ console.log(myCourses)
     )
   )
 
+  const filteredCategory = filteredCourses.filter(course => {
+    if (category === 'All') return true
+    return course.category === category
+
+  })
   //deletes course current user created
   // const onDeleteCourse = (id) => {
   //   const updatedCourse = courses.filter((course) => course.id !== id)
@@ -104,15 +109,17 @@ console.log(myCourses)
   return (
     <>
       <Header 
-      courses={filteredCourses}
+      courses={filteredCategory}
       changeSearch={changeSearch}
       searchCourse={searchCourse} 
       currentUser={currentUser}
-      fetchCoursesByCategory={fetchCoursesByCategory}/>
+      category={category}
+      setCategory={setCategory}/>
+      
       <Routes>
         <Route exact path="/" 
          element = { <Home
-         courses={filteredCourses}
+         courses={filteredCategory}
          searchCourse={searchCourse}/> } />
         <Route exact path="/signup"
           element= {<Signup />} />

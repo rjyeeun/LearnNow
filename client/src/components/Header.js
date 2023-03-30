@@ -8,10 +8,11 @@ import Image from 'react-bootstrap/Image'
 import { NavbarBrand, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-export default function Header({currentUser, changeSearch, searchCourse, courses, fetchCoursesByCategory}) {
+export default function Header({currentUser, changeSearch, searchCourse, courses, category, setCategory}) {
     const [showMenu, setShowMenu] = useState(false)
     const [categories, setCategories] = useState([])
 
+    console.log(categories)
     const toggleMenu = () => {
         setShowMenu(!showMenu);
       }
@@ -32,7 +33,7 @@ export default function Header({currentUser, changeSearch, searchCourse, courses
 
     useEffect(() => {
         // Group the courses by category and store the unique categories in the categories state
-        const uniqueCategories = [...new Set(courses.map(course => course.category))];
+        const uniqueCategories = courses.map(course => course.category);
         setCategories(uniqueCategories);
       }, [courses]);
 
@@ -49,11 +50,23 @@ export default function Header({currentUser, changeSearch, searchCourse, courses
              <CourseSearch changeSearch={changeSearch}
                 searchCourse={searchCourse} />
              <Container align='right' style={{marginRight: '40px'}}>
-             <NavDropdown title="CATEGORIES" onMouseEnter={toggleMenu} onMouseLeave={toggleMenu} show={showMenu} style={{'color': '#cecece'}} id="basic-nav-dropdown">
-             {categories.map(category => (
-            <NavDropdown.Item key={category} onClick={() => fetchCoursesByCategory(category)}>{category}</NavDropdown.Item>
-          ))}
-        </NavDropdown>
+             {/* <NavDropdown title="CATEGORIES" onMouseEnter={toggleMenu} onMouseLeave={toggleMenu} show={showMenu} style={{'color': '#cecece'}} id="basic-nav-dropdown"> */}
+            
+              <NavDropdown style={{color: '#cecece'}}title='CATEGORY' onSelect={e => setCategory(e)}> 
+                <NavDropdown.Item eventKey="Arts and Design">Arts and Design</NavDropdown.Item>
+                <NavDropdown.Item eventKey="Business and Entrepreneurship">Business and Entrepreneurship</NavDropdown.Item>
+                <NavDropdown.Item eventKey="Education and Teaching">Education and Teaching</NavDropdown.Item>
+                <NavDropdown.Item eventKey="Environmental Sustainability">Environmental Sustainability</NavDropdown.Item>
+                <NavDropdown.Item eventKey="Health and Wellness">Health and Wellness</NavDropdown.Item>
+                <NavDropdown.Item eventKey="Language">Language</NavDropdown.Item>
+                <NavDropdown.Item eventKey="Personal development and growth">Personal development and growth</NavDropdown.Item>
+                <NavDropdown.Item eventKey="Science and Math">Science and Math</NavDropdown.Item>
+                <NavDropdown.Item eventKey="Social Sciences and Humanities">Social Sciences and Humanities</NavDropdown.Item>
+                <NavDropdown.Item eventKey="Technology and IT">Technology and IT</NavDropdown.Item>
+              </NavDropdown>
+            {/* <NavDropdown.Item key={category} onClick={() => fetchCoursesByCategory(category)}>{category}</NavDropdown.Item> */}
+       
+        {/* </NavDropdown> */}
                         {currentUser.username ? createcourse_option : null}
                         {currentUser.username ?  dashboard_option : login_option}
                         {currentUser.username ? null : signup_option}
