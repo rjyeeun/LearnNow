@@ -76,7 +76,7 @@ course8 = (user_id = 4
 )
 
 course9 = (user_id = 9
-    course = Course.create(title: "Introduction to Graphic Design", description: "Learn the fundamentals of graphic design, including color theory, typography, and layout.", category: "Arts and design", price: 29.99, instructor_id: user_id, difficulty: "Beginner", thumbnail_img: "https://i.ytimg.com/vi/UHmsKEQLLDk/maxresdefault.jpg")
+    course = Course.create(title: "Introduction to Graphic Design", description: "Learn the fundamentals of graphic design, including color theory, typography, and layout.", category: "Arts and Design", price: 29.99, instructor_id: user_id, difficulty: "Beginner", thumbnail_img: "https://i.ytimg.com/vi/UHmsKEQLLDk/maxresdefault.jpg")
     InstructorCourse.create(user_id: user_id, course_id: course.id)
     Review.create(user_id: 14, course_id: course.id, content: "A very informative course that covers all the basics of graphic design. The instructor provided helpful feedback and suggestions.", rating: 5)
     EnrolledCourse.create(user_id: 14, course_id: course.id, enrolled: true)
@@ -90,28 +90,28 @@ course10 = (user_id = 1
     )
 
 course11 = (user_id = 1
-    course = Course.create(title: "Introduction to Entrepreneurship", description: "Learn the basics of entrepreneurship, including idea generation, business planning, and funding.", category: "Business and entrepreneurship", price: 19.99, instructor_id: user_id, difficulty: "Beginner", thumbnail_img: "https://i1.rgstatic.net/publication/360625961_INTRODUCTION_TO_ENTREPRENEURSHIP/links/6282519890841d5155d7dcc5/largepreview.png")
+    course = Course.create(title: "Introduction to Entrepreneurship", description: "Learn the basics of entrepreneurship, including idea generation, business planning, and funding.", category: "Business and Entrepreneurship", price: 19.99, instructor_id: user_id, difficulty: "Beginner", thumbnail_img: "https://i1.rgstatic.net/publication/360625961_INTRODUCTION_TO_ENTREPRENEURSHIP/links/6282519890841d5155d7dcc5/largepreview.png")
     InstructorCourse.create(user_id: user_id, course_id: course.id)
     Review.create(user_id: 2, course_id: course.id, content: "This course was extremely helpful in getting me started on my entrepreneurial journey. The instructor was knowledgeable and engaging.", rating: 4.5)
     EnrolledCourse.create(user_id: 2, course_id: course.id, enrolled: true)
     )
 
 course12 = (user_id = 1
-    course = Course.create(title: "Marketing Strategies for Small Businesses", description: "Learn how to create effective marketing campaigns for your small business, including social media marketing, email marketing, and SEO.", category: "Business and entrepreneurship", price: 29.99, instructor_id: user_id, difficulty: "Intermediate", thumbnail_img: "https://www.freshbooks.com/wp-content/uploads/2022/04/advertise-my-small-business-5.jpg")
+    course = Course.create(title: "Marketing Strategies for Small Businesses", description: "Learn how to create effective marketing campaigns for your small business, including social media marketing, email marketing, and SEO.", category: "Business and Entrepreneurship", price: 29.99, instructor_id: user_id, difficulty: "Intermediate", thumbnail_img: "https://www.freshbooks.com/wp-content/uploads/2022/04/advertise-my-small-business-5.jpg")
     InstructorCourse.create(user_id: user_id, course_id: course.id)
     Review.create(user_id: 3, course_id: course.id, content: "This course provided a lot of valuable insights into marketing for small businesses. The instructor was knowledgeable and provided practical advice.", rating: 4.2)
     EnrolledCourse.create(user_id: 3, course_id: course.id, enrolled: true)
     )    
 
 course13 = (user_id = 5
-    course = Course.create(title: "Teaching English as a Second Language", description: "Learn how to teach English to non-native speakers, including lesson planning, grammar instruction, and classroom management.", category: "Education and teaching", price: 24.99, instructor_id: user_id, difficulty: "Intermediate", thumbnail_img: "https://d5pa980nnvb18.cloudfront.net/images/_660xAUTO_crop_center-center_none/esl.jpg")
+    course = Course.create(title: "Teaching English as a Second Language", description: "Learn how to teach English to non-native speakers, including lesson planning, grammar instruction, and classroom management.", category: "Education and Teaching", price: 24.99, instructor_id: user_id, difficulty: "Intermediate", thumbnail_img: "https://d5pa980nnvb18.cloudfront.net/images/_660xAUTO_crop_center-center_none/esl.jpg")
     InstructorCourse.create(user_id: user_id, course_id: course.id)
     Review.create(user_id: 4, course_id: course.id, content: "This course was very informative and helpful for teaching English as a second language. The instructor was engaging and provided a lot of practical tips.", rating: 4.7)
     EnrolledCourse.create(user_id: 4, course_id: course.id, enrolled: true)
     )
         
 course14 = (user_id = 7
-    course = Course.create(title: "Introduction to Online Teaching", description: "Learn the basics of teaching online, including how to create engaging content, use online teaching tools, and manage student interactions.", category: "Education and teaching", price: 29.99, instructor_id: user_id, difficulty: "Intermediate", thumbnail_img: "https://www.lbcc.edu/sites/main/files/imagecache/lightbox/main-images/intro-online.png")
+    course = Course.create(title: "Introduction to Online Teaching", description: "Learn the basics of teaching online, including how to create engaging content, use online teaching tools, and manage student interactions.", category: "Education and Teaching", price: 29.99, instructor_id: user_id, difficulty: "Intermediate", thumbnail_img: "https://www.lbcc.edu/sites/main/files/imagecache/lightbox/main-images/intro-online.png")
     InstructorCourse.create(user_id: user_id, course_id: course.id)
     Review.create(user_id: 5, course_id: course.id, content: "This course provided a lot of helpful tips and best practices for online teaching. The instructor was knowledgeable and provided practical examples.", rating: 4.3)
     EnrolledCourse.create(user_id: 5, course_id: course.id, enrolled: true)
@@ -132,7 +132,7 @@ EnrolledCourse.create(user_id: 10, course_id: course.id, enrolled: true)
 )
 
 course17 = (user_id = 4
-course = Course.create(title: "Introduction to Psychology", description: "Learn about the science of human behavior, including cognitive processes, emotions, and social behavior.", category: "Social sciences and humanities", price: 49.99, instructor_id: user_id, difficulty: "Intermediate", thumbnail_img: "https://debrabell.com/wp-content/uploads/2017/02/IntroToPsychology-1200x628-1.png")
+course = Course.create(title: "Introduction to Psychology", description: "Learn about the science of human behavior, including cognitive processes, emotions, and social behavior.", category: "Social Sciences and Humanities", price: 49.99, instructor_id: user_id, difficulty: "Intermediate", thumbnail_img: "https://debrabell.com/wp-content/uploads/2017/02/IntroToPsychology-1200x628-1.png")
 InstructorCourse.create(user_id: user_id, course_id: course.id)
 Review.create(user_id: 10, course_id: course.id, content: "This was a great introduction to psychology. The instructor explained concepts in an easy-to-understand way and provided engaging examples.", rating: 4.5)
 Review.create(user_id: 9, course_id: course.id, content: "I really enjoyed this course and learned a lot about the science of human behavior. The instructor was very knowledgeable and engaging.", rating: 4.5)
@@ -141,7 +141,7 @@ EnrolledCourse.create(user_id: 9, course_id: course.id, enrolled: true)
 )
 
 course18 = (user_id = 4
-course = Course.create(title: "Introduction to Philosophy", description: "Explore fundamental questions about existence, knowledge, and ethics in this introductory philosophy course.", category: "Social sciences and humanities", price: 39.99, instructor_id: user_id, difficulty: "Intermediate", thumbnail_img: "https://www.uwinnipeg.ca/philosophy/images/phil-homepage-sm.jpg")
+course = Course.create(title: "Introduction to Philosophy", description: "Explore fundamental questions about existence, knowledge, and ethics in this introductory philosophy course.", category: "Social Sciences and Humanities", price: 39.99, instructor_id: user_id, difficulty: "Intermediate", thumbnail_img: "https://www.uwinnipeg.ca/philosophy/images/phil-homepage-sm.jpg")
 InstructorCourse.create(user_id: user_id, course_id: course.id)
 Review.create(user_id: 8, course_id: course.id, content: "This was an excellent introduction to philosophy. The instructor provided clear explanations and thought-provoking examples.", rating: 4.5)
 Review.create(user_id: 9, course_id: course.id, content: "I really enjoyed this course and learned a lot about the fundamental questions of existence, knowledge, and ethics. The instructor was very engaging.", rating: 4)

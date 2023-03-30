@@ -106,8 +106,8 @@ padding: '20px'}} > <x-large style={{color: '#f5f5f5', fontFamily: 'poppinsBold'
   <option value="Education and Teaching">Education and Teaching</option>
   <option value="Science and Math">Science and Math</option>
   <option value="Social Sciences and Humanities">Social Sciences and Humanities</option>
-  <option value="Environmental sustainability">Environmental sustainability</option>
-  <option value="Art and Design">Art and Design</option>
+  <option value="Environmental Sustainability">Environmental Sustainability</option>
+  <option value="Arts and Design">Arts and Design</option>
   <option value="Business and Entrepreneurship">Business and Entrepreneurship</option>
 </Form.Control>
 <br />
