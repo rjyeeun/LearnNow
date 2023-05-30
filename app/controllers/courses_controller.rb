@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
     
-    skip_before_action :authorized, only: [:index, :show]
+    skip_before_action :authorized, only: [:featured, :index, :show]
     
     def featured
         featured_courses = Course.where(featured: true)

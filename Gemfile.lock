@@ -159,6 +159,7 @@ GEM
     reline (0.3.2)
       io-console (~> 0.5)
     spring (4.1.1)
+    stripe (8.5.0)
     thor (1.2.1)
     timeout (0.3.2)
     tzinfo (2.0.6)
@@ -185,6 +186,7 @@ DEPENDENCIES
   rack-cors
   rails (~> 7.0.4, >= 7.0.4.3)
   spring
+  stripe (~> 8.5)
   tzinfo-data
   whenever
 

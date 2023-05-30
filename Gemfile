@@ -54,3 +54,4 @@ gem 'hirb', '~> 0.7.3'
 gem 'whenever', require: false
 
 gem 'byebug'
+gem "stripe", "~> 8.5"
