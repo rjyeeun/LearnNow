@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/LearnNow/static/css/main.880ef8ff.css",
+    "main.js": "/LearnNow/static/js/main.fde7fa99.js",
+    "static/media/fa-solid-900.ttf": "/LearnNow/static/media/fa-solid-900.2877d54f94f30c5d563c.ttf",
+    "static/media/fa-brands-400.ttf": "/LearnNow/static/media/fa-brands-400.13e40630e5866f777de8.ttf",
+    "static/media/poppinsRegular.ttf": "/LearnNow/static/media/poppinsRegular.35d26b781dc5fda684cc.ttf",
+    "static/media/poppinsMedium.ttf": "/LearnNow/static/media/poppinsMedium.673ed42382ab264e0bf5.ttf",
+    "static/media/poppinsBold.ttf": "/LearnNow/static/media/poppinsBold.cdb29a5d7ccf57ff05a3.ttf",
+    "static/media/fa-solid-900.woff2": "/LearnNow/static/media/fa-solid-900.bdb9e23299f9d1320a8b.woff2",
+    "static/media/fa-brands-400.woff2": "/LearnNow/static/media/fa-brands-400.7be2266f1be21c44ecd4.woff2",
+    "static/media/DMSansRegular.ttf": "/LearnNow/static/media/DMSansRegular.4ee96395e07a04577aab.ttf",
+    "static/media/DMSansBold.ttf": "/LearnNow/static/media/DMSansBold.c423ce2dc1d85bc50799.ttf",
+    "static/media/fa-regular-400.ttf": "/LearnNow/static/media/fa-regular-400.146404900f7550a9719d.ttf",
+    "static/media/fa-regular-400.woff2": "/LearnNow/static/media/fa-regular-400.8bedd7cfa43a6c358cdd.woff2",
+    "static/media/fa-v4compatibility.ttf": "/LearnNow/static/media/fa-v4compatibility.6c0a7b774ffa1cf0a059.ttf",
+    "static/media/fa-v4compatibility.woff2": "/LearnNow/static/media/fa-v4compatibility.497d535001197a9c5b38.woff2",
+    "static/media/slick.svg": "/LearnNow/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/LearnNow/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/LearnNow/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/LearnNow/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/LearnNow/index.html",
+    "main.880ef8ff.css.map": "/LearnNow/static/css/main.880ef8ff.css.map",
+    "main.fde7fa99.js.map": "/LearnNow/static/js/main.fde7fa99.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.880ef8ff.css",
+    "static/js/main.fde7fa99.js"
+  ]
+}
