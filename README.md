@@ -1,3 +1,23 @@
+# LearNow Preview
+
+## Homepage
+![Screenshot 2023-04-19 at 4 29 57 PM](https://user-images.githubusercontent.com/112120098/233193250-58b1f084-056f-4013-895e-a4af5c0768a2.png)
+
+## LogIn
+![Screenshot 2023-04-19 at 4 33 56 PM](https://user-images.githubusercontent.com/112120098/233194097-16ee7ee6-7692-40be-8fc3-e8bd7676ed21.png)
+
+## SignUp
+![Screenshot 2023-04-19 at 4 34 13 PM](https://user-images.githubusercontent.com/112120098/233194075-108678d1-5363-4e83-84bd-62e3f9be429b.png)
+
+## User Dashboard
+![Screenshot 2023-04-19 at 4 32 55 PM](https://user-images.githubusercontent.com/112120098/233193882-f9a0ff9b-708a-446f-98f6-f0ec1d346d29.png)
+
+## New Course Form
+![Screenshot 2023-04-19 at 4 33 41 PM](https://user-images.githubusercontent.com/112120098/233194028-a1b42751-ac6d-42c7-97fe-6aef3c1216dc.png)
+
+## Study Lessons/ Leave Comments
+![Screenshot 2023-04-19 at 4 33 22 PM](https://user-images.githubusercontent.com/112120098/233194011-5ddcd0bb-fe4f-4867-8bd6-df9da5bdac22.png)
+
 # Description
 
 This is an online learning platform that connects students with educators from all around the world. 
@@ -75,7 +95,7 @@ This app provides various learning opportunities for everyone where educators ca
 ## Client Routes 
 <img width="725" alt="Screenshot 2023-03-28 at 10 05 03 PM" src="https://user-images.githubusercontent.com/112120098/228407708-c0fd9904-63af-406c-bcb5-069116d8edee.png">
 
-## Component Tree 🌳![Uploading Screenshot 2023-03-28 at 10.05.03 PM.png…]()
+## Component Tree 🌳
 
 ![Component Tree (3)](https://user-images.githubusercontent.com/112120098/228403859-bcf77524-aab0-41ee-83a4-9ded879556c2.png)
 
