@@ -42,6 +42,7 @@ function App() {
 
 //get current user's created courses
 useEffect(() => {
+  if(!currentUser || !currentUser.id) return;
   fetch(`/api/users/${currentUser.id}/instructor_courses`)
   .then(res => {
     if(res.ok) {
