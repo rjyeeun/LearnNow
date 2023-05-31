@@ -94,6 +94,7 @@ export default function CourseDetails({onDeleteCourse, courses, setCourses, curr
     return (
     <>
         <div className="d-flex justify-content-center" style={{marginTop: '5%', color: '#0c3954'}}>
+            <pre>{JSON.stringify({enrolledCourses, errors, reviewLists}, null, 2)}</pre>
             <Card border="dark">
                 <Card.Body>
                     <Card.Title align="middle" style={{fontFamily: 'poppinsBold'}}>{title}</Card.Title>
