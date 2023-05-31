@@ -21,7 +21,6 @@ function MyCourseDetail() {
                 setCourse(data);
                 });
             } else {
-                console.log("error");
                 res.json().then(data => setErrors(data.error));
             }
         });
@@ -41,7 +40,6 @@ function MyCourseDetail() {
                 setLessonLists(data);
                 });
             } else {
-                console.log("error");
                 res.json().then(data => setErrors(data.error));
             }
         });

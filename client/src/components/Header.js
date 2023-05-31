@@ -11,7 +11,6 @@ export default function Header({currentUser, changeSearch, searchCourse, courses
     const [showMenu, setShowMenu] = useState(false)
     const [categories, setCategories] = useState([])
 
-    console.log(categories)
     const toggleMenu = () => {
         setShowMenu(!showMenu);
       }

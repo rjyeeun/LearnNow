@@ -25,7 +25,6 @@ export default function CourseDetails({onDeleteCourse, courses, setCourses, curr
                 setCourse(data);
                 });
             } else {
-                console.log("error");
                 res.json().then(data => setErrors(data.error));
             }
         });

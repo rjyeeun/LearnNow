@@ -22,13 +22,10 @@ export default function NewLessonForm({courses, setCourses}) {
             setCourse(data);
             });
         } else {
-            console.log("error");
             res.json().then(data => setErrors(data.error));
         }
     });
 }, [id]);
-
-console.log(course.id)
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -41,7 +38,6 @@ console.log(course.id)
         course_id: course.id
     }
   
-    console.log(newLesson)
   
   try {
     fetch(`/api/courses/${course.id}/lessons`, {

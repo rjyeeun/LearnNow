@@ -37,10 +37,6 @@ export default function Signup() {
    .catch(error => console.log(error));
  }
 
-
- console.log(errors)
-
-
  if(errors) {return <div className="d-flex justify-content-center align-items-center vh-100">
      <Form className="p-5 rounded shadow-lg" style={{backgroundColor:'#9ccbd5'}}>
        <h1 className="mb-3 text-center" style={{fontFamily: 'PoppinsMedium'}}>Create New Account</h1>

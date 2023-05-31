@@ -60,7 +60,6 @@ useEffect(() => {
   })
 },[])
 
-console.log(myCourses)
  
   function handleUserLogin(user) {
     setCurrentUser(user)

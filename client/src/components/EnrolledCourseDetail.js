@@ -21,7 +21,6 @@ export default function EnrolledCourseDetail({currentUser}) {
             setCourse(data);
             });
         } else {
-            console.log("error");
             res.json().then(data => setErrors(data.error));
         }
     });

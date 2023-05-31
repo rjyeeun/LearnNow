@@ -39,9 +39,6 @@ function handleSubmit(e) {
       instructor_id: currentUser.id
   }
 
-  console.log(newCourse)
-
-
   fetch("/api/courses", {
       method: "POST",
       headers: {
