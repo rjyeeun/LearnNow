@@ -78,6 +78,7 @@ function MyCourseDetail() {
       ))
   return (
     <Card border='dark'>
+        <pre>{JSON.stringify({errors, lessonLists, currentLesson, description, reviews, instructor_id},null, 2)}</pre>
         <br  />
         <Card.Title align="middle" style={{fontFamily: 'poppinsBold'}}>{title}</Card.Title>
         <Card.Body className='enrolledLesson'>
