@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
-import MyCreatedLesson from './MyCreatedLesson';
 import {RiDeleteBack2Line} from 'react-icons/ri'
 
 function MyCreatedCourseCard({ myCourse, currentUser, myCourses, setMyCourses, setCourses, onDeleteCourse }) {
