@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import EnrolledCourseCard from './EnrolledCourseCard';
 import MyCreatedCourseCard from './MyCreatedCourseCard';
-import { Button, Card, Col, Container, Row } from 'react-bootstrap';
+import { Card, Col, Container, Row } from 'react-bootstrap';
 import { SlEmotsmile } from 'react-icons/sl';
 
 export default function UserDashboard({ currentUser, courses, setCourses }) {
