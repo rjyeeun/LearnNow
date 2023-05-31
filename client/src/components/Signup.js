@@ -141,7 +141,7 @@ export default function Signup() {
          />
        </Form.Group>
        <Form.Group align='middle'>
-       <Button variant="dark" type="submit" onClick={handleSignUp} block>
+       <Button variant="dark" type="submit" onClick={handleSignUp}>
          JOIN
        </Button>
        </Form.Group>
