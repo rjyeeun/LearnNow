@@ -14,7 +14,6 @@ import CourseDetails from './components/CourseDetails';
 import MyCourseDetail from './components/MyCourseDetail';
 
 function App() {
-  const [users, setUsers] = useState([]);
   const [currentUser, setCurrentUser] = useState({enrolled_courses: [], instructor_courses: []});
   const [courses, setCourses] = useState([]);//all the  courses
   const [searchCourse, setSearchCourse] = useState(""); //searched courses on home page
@@ -40,15 +39,6 @@ function App() {
     })
   },[])
 
-  //get all users
-  useEffect(()=> {
-    fetch("/api/users")
-    .then(r => r.json())
-    .then(data => {
-      setUsers(data)
-    })
-  }, [])
-
 
 //get current user's created courses
 useEffect(() => {
@@ -58,23 +48,11 @@ useEffect(() => {
       res.json().then(data => setMyCourses(data));
     }
   })
-},[])
+},[currentUser])
 
  
   function handleUserLogin(user) {
     setCurrentUser(user)
-  }
-
-   //deactivate user from db
-    const onDeleteUser = (id) => {
-      const updatedUser = users.filter((currentUser) => currentUser.id !== id)
-      setCurrentUser(updatedUser)
-    }
-
-      //edit user profile
-    const onEditUserProfile = (modifiedUser) => {
-      const updateUser = users.map(user => currentUser.id === user.id ? modifiedUser : user)
-      setCurrentUser(updateUser)
   }
 
   //change value on search bar
@@ -94,15 +72,6 @@ useEffect(() => {
     return course.category === category
 
   })
-  //deletes course current user created
-  // const onDeleteCourse = (id) => {
-  //   const updatedCourse = courses.filter((course) => course.id !== id)
-  //   setCourses(updatedCourse)
-  // }
-
-  const fetchCoursesByCategory = (category) => {
-    const filteredCourses = courses.filter(course => course.category === category);
-    setCourses(filteredCourses);}
 
   return (
     <>
