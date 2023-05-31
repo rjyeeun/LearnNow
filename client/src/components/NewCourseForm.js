@@ -84,7 +84,7 @@ padding: '20px'}} > <x-large style={{color: '#f5f5f5', fontFamily: 'poppinsBold'
     <br />
     <Form.Group>
         <Form.Text style={{fontSize: '1.2em', fontFamily: 'DMSans', color: '#fafafa'}}>Description</Form.Text>
-        <Form.Control style={{backgroundColor: 'transparent', fontFamily:'DMSans', color: '#fafafa'}} as="textarea" controlId="htmlFor" placeholder='Please provide an overview of what the course covers' value={description} onChange={(e) => setDescription(e.target.value)} />
+        <Form.Control style={{backgroundColor: 'transparent', fontFamily:'DMSans', color: '#fafafa'}} as="textarea" placeholder='Please provide an overview of what the course covers' value={description} onChange={(e) => setDescription(e.target.value)} />
     </Form.Group>
     <br />
     <Form.Group>
@@ -164,7 +164,7 @@ else {
             <br />
             <Form.Group>
                 <Form.Text style={{fontSize: '1.2em', fontFamily: 'DMSans', color: '#fafafa'}}>Description</Form.Text>
-                <Form.Control style={{backgroundColor: 'transparent', fontFamily:'DMSans', color: '#fafafa'}} as="textarea" controlId="htmlFor" placeholder='Please provide an overview of what the course covers' value={description} onChange={(e) => setDescription(e.target.value)} />
+                <Form.Control style={{backgroundColor: 'transparent', fontFamily:'DMSans', color: '#fafafa'}} as="textarea" placeholder='Please provide an overview of what the course covers' value={description} onChange={(e) => setDescription(e.target.value)} />
             </Form.Group>
             <br />
             <Form.Group>
