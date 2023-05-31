@@ -1,18 +1,18 @@
 databases:
-  - name: learNow
-    databaseName: learNow
-    user: learNow
+  - name: learnow
+    databaseName: learnow
+    user: learnow
 
 services:
   - type: web
-    name: learNow
+    name: learnow
     env: ruby
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: learNow
+          name: learnow
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
