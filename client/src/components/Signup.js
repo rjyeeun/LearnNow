@@ -84,7 +84,7 @@ export default function Signup() {
        <small className="text-muted">{errors}</small>
        <br />
        <Form.Group align='middle'>
-       <Button variant="dark" type="submit" onClick={handleSignUp} block>
+       <Button variant="dark" type="submit" onClick={handleSignUp}>
          JOIN
        </Button>
        </Form.Group>
