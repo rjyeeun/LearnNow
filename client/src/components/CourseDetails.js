@@ -1,11 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import ReviewCard from './ReviewCard'
 import {useNavigate, useParams} from "react-router-dom";
-import {Button , Card, Form} from 'react-bootstrap';
+import {Button , Card } from 'react-bootstrap';
 import LessonList from './LessonList'
-import {AiOutlineFileAdd} from 'react-icons/ai'
 import {MdOutlineRateReview} from 'react-icons/md'
-import NewLessonForm from './NewLessonForm'
 
 export default function CourseDetails({onDeleteCourse, courses, setCourses, currentUser, myCourses, setMyCourses}) {
     const [course, setCourse] = useState({title: '', description: '', lessons: [], reviews: [], instructor_id: ''});
