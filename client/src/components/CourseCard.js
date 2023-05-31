@@ -33,7 +33,7 @@ export default function CourseCard({course}) {
         fetch(`/api/users/${course.instructor_id}`)
         .then(r => r.json())
         .then(data => setCourseCreator(data.name))
-    }, [])
+    }, [course])
     //get total number of reviews
     let review_count = course.reviews.map((review) => review)
     const review_count_total = review_count.length
