@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import {AiOutlineLike} from 'react-icons/ai'
-import {MdOutlineRateReview} from 'react-icons/md'
 import { FaStar } from 'react-icons/fa';
-import { Card, Button } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import {Link} from 'react-router-dom'
 import CardGroup from 'react-bootstrap/CardGroup';
 import {BiTime} from 'react-icons/bi'
 import imagePlaceholder from './imagePlaceholder.png'
 
 export default function CourseCard({course}) {
-    const {id, title, category, description, lessons, difficulty, price, thumbnail_img } = course
+    const {id, title, difficulty, price, thumbnail_img } = course
 
     const [totalDuration, setTotalDuration] = useState(0);
 
