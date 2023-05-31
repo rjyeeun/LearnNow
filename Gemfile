@@ -13,6 +13,9 @@ gem "pg", "~> 1.1"
 gem "puma", "~> 5.0"
 
 gem "net-http"
+gem "net-smtp"
+gem "net-imap"
+gem "uri", "0.10.0"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"

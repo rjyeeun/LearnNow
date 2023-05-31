@@ -170,7 +170,7 @@ GEM
     timeout (0.3.2)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    uri (0.12.1)
+    uri (0.10.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -191,6 +191,8 @@ DEPENDENCIES
   debug
   hirb (~> 0.7.3)
   net-http
+  net-imap
+  net-smtp
   pg (~> 1.1)
   puma (~> 5.0)
   rack-cors
@@ -198,6 +200,7 @@ DEPENDENCIES
   spring
   stripe (~> 8.5)
   tzinfo-data
+  uri (= 0.10.0)
   whenever
 
 RUBY VERSION
