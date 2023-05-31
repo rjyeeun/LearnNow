@@ -1,4 +1,7 @@
+require 'net/http'
+
 class WelcomeController < ApplicationController
+    skip_before_action :authorized
     def index
       if Rails.env.production?
         serve_production_files
@@ -14,7 +17,10 @@ class WelcomeController < ApplicationController
     end
   
     def proxy_to_development_server
-      redirect_to 'http://frontend:4000'
+      uri = URI.parse("http://frontend:4000#{request.fullpath}")
+      response = Net::HTTP.get_response(uri)
+  
+      render plain: response.body, status: response.code.to_i, content_type: response.content_type
     end
   end
   
