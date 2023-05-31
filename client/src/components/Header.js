@@ -6,7 +6,6 @@ import CourseSearch from './CourseSearch'
 import {LinkContainer} from 'react-router-bootstrap'
 import Image from 'react-bootstrap/Image'
 import { NavbarBrand, NavDropdown } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 
 export default function Header({currentUser, changeSearch, searchCourse, courses, category, setCategory}) {
     const [showMenu, setShowMenu] = useState(false)
