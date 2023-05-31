@@ -13,7 +13,7 @@ class WelcomeController < ApplicationController
     private
   
     def serve_production_files
-      send_file Rails.root.join('build', 'index.html')
+      send_file Rails.root.join('client', 'build', 'index.html')
     end
   
     def proxy_to_development_server
