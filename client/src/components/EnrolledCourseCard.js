@@ -2,19 +2,14 @@ import React, {useState, useEffect} from 'react'
 import { FaStar } from 'react-icons/fa';
 import {BiTime} from 'react-icons/bi'
 import {useNavigate} from "react-router-dom";
-import {AiOutlineLike} from 'react-icons/ai'
-import {MdOutlineRateReview} from 'react-icons/md'
-import {Button , Card, Form} from 'react-bootstrap';
+import {Button , Card } from 'react-bootstrap';
 import CardGroup from 'react-bootstrap/CardGroup';
 import {Link} from 'react-router-dom'
 
 export default function EnrolledCourseCard({course, currentUser, onDeleteEnrolledCourse}) {
   
   const navigate = useNavigate()
-  const {id, title, description, difficulty, price, thumbnail_img, lessons, reviews, user_liked_courses} = course.course
-  //get total number of likes 
-  let like_count = course.user_liked_courses.map ((like) => like)
-  const like_count_total = like_count.length
+  const {id, title, difficulty, thumbnail_img } = course.course
 
   //get total number of reviews
   let review_count = course.reviews.map((review) => review)
