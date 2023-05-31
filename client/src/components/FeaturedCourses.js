@@ -8,7 +8,7 @@ function FeaturedCourses() {
     const [featuredCourses, setFeaturedCourses] = useState([]);
 
     useEffect(() => {
-        fetch('/featured_courses')
+        fetch('/api/featured_courses')
         .then(response => response.json())
         .then(data => setFeaturedCourses(data))
         .catch(error => console.error(error));

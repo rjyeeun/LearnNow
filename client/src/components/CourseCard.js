@@ -32,7 +32,7 @@ export default function CourseCard({course}) {
     const [courseCreator, setCourseCreator] = useState('');
     //getting instructor name for the course
     useEffect(() => {
-        fetch(`/users/${course.instructor_id}`)
+        fetch(`/api/users/${course.instructor_id}`)
         .then(r => r.json())
         .then(data => setCourseCreator(data.name))
     }, [])

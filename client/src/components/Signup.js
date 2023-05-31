@@ -18,7 +18,7 @@ export default function Signup() {
 
  function handleSignUp(e) {
    e.preventDefault();
-   fetch("/users", {
+   fetch("/api/users", {
      method: "POST",
      mode: "cors",
      headers: {

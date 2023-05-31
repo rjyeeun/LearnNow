@@ -25,7 +25,7 @@ function App() {
 
   //get all courses from the db
   useEffect(() => {
-    fetch("/courses")
+    fetch("/api/courses")
     .then((r) => r.json())
     .then((data) => setCourses(data))
   }, []); //???
@@ -33,7 +33,7 @@ function App() {
 
   //get current users
   useEffect(() => {
-    fetch("/auth")
+    fetch("/api/auth")
     .then(res => {
       if(res.ok) {
         res.json().then(user => setCurrentUser(user))
@@ -43,7 +43,7 @@ function App() {
 
   //get all users
   useEffect(()=> {
-    fetch("/users")
+    fetch("/api/users")
     .then(r => r.json())
     .then(data => {
       setUsers(data)
@@ -53,7 +53,7 @@ function App() {
 
 //get current user's created courses
 useEffect(() => {
-  fetch(`/users/${currentUser.id}/instructor_courses`)
+  fetch(`/api/users/${currentUser.id}/instructor_courses`)
   .then(res => {
     if(res.ok) {
       res.json().then(data => setMyCourses(data));

@@ -9,7 +9,7 @@ export default function CourseSearch({changeSearch}) {
 
   return (
 <>
-    <input class="form-control me-5" type="search" placeholder="What do you want to learn about?" aria-label="Search" onChange={handleChange}/>
+    <input className="form-control me-5" type="search" placeholder="What do you want to learn about?" aria-label="Search" onChange={handleChange}/>
  </>
   )
 }

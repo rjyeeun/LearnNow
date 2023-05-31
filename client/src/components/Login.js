@@ -11,7 +11,7 @@ export default function Login({handleUserLogin}) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    fetch("/login", {
+    fetch("/api/login", {
       method: "POST",
       mode:"cors",
       headers: {

@@ -24,7 +24,7 @@ function MyCreatedLesson({lesson, index, onEditLesson, onDeleteLesson}) {
     }
 
     const handleDelete = () => {
-        fetch(`/courses/${course_id}/lessons/${id}`, { method: 'DELETE' })
+        fetch(`/api/courses/${course_id}/lessons/${id}`, { method: 'DELETE' })
         .then(() => onDeleteLesson(id))
         .then(alert('lessons deleted successfully'))
         window.location.reload()

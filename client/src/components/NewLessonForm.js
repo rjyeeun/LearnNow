@@ -16,7 +16,7 @@ export default function NewLessonForm({courses, setCourses}) {
   const [errors, setErrors] = useState(false)
 
   useEffect(() => {
-    fetch(`/courses/${id}`)
+    fetch(`/api/courses/${id}`)
     .then(res => {
         if (res.ok) {
             res.json().then(data => {
@@ -45,7 +45,7 @@ console.log(course.id)
     console.log(newLesson)
   
   try {
-    fetch(`/courses/${course.id}/lessons`, {
+    fetch(`/api/courses/${course.id}/lessons`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -55,7 +55,7 @@ console.log(course.id)
     // .then(resp => resp.json())
     .then(res => {
         if(res.status === 201) {
-        fetch(`/courses/${course.id}/lessons`)
+        fetch(`/api/courses/${course.id}/lessons`)
         .then((r) => r.json())
         .then((data) => setLessons(data))
         alert("Lesson Successfully Created!")

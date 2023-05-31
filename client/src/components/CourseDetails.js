@@ -20,7 +20,7 @@ export default function CourseDetails({onDeleteCourse, courses, setCourses, curr
 
     //get one current course from db
     useEffect(() => {
-        fetch(`/courses/${id}`)
+        fetch(`/api/courses/${id}`)
         .then(res => {
             if (res.ok) {
                 res.json().then(data => {
@@ -65,7 +65,7 @@ export default function CourseDetails({onDeleteCourse, courses, setCourses, curr
             course_id: id
             };
 
-            fetch(`/users/${currentUser.id}/enrolled_courses`, {
+            fetch(`/api/users/${currentUser.id}/enrolled_courses`, {
                 method: 'POST',
                 headers: {
                 "Content-Type": "application/json",
@@ -74,7 +74,7 @@ export default function CourseDetails({onDeleteCourse, courses, setCourses, curr
             })
             .then(res => { 
                 if(res.status === 201) {
-                    fetch(`/users/${currentUser.id}/enrolled_courses`)
+                    fetch(`/api/users/${currentUser.id}/enrolled_courses`)
                     .then(res => res.json())
                     .then(data => setEnrolledCourses(data))
                     alert("You have successfully enrolled the course!")

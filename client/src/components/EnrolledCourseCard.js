@@ -20,7 +20,7 @@ export default function EnrolledCourseCard({course, currentUser, onDeleteEnrolle
   let review_count = course.reviews.map((review) => review)
   const review_count_total = review_count.length
   const handleDelete = () => {
-    fetch(`/users/${currentUser.id}/enrolled_courses/${course.id}`,
+    fetch(`/api/users/${currentUser.id}/enrolled_courses/${course.id}`,
       { method: 'DELETE' })
       .then(() => {
         onDeleteEnrolledCourse(id);

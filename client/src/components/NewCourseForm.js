@@ -42,7 +42,7 @@ function handleSubmit(e) {
   console.log(newCourse)
 
 
-  fetch("/courses", {
+  fetch("/api/courses", {
       method: "POST",
       headers: {
           "Content-Type": "application/json",
@@ -52,7 +52,7 @@ function handleSubmit(e) {
   // .then(resp => resp.json())
   .then(res => {
       if(res.status === 201) {
-      fetch("/courses")
+      fetch("/api/courses")
       .then((r) => r.json())
       .then((data) => setCourses(data))
       alert("Course Successfully Created!")

@@ -14,7 +14,7 @@ export default function EnrolledCourseDetail({currentUser}) {
 
   //getting one course data from db
   useEffect(() => {
-    fetch(`/courses/${id}`)
+    fetch(`/api/courses/${id}`)
     .then(res => {
         if (res.ok) {
             res.json().then(data => {

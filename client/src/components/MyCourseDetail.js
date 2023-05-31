@@ -14,7 +14,7 @@ function MyCourseDetail() {
     const {id} = useParams()
 
     useEffect(() => {
-        fetch(`/courses/${id}`)
+        fetch(`/api/courses/${id}`)
         .then(res => {
             if (res.ok) {
                 res.json().then(data => {
@@ -34,7 +34,7 @@ function MyCourseDetail() {
     }
 
     useEffect( () => {
-        fetch(`/courses/${id}/lessons`)
+        fetch(`/api/courses/${id}/lessons`)
         .then (res => {
             if (res.ok) {
                 res.json().then(data => {

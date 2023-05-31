@@ -37,7 +37,7 @@ function handleEditFormSubmit(e) {
       },
       body: JSON.stringify(formData)
   }
-fetch(`/courses/${course_id}/lessons/${id}`, requestObj)
+fetch(`/api/courses/${course_id}/lessons/${id}`, requestObj)
       .then(response => response.json())
       .then(() => { onEditLesson(formData) 
         setFormData(initialFormValues)})

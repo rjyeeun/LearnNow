@@ -19,7 +19,7 @@ export default function Header({currentUser, changeSearch, searchCourse, courses
 
 
     async function handleLogout() {
-        await fetch("/logout", {
+        await fetch("/api/logout", {
             method: "DELETE",
             mode:"cors",
             headers: {
