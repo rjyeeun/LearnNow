@@ -16,7 +16,7 @@ export default function UserDashboard({ currentUser, courses, setCourses }) {
           res.json().then((data) => setUserEnrolledCourses(data));
         }
       });
-  }, []);
+  }, [currentUser]);
 
   //get current user's created courses
   useEffect(() => {
