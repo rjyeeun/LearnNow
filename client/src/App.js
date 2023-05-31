@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css'
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Signup from './components/Signup';
 import Login from './components/Login';
@@ -14,7 +14,6 @@ import CourseDetails from './components/CourseDetails';
 import MyCourseDetail from './components/MyCourseDetail';
 
 function App() {
-  const navigate = useNavigate()
   const [users, setUsers] = useState([]);
   const [currentUser, setCurrentUser] = useState({enrolled_courses: [], instructor_courses: []});
   const [courses, setCourses] = useState([]);//all the  courses
