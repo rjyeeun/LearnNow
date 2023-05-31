@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /app
 
 # Copy Gemfile and Gemfile.lock
-# COPY Gemfile Gemfile.lock ./
+COPY Gemfile Gemfile.lock ./
 
 # Install gems
 RUN gem install bundler && bundle install --jobs 20 --retry 5
