@@ -2,7 +2,7 @@
 
 Rails.application.config.after_initialize do
     if Rails.env.production?
-        Course.mark_featured
+        # Course.mark_featured
     end
 end
   
