@@ -1,11 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import ReviewCard from './ReviewCard'
 import {useNavigate, useParams} from "react-router-dom";
-import {Button , Card, Form} from 'react-bootstrap';
+import {Button , Card } from 'react-bootstrap';
 import LessonList from './LessonList'
-import {AiOutlineFileAdd} from 'react-icons/ai'
 import {MdOutlineRateReview} from 'react-icons/md'
-import NewLessonForm from './NewLessonForm'
 
 export default function CourseDetails({onDeleteCourse, courses, setCourses, currentUser, myCourses, setMyCourses}) {
     const [course, setCourse] = useState({title: '', description: '', lessons: [], reviews: [], instructor_id: ''});
@@ -20,14 +18,13 @@ export default function CourseDetails({onDeleteCourse, courses, setCourses, curr
 
     //get one current course from db
     useEffect(() => {
-        fetch(`/courses/${id}`)
+        fetch(`/api/courses/${id}`)
         .then(res => {
             if (res.ok) {
                 res.json().then(data => {
                 setCourse(data);
                 });
             } else {
-                console.log("error");
                 res.json().then(data => setErrors(data.error));
             }
         });
@@ -65,7 +62,7 @@ export default function CourseDetails({onDeleteCourse, courses, setCourses, curr
             course_id: id
             };
 
-            fetch(`/users/${currentUser.id}/enrolled_courses`, {
+            fetch(`/api/users/${currentUser.id}/enrolled_courses`, {
                 method: 'POST',
                 headers: {
                 "Content-Type": "application/json",
@@ -74,7 +71,7 @@ export default function CourseDetails({onDeleteCourse, courses, setCourses, curr
             })
             .then(res => { 
                 if(res.status === 201) {
-                    fetch(`/users/${currentUser.id}/enrolled_courses`)
+                    fetch(`/api/users/${currentUser.id}/enrolled_courses`)
                     .then(res => res.json())
                     .then(data => setEnrolledCourses(data))
                     alert("You have successfully enrolled the course!")
@@ -96,6 +93,7 @@ export default function CourseDetails({onDeleteCourse, courses, setCourses, curr
     return (
     <>
         <div className="d-flex justify-content-center" style={{marginTop: '5%', color: '#0c3954'}}>
+            <pre>{JSON.stringify({enrolledCourses, errors, reviewLists}, null, 2)}</pre>
             <Card border="dark">
                 <Card.Body>
                     <Card.Title align="middle" style={{fontFamily: 'poppinsBold'}}>{title}</Card.Title>

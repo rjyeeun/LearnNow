@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import {AiOutlineLike} from 'react-icons/ai'
-import {MdOutlineRateReview} from 'react-icons/md'
 import { FaStar } from 'react-icons/fa';
-import { Card, Button } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import {Link} from 'react-router-dom'
 import CardGroup from 'react-bootstrap/CardGroup';
 import {BiTime} from 'react-icons/bi'
 import imagePlaceholder from './imagePlaceholder.png'
 
 export default function CourseCard({course}) {
-    const {id, title, category, description, lessons, difficulty, price, thumbnail_img } = course
+    const {id, title, difficulty, price, thumbnail_img } = course
 
     const [totalDuration, setTotalDuration] = useState(0);
 
@@ -32,10 +30,10 @@ export default function CourseCard({course}) {
     const [courseCreator, setCourseCreator] = useState('');
     //getting instructor name for the course
     useEffect(() => {
-        fetch(`/users/${course.instructor_id}`)
+        fetch(`/api/users/${course.instructor_id}`)
         .then(r => r.json())
         .then(data => setCourseCreator(data.name))
-    }, [])
+    }, [course])
     //get total number of reviews
     let review_count = course.reviews.map((review) => review)
     const review_count_total = review_count.length

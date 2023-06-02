@@ -1,4 +1,3 @@
-import React, {useEffect, useState} from 'react'
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
@@ -6,20 +5,10 @@ import CourseSearch from './CourseSearch'
 import {LinkContainer} from 'react-router-bootstrap'
 import Image from 'react-bootstrap/Image'
 import { NavbarBrand, NavDropdown } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 
 export default function Header({currentUser, changeSearch, searchCourse, courses, category, setCategory}) {
-    const [showMenu, setShowMenu] = useState(false)
-    const [categories, setCategories] = useState([])
-
-    console.log(categories)
-    const toggleMenu = () => {
-        setShowMenu(!showMenu);
-      }
-
-
     async function handleLogout() {
-        await fetch("/logout", {
+        await fetch("/api/logout", {
             method: "DELETE",
             mode:"cors",
             headers: {
@@ -30,12 +19,6 @@ export default function Header({currentUser, changeSearch, searchCourse, courses
         window.location.reload()
         return false
     }
-
-    useEffect(() => {
-        // Group the courses by category and store the unique categories in the categories state
-        const uniqueCategories = courses.map(course => course.category);
-        setCategories(uniqueCategories);
-      }, [courses]);
 
     const login_option = <LinkContainer style={{'color': '#cecece'}} to="/login"><Nav.Link>LOGIN</Nav.Link></LinkContainer>
     const signup_option =  <LinkContainer style={{'color': '#cecece'}} to="/signup"><Nav.Link>SIGNUP</Nav.Link></LinkContainer>

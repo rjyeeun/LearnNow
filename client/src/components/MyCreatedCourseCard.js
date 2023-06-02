@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
-import MyCreatedLesson from './MyCreatedLesson';
 import {RiDeleteBack2Line} from 'react-icons/ri'
 
 function MyCreatedCourseCard({ myCourse, currentUser, myCourses, setMyCourses, setCourses, onDeleteCourse }) {
     const navigate = useNavigate()
     const handleDeleteCourse = (id) => {
-        fetch(`/courses/${id}`, { method: 'DELETE' })
+        fetch(`/api/courses/${id}`, { method: 'DELETE' })
         .then(() => alert(`Are you sure you want to delete?`))
         .then(() => {
             alert("You have successfully deleted the course");

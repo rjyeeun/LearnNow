@@ -1,38 +1,33 @@
 import React, {useState, useEffect} from 'react'
 import EnrolledLessonCard from './EnrolledLessonCard'
-import {useNavigate, useParams} from "react-router-dom";
-import {Button , Card, Form} from 'react-bootstrap';
+import {useParams} from "react-router-dom";
+import {Card} from 'react-bootstrap';
 import ReviewCard from './ReviewCard'
 import NewReviewForm from './NewReviewForm';
 import {MdOutlineRateReview} from 'react-icons/md'
 
 export default function EnrolledCourseDetail({currentUser}) {
   const [course, setCourse] = useState({title: '', description: '', lessons: [], reviews: [], instructor_id: ''});
-  const [errors, setErrors] = useState(false)
-  const [reviewLists, setReviewLists] = useState([])
   const {id} = useParams()
 
   //getting one course data from db
   useEffect(() => {
-    fetch(`/courses/${id}`)
+    fetch(`/api/courses/${id}`)
     .then(res => {
         if (res.ok) {
             res.json().then(data => {
             setCourse(data);
             });
-        } else {
-            console.log("error");
-            res.json().then(data => setErrors(data.error));
-        }
+        } 
     });
 }, [id]);
 
-const {lessons, title, description, reviews, instructor_id} = course
+const {lessons, title, reviews} = course
   //sending each lesson to EnrolledLessonCard component
 
   const onDeleteReview = (currentReviewId) => {
-    const updatedReviewList = reviews.filter((review) => review.id !== currentReviewId)
-    setReviewLists(updatedReviewList)
+    // const updatedReviewList = reviews.filter((review) => review.id !== currentReviewId)
+    
 }
 
   const lessonArray = lessons.map((lesson,index) => (
@@ -53,7 +48,7 @@ const {lessons, title, description, reviews, instructor_id} = course
                     <Card.Body align="middle" style={{fontFamily: 'DMSansRegular'}}>Be the first to share your thoughts! <br/> This course doesn't have any reviews yet, but we'd love to hear what you think. <br /> Leave a review and help others discover the best courses!</Card.Body>
                     ) : (
                     reviews.map((review) => (
-                    <ReviewCard key={review.id} review={review} course={course} currentUser={currentUser} onDeleteReview={onDeleteReview}/>
+                    <ReviewCard key={review.id} review={review} course={course} currentUser={currentUser} onDeleteReview={(onDeleteReview)}/>
                     ))
 )}
                 </Card.Body>

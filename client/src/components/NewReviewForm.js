@@ -1,7 +1,6 @@
 import { Form, Button, Row, Col, Container } from 'react-bootstrap';
 import '@fortawesome/fontawesome-free/css/all.css';
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
@@ -18,7 +17,6 @@ const schema = Yup.object().shape({
 });
 
 export default function NewReviewForm({ reviews, currentUser, course }) {
-  const navigate = useNavigate();
   const initialComment = ''
   const [comment, setComment] = useState(initialComment);
   const [rating, setRating] = useState(1);
@@ -30,7 +28,7 @@ export default function NewReviewForm({ reviews, currentUser, course }) {
 
   //get all reviews 
 useEffect(()=> {
-  fetch(`/courses/${course.id}/reviews`)
+  fetch(`/api/courses/${course.id}/reviews`)
   .then(r => r.json())
   .then(data => {
     setAllReviews(data)
@@ -48,7 +46,7 @@ useEffect(()=> {
     };
 
     try {
-    fetch(`/courses/${course.id}/reviews`, {
+    fetch(`/api/courses/${course.id}/reviews`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -57,7 +55,7 @@ useEffect(()=> {
     })
     .then(res => {
       if(res.status === 201) {
-      fetch(`/courses/${course.id}/reviews`)
+      fetch(`/api/courses/${course.id}/reviews`)
       .then((r) => r.json())
       .then((data) => setAllReviews(data))
       .then(() =>setComment(initialComment))

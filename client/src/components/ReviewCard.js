@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from "react";
-import {Button , Card, Form} from 'react-bootstrap';
+import {Button , Card} from 'react-bootstrap';
 import { FaStar } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
@@ -16,7 +16,7 @@ export default function ReviewCard({review, course, currentUser, onDeleteReview}
     // }
 
     useEffect(()=> {
-        fetch(`/users/${user_id}`)
+        fetch(`/api/users/${user_id}`)
         .then(r => r.json())
         .then((data) => {
             setUsername(data.username.charAt(0).toUpperCase() + data.username.slice(1));
@@ -27,7 +27,7 @@ export default function ReviewCard({review, course, currentUser, onDeleteReview}
 
     const deleteReview = () => {
         if (currentUser.id === user_id) {
-        fetch(`/courses/${course.id}/reviews/${review.id}`,
+        fetch(`/api/courses/${course.id}/reviews/${review.id}`,
         { method: 'DELETE'})
         .then(() => onDeleteReview(course.id))
         .then(alert("Review deleted successfully"))}

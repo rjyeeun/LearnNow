@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
-import Image from 'react-bootstrap/Image'
 import {Link} from 'react-router-dom'
 
 
@@ -18,7 +17,7 @@ export default function Signup() {
 
  function handleSignUp(e) {
    e.preventDefault();
-   fetch("/users", {
+   fetch("/api/users", {
      method: "POST",
      mode: "cors",
      headers: {
@@ -37,10 +36,6 @@ export default function Signup() {
    })
    .catch(error => console.log(error));
  }
-
-
- console.log(errors)
-
 
  if(errors) {return <div className="d-flex justify-content-center align-items-center vh-100">
      <Form className="p-5 rounded shadow-lg" style={{backgroundColor:'#9ccbd5'}}>
@@ -89,7 +84,7 @@ export default function Signup() {
        <small className="text-muted">{errors}</small>
        <br />
        <Form.Group align='middle'>
-       <Button variant="dark" type="submit" onClick={handleSignUp} block>
+       <Button variant="dark" type="submit" onClick={handleSignUp}>
          JOIN
        </Button>
        </Form.Group>
@@ -146,7 +141,7 @@ export default function Signup() {
          />
        </Form.Group>
        <Form.Group align='middle'>
-       <Button variant="dark" type="submit" onClick={handleSignUp} block>
+       <Button variant="dark" type="submit" onClick={handleSignUp}>
          JOIN
        </Button>
        </Form.Group>

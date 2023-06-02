@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import ReactPlayer from 'react-player';
@@ -11,25 +11,21 @@ export default function NewLessonForm({courses, setCourses}) {
   const [description, setDescription] = useState("")
   const [duration, setDuration] = useState("")
   const [content, setContent] = useState("")
-  const navigate = useNavigate()
   const {id} = useParams()
   const [errors, setErrors] = useState(false)
 
   useEffect(() => {
-    fetch(`/courses/${id}`)
+    fetch(`/api/courses/${id}`)
     .then(res => {
         if (res.ok) {
             res.json().then(data => {
             setCourse(data);
             });
         } else {
-            console.log("error");
             res.json().then(data => setErrors(data.error));
         }
     });
 }, [id]);
-
-console.log(course.id)
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -42,10 +38,9 @@ console.log(course.id)
         course_id: course.id
     }
   
-    console.log(newLesson)
   
   try {
-    fetch(`/courses/${course.id}/lessons`, {
+    fetch(`/api/courses/${course.id}/lessons`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -55,7 +50,7 @@ console.log(course.id)
     // .then(resp => resp.json())
     .then(res => {
         if(res.status === 201) {
-        fetch(`/courses/${course.id}/lessons`)
+        fetch(`/api/courses/${course.id}/lessons`)
         .then((r) => r.json())
         .then((data) => setLessons(data))
         alert("Lesson Successfully Created!")
@@ -72,6 +67,7 @@ console.log(course.id)
 
   return (
       <div  class= 'd-flex justify-content-center' style={{backgroundColor:' #9ccbd5', padding: '3em', borderRadius: '10px'}}>
+        <pre> {JSON.stringify({lessons, errors}, null, 2)} </pre>
         <Form  onSubmit={handleSubmit} style={{borderRadius: '10px'}} >
         <h1 className="mb-3 text-center" style={{fontFamily: 'PoppinsMedium', color: '#000000'}}>New Lesson Form</h1>
             <Form.Group>

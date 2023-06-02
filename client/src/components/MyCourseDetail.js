@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
-import {Button , Card, Form} from 'react-bootstrap';
+import {Button , Card } from 'react-bootstrap';
 import MyCreatedLesson from './MyCreatedLesson';
 import {AiOutlineFileAdd} from 'react-icons/ai'
 import NewLessonForm from './NewLessonForm';
@@ -14,14 +14,13 @@ function MyCourseDetail() {
     const {id} = useParams()
 
     useEffect(() => {
-        fetch(`/courses/${id}`)
+        fetch(`/api/courses/${id}`)
         .then(res => {
             if (res.ok) {
                 res.json().then(data => {
                 setCourse(data);
                 });
             } else {
-                console.log("error");
                 res.json().then(data => setErrors(data.error));
             }
         });
@@ -34,14 +33,13 @@ function MyCourseDetail() {
     }
 
     useEffect( () => {
-        fetch(`/courses/${id}/lessons`)
+        fetch(`/api/courses/${id}/lessons`)
         .then (res => {
             if (res.ok) {
                 res.json().then(data => {
                 setLessonLists(data);
                 });
             } else {
-                console.log("error");
                 res.json().then(data => setErrors(data.error));
             }
         });
@@ -80,6 +78,7 @@ function MyCourseDetail() {
       ))
   return (
     <Card border='dark'>
+        <pre>{JSON.stringify({errors, lessonLists, currentLesson, description, reviews, instructor_id},null, 2)}</pre>
         <br  />
         <Card.Title align="middle" style={{fontFamily: 'poppinsBold'}}>{title}</Card.Title>
         <Card.Body className='enrolledLesson'>

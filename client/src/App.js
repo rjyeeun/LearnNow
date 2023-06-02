@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css'
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Signup from './components/Signup';
 import Login from './components/Login';
@@ -14,8 +14,6 @@ import CourseDetails from './components/CourseDetails';
 import MyCourseDetail from './components/MyCourseDetail';
 
 function App() {
-  const navigate = useNavigate()
-  const [users, setUsers] = useState([]);
   const [currentUser, setCurrentUser] = useState({enrolled_courses: [], instructor_courses: []});
   const [courses, setCourses] = useState([]);//all the  courses
   const [searchCourse, setSearchCourse] = useState(""); //searched courses on home page
@@ -25,7 +23,7 @@ function App() {
 
   //get all courses from the db
   useEffect(() => {
-    fetch("/courses")
+    fetch("/api/courses")
     .then((r) => r.json())
     .then((data) => setCourses(data))
   }, []); //???
@@ -33,7 +31,7 @@ function App() {
 
   //get current users
   useEffect(() => {
-    fetch("/auth")
+    fetch("/api/auth")
     .then(res => {
       if(res.ok) {
         res.json().then(user => setCurrentUser(user))
@@ -41,42 +39,21 @@ function App() {
     })
   },[])
 
-  //get all users
-  useEffect(()=> {
-    fetch("/users")
-    .then(r => r.json())
-    .then(data => {
-      setUsers(data)
-    })
-  }, [])
-
 
 //get current user's created courses
 useEffect(() => {
-  fetch(`/users/${currentUser.id}/instructor_courses`)
+  if(!currentUser || !currentUser.id) return;
+  fetch(`/api/users/${currentUser.id}/instructor_courses`)
   .then(res => {
     if(res.ok) {
       res.json().then(data => setMyCourses(data));
     }
   })
-},[])
+},[currentUser])
 
-console.log(myCourses)
  
   function handleUserLogin(user) {
     setCurrentUser(user)
-  }
-
-   //deactivate user from db
-    const onDeleteUser = (id) => {
-      const updatedUser = users.filter((currentUser) => currentUser.id !== id)
-      setCurrentUser(updatedUser)
-    }
-
-      //edit user profile
-    const onEditUserProfile = (modifiedUser) => {
-      const updateUser = users.map(user => currentUser.id === user.id ? modifiedUser : user)
-      setCurrentUser(updateUser)
   }
 
   //change value on search bar
@@ -96,15 +73,6 @@ console.log(myCourses)
     return course.category === category
 
   })
-  //deletes course current user created
-  // const onDeleteCourse = (id) => {
-  //   const updatedCourse = courses.filter((course) => course.id !== id)
-  //   setCourses(updatedCourse)
-  // }
-
-  const fetchCoursesByCategory = (category) => {
-    const filteredCourses = courses.filter(course => course.category === category);
-    setCourses(filteredCourses);}
 
   return (
     <>

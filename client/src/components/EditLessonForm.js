@@ -1,14 +1,9 @@
-import React, {useState, useEffect} from 'react'
-import { useNavigate, useParams } from "react-router-dom";
+import React, {useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import ReactPlayer from 'react-player';
 
 export default function EditLessonForm({lesson, onEditLesson}) {
-  const [course, setCourse] = useState({title: '', description: '', lessons: [], reviews: [], instructor_id: ''});
-  const [lessons, setLessons] = useState([])
-  const navigate = useNavigate()
-  const [errors, setErrors] = useState(false)
   const {id, course_id} = lesson
   const initialFormValues = {
     title: lesson.title,
@@ -37,7 +32,7 @@ function handleEditFormSubmit(e) {
       },
       body: JSON.stringify(formData)
   }
-fetch(`/courses/${course_id}/lessons/${id}`, requestObj)
+fetch(`/api/courses/${course_id}/lessons/${id}`, requestObj)
       .then(response => response.json())
       .then(() => { onEditLesson(formData) 
         setFormData(initialFormValues)})

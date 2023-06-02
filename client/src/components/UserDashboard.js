@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import EnrolledCourseCard from './EnrolledCourseCard';
 import MyCreatedCourseCard from './MyCreatedCourseCard';
-import { Button, Card, Col, Container, Row } from 'react-bootstrap';
+import { Card, Col, Container, Row } from 'react-bootstrap';
 import { SlEmotsmile } from 'react-icons/sl';
 
 export default function UserDashboard({ currentUser, courses, setCourses }) {
@@ -10,17 +10,17 @@ export default function UserDashboard({ currentUser, courses, setCourses }) {
 
   //get current user's enrolled courses
   useEffect(() => {
-    fetch(`/users/${currentUser.id}/enrolled_courses`)
+    fetch(`/api/users/${currentUser.id}/enrolled_courses`)
       .then((res) => {
         if (res.ok) {
           res.json().then((data) => setUserEnrolledCourses(data));
         }
       });
-  }, []);
+  }, [currentUser]);
 
   //get current user's created courses
   useEffect(() => {
-    fetch('/my_courses')
+    fetch('/api/my_courses')
       .then((res) => {
         if (res.ok) {
           res.json().then((data) => setMyCourses(data));

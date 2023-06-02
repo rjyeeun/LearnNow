@@ -1,12 +1,11 @@
-import React,{ useEffect, useState} from 'react'
+import React,{ useState} from 'react'
 import ReactPlayer from 'react-player'
-import {Button , Card, Form} from 'react-bootstrap';
+import {Button } from 'react-bootstrap';
 import {AiOutlineFileAdd} from 'react-icons/ai'
 import Accordion from 'react-bootstrap/Accordion';
 import {BiTime} from 'react-icons/bi'
 import EditLessonForm from './EditLessonForm';
 import NewLessonForm from './NewLessonForm';
-import { useNavigate } from 'react-router-dom';
 import {TbEdit} from 'react-icons/tb'
 import {RiDeleteBin5Line} from 'react-icons/ri';
 
@@ -14,7 +13,6 @@ function MyCreatedLesson({lesson, index, onEditLesson, onDeleteLesson}) {
     const [editLessonForm, setEditLessonForm] = useState(false)
     const [viewLessonForm, setViewLessonForm] = useState(false)
     const {id, course_id, title, content, description, duration} = lesson
-    const navigate = useNavigate()
 
     const handleEditLesson = () => {
         setEditLessonForm(prev => !prev)
@@ -24,7 +22,7 @@ function MyCreatedLesson({lesson, index, onEditLesson, onDeleteLesson}) {
     }
 
     const handleDelete = () => {
-        fetch(`/courses/${course_id}/lessons/${id}`, { method: 'DELETE' })
+        fetch(`/api/courses/${course_id}/lessons/${id}`, { method: 'DELETE' })
         .then(() => onDeleteLesson(id))
         .then(alert('lessons deleted successfully'))
         window.location.reload()

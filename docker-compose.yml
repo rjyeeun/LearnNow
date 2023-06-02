@@ -1,0 +1,64 @@
+version: '3'
+services:
+  db:
+    image: postgres:13
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: myapp
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: myapp_development
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    volumes:
+      - ./app:/app/app
+      - ./bin:/app/bin
+      - ./config:/app/config
+      - ./db:/app/db
+      - ./lib:/app/lib
+      - ./log:/app/log
+      - ./public:/app/public
+      - ./storage:/app/storage
+      - ./tmp:/app/tmp
+      - ./vendor:/app/vendor
+    environment:
+      DATABASE_URL: postgres://myapp:mypassword@db/myapp_development
+
+  # initializer:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   depends_on:
+  #     - db
+  #   volumes:
+  #     - ./app:/app/app
+  #     - ./bin:/app/bin
+  #     - ./config:/app/config
+  #     - ./db:/app/db
+  #     - ./lib:/app/lib
+  #     - ./log:/app/log
+  #     - ./public:/app/public
+  #     - ./storage:/app/storage
+  #     - ./tmp:/app/tmp
+  #     - ./vendor:/app/vendor
+  #   command: bundle exec rails db:create db:migrate db:seed
+
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./client:/app
+
+volumes:
+  db_data:
+
