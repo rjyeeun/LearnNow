@@ -67,7 +67,6 @@ export default function NewLessonForm({courses, setCourses}) {
 
   return (
       <div  class= 'd-flex justify-content-center' style={{backgroundColor:' #9ccbd5', padding: '3em', borderRadius: '10px'}}>
-        <pre> {JSON.stringify({lessons, errors}, null, 2)} </pre>
         <Form  onSubmit={handleSubmit} style={{borderRadius: '10px'}} >
         <h1 className="mb-3 text-center" style={{fontFamily: 'PoppinsMedium', color: '#000000'}}>New Lesson Form</h1>
             <Form.Group>
