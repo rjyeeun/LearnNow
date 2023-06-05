@@ -1,3 +1,18 @@
+require 'active_record'
+
+tables = [
+  "courses",
+  "enrolled_courses",
+  "instructor_courses",
+  "lessons",
+  "user_liked_courses",
+  "users"
+]
+
+tables.each do |table_name|
+  ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{table_name} RESTART IDENTITY")
+end
+
 User.destroy_all
 Course.destroy_all
 Lesson.destroy_all
